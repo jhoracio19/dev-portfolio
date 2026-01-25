@@ -1,0 +1,17 @@
+.glass-card {
+  /* Fondo con transparencia sutil */
+  background: rgba(15, 23, 42, 0.6);
+  /* El secreto del efecto: desenfoque del fondo */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  /* Borde sutil para dar profundidad */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(56, 189, 248, 0.4); /* Brillo azul al pasar el mouse */
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}

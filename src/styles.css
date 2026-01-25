@@ -1,2 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
+
+@import "tailwindcss";
+
+/* Estilos globales para el body */
+body {
+  background-color: #0a0c10;
+  color: #f8fafc; /* Un blanco grisáceo suave para que no canse la vista */
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Opcional: Personalizar el scrollbar para que sea discreto */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0c10;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
