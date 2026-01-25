@@ -1,0 +1,26 @@
+:host {
+  display: block;
+  --anim-speed: 0.8s;
+}
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp var(--anim-speed) ease-out forwards;
+}
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Efecto sutil de gradiente en el fondo */
+.bg-dark-gradient {
+  background: radial-gradient(circle at top right, #1e293b 0%, #0a0c10 50%);
+}
