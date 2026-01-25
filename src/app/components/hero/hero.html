@@ -1,29 +1,48 @@
-<section id="inicio" class="flex flex-col items-start justify-center py-20 px-8 md:px-16 bg-[#0a0c10] bg-dark-gradient text-white rounded-3xl my-8 mx-4 border border-slate-800 shadow-2xl relative overflow-hidden">
+<section id="inicio" class="flex flex-col items-start justify-center py-24 px-8 md:px-20 bg-[#0a0c10] bg-dark-gradient text-white rounded-[2.5rem] my-8 mx-4 border border-slate-800 shadow-2xl relative overflow-hidden">
 
-  <div class="fade-in-up delay-1 flex items-center gap-4 mb-8">
-    <div class="w-32 h-32 md:w-44 md:h-44 flex-shrink-0 rounded-full bg-slate-800 border-2 border-slate-700 overflow-hidden shadow-2xl">
-      <img src="memoji.png" alt="José Horacio" class="w-full h-full object-cover">
+  <div class="absolute -top-24 -right-24 w-96 h-96 bg-sky-500/10 blur-[100px] rounded-full"></div>
+
+  <div class="fade-in-up delay-1 flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-10">
+    <div class="relative">
+      <div class="absolute -inset-1 bg-gradient-to-r from-sky-500 to-blue-600 rounded-full blur opacity-30 group-hover:opacity-100 transition duration-1000"></div>
+      <div class="w-32 h-32 md:w-40 md:h-40 relative flex-shrink-0 rounded-full bg-slate-900 border-2 border-slate-700/50 overflow-hidden shadow-2xl">
+        <img src="memoji.png" alt="José Horacio" class="w-full h-full object-cover">
+      </div>
     </div>
-    <span class="inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400 ring-1 ring-inset ring-emerald-500/20">
-      <span class="w-2 h-2 rounded-full bg-emerald-400 mr-2 animate-pulse"></span>
+
+    <span class="inline-flex items-center rounded-full bg-emerald-500/10 px-4 py-1.5 text-xs font-bold text-emerald-400 ring-1 ring-inset ring-emerald-500/20 uppercase tracking-wider">
+      <span class="relative flex h-2 w-2 mr-3">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+      </span>
       Disponible para trabajar
     </span>
   </div>
 
-  <h1 class="fade-in-up delay-2 text-4xl font-bold tracking-tight sm:text-6xl mb-6">
-    Hola, soy <span class="text-sky-400">José Horacio</span>
+  <h1 class="fade-in-up delay-2 text-5xl md:text-7xl font-extrabold tracking-tight mb-8">
+    Hola, soy <span class="bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent">José Horacio</span>
   </h1>
 
-  <div class="fade-in-up delay-3 max-w-3xl text-left">
-    <p class="text-lg md:text-xl text-slate-300 leading-relaxed mb-4">
-      Estudiante en Ingeniería en Tecnologías de la Información por la <span class="text-white font-semibold">BUAP</span>
+  <div class="fade-in-up delay-3 max-w-3xl text-left space-y-4">
+    <p class="text-xl md:text-2xl text-slate-200 leading-relaxed">
+      Estudiante de Ingeniería en TI en la <span class="text-white font-semibold underline decoration-sky-500/50 decoration-2 underline-offset-4">BUAP</span>.
+    </p>
     <p class="text-lg md:text-xl text-slate-400 leading-relaxed">
-      Especializado en desarrollar soluciones <span class="text-sky-400 font-medium">SaaS</span> con
-      <span class="text-white font-medium">Django y Python</span>, diseñando interfaces con
+      Especializado en <span class="text-sky-400 font-medium">SaaS</span> con
+      <span class="text-white font-medium">Django y Python</span>, creando interfaces con
       <span class="text-white font-medium">Angular v19 y Tailwind CSS v4</span>.
     </p>
   </div>
 
-  <div class="fade-in-up delay-3 mt-10 flex flex-wrap gap-4">
-     </div>
+  <div class="fade-in-up delay-3 mt-12 flex flex-wrap gap-5">
+    <a href="mailto:jhoracio19@hotmail.com" class="flex items-center gap-3 bg-white text-slate-950 px-8 py-4 rounded-2xl font-bold hover:bg-sky-400 transition-all hover:scale-105 shadow-lg shadow-white/5">
+      <i class="fas fa-envelope text-lg"></i>
+      Contáctame
+    </a>
+
+    <a href="assets/mi-cv.pdf" download class="flex items-center gap-3 bg-slate-800/50 backdrop-blur-md text-white px-8 py-4 rounded-2xl font-bold border border-slate-700 hover:bg-slate-800 transition-all hover:scale-105">
+      <i class="fas fa-download text-lg text-sky-400"></i>
+      Descargar CV
+    </a>
+  </div>
 </section>
