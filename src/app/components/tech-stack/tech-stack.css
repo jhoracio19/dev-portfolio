@@ -6,7 +6,6 @@
   border-radius: 24px;
 }
 
-/* Animación sutil para que los iconos parezcan flotar */
 @keyframes float {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-5px); }
