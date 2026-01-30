@@ -9,9 +9,15 @@
   animation: fadeInUp var(--anim-speed) cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-.delay-1 { animation-delay: 0.1s; }
-.delay-2 { animation-delay: 0.3s; }
-.delay-3 { animation-delay: 0.5s; }
+.delay-1 {
+  animation-delay: 0.1s;
+}
+.delay-2 {
+  animation-delay: 0.3s;
+}
+.delay-3 {
+  animation-delay: 0.5s;
+}
 
 @keyframes fadeInUp {
   to {
@@ -21,11 +27,9 @@
 }
 
 .bg-dark-gradient {
-  /* Gradiente más profundo para MacBook Pro / Air */
   background: radial-gradient(circle at 20% 30%, #1e293b 0%, #0a0c10 70%);
 }
 
-/* Suavizado de fuentes para Mac */
 section {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
