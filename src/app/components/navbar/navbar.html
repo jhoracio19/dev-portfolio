@@ -25,32 +25,47 @@
   >
     <a
       (click)="closeMenu()"
-      class="text-2xl md:text-base hover:text-sky-400 transition-all hover:scale-110"
-      href="#inicio"
+      class="text-2xl md:text-base hover:text-sky-400 transition-all hover:scale-110 cursor-pointer"
+      routerLink="/"
+      fragment="inicio"
       >Inicio</a
     >
     <a
       (click)="closeMenu()"
-      class="text-2xl md:text-base hover:text-sky-400 transition-all hover:scale-110"
-      href="#proyectos"
+      class="text-2xl md:text-base hover:text-sky-400 transition-all hover:scale-110 cursor-pointer"
+      routerLink="/"
+      fragment="proyectos"
       >Proyectos</a
     >
+
     <a
       (click)="closeMenu()"
-      class="text-2xl md:text-base hover:text-sky-400 transition-all hover:scale-110"
-      href="#experiencia"
+      class="text-2xl md:text-base text-emerald-400 hover:text-emerald-300 font-bold transition-all hover:scale-110 flex items-center gap-2 cursor-pointer"
+      routerLink="/clientes"
+      routerLinkActive="text-emerald-300 underline decoration-2 underline-offset-4"
+    >
+      <i class="fas fa-star text-xs animate-pulse"></i> Casos de Éxito
+    </a>
+
+    <a
+      (click)="closeMenu()"
+      class="text-2xl md:text-base hover:text-sky-400 transition-all hover:scale-110 cursor-pointer"
+      routerLink="/"
+      fragment="experiencia"
       >Experiencia</a
     >
     <a
       (click)="closeMenu()"
-      class="text-2xl md:text-base hover:text-sky-400 transition-all hover:scale-110"
-      href="#tecnologias"
+      class="text-2xl md:text-base hover:text-sky-400 transition-all hover:scale-110 cursor-pointer"
+      routerLink="/"
+      fragment="tecnologias"
       >Tecnologías</a
     >
     <a
       (click)="closeMenu()"
-      class="text-2xl md:text-base hover:text-sky-400 transition-all hover:scale-110"
-      href="#sobre-mi"
+      class="text-2xl md:text-base hover:text-sky-400 transition-all hover:scale-110 cursor-pointer"
+      routerLink="/"
+      fragment="sobre-mi"
       >Sobre mí</a
     >
 

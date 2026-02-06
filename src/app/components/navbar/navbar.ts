@@ -1,20 +1,20 @@
 import { Component, signal } from '@angular/core';
-import { sign } from 'crypto';
+import { CommonModule } from '@angular/common';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [Navbar],
+
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
 export class Navbar {
-  // Creo un signal para el estado del menú
   isMenuOpen = signal(false);
 
   toggleMenu() {
-    // Cambiamos el valor de true a false o viceversa
-    this.isMenuOpen.update((value) => !value);
+    this.isMenuOpen.update((val) => !val);
   }
 
   closeMenu() {
