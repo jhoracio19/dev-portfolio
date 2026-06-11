@@ -14,14 +14,14 @@
     </div>
 
     <div class="space-y-6" data-aos="fade-left" data-aos-duration="1000">
-      <h2 class="text-4xl font-bold text-white flex items-center gap-3">Detrás del código</h2>
+      <h2 class="text-4xl font-bold text-white flex items-center gap-3">{{ t().about.title }}</h2>
 
       <div class="text-slate-300 space-y-4 leading-relaxed text-lg">
         <p>
-          Soy José Horacio. Mientras curso mi ingeniería en la BUAP, dedico mis días a explorar cómo el software puede simplificar la vida de las personas. Mi camino en la tecnología no se trata solo de escribir líneas de código, sino de entender los desafíos que enfrentan los negocios y resolverlos con ingeniería creativa.
+          {{ t().about.p1 }}
         </p>
         <p>
-          Al dirigir mi propia agencia, aprendí que una solución técnica solo es buena si es útil. Por eso, mi enfoque siempre está en el equilibrio: crear sistemas robustos por dentro y experiencias amigables por fuera. Soy un eterno aprendiz, siempre buscando la próxima certificación o el próximo reto que me obligue a pensar fuera de la caja.
+          {{ t().about.p2 }}
         </p>
       </div>
 
@@ -32,10 +32,10 @@
           data-aos-delay="200"
         >
           <h4 class="text-sky-400 font-bold mb-2 flex items-center gap-2">
-            <i class="fas fa-heart"></i> Pasión y Liderazgo
+            <i class="fas fa-heart"></i> {{ t().about.card_passion }}
           </h4>
           <p class="text-sm text-slate-400 space-y-1">
-            Me gusta liderar con el ejemplo, diseñar arquitecturas que faciliten el trabajo del equipo y comunicar ideas técnicas de forma que todos las entiendan.
+            {{ t().about.card_passion_desc }}
           </p>
         </div>
 
@@ -45,11 +45,11 @@
           data-aos-delay="400"
         >
           <h4 class="text-purple-400 font-bold mb-2 flex items-center gap-2">
-            <i class="fas fa-graduation-cap"></i> Formación
+            <i class="fas fa-graduation-cap"></i> {{ t().about.card_edu }}
           </h4>
           <ul class="text-sm text-slate-400 space-y-1">
-            <li>• Ingeniería en TI (BUAP) – 7mo Semestre</li>
-            <li>• Inglés Profesional (Tec de Monterrey)</li>
+            <li>• {{ t().about.edu_ing }}</li>
+            <li>• {{ t().about.edu_eng }}</li>
           </ul>
         </div>
       </div>
@@ -59,7 +59,7 @@
   <div class="mt-16 space-y-12">
     <div>
       <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3" data-aos="fade-right">
-        <i class="fas fa-check-circle text-green-500"></i> Certificaciones
+        <i class="fas fa-check-circle text-green-500"></i> {{ t().about.cert_title }}
       </h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div
@@ -155,12 +155,11 @@
     <div>
       <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3" data-aos="fade-right">
         <i class="fas fa-layer-group text-sky-500"></i>
-        Enfoque de Arquitectura
+        {{ t().about.arch_title }}
       </h3>
 
       <p class="text-slate-300 mb-4 max-w-xl" data-aos="fade-right" data-aos-delay="100">
-        Más allá del código, mi prioridad actual es el diseño de sistemas escalables utilizando
-        principios avanzados de ingeniería de software.
+        {{ t().about.arch_p }}
       </p>
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3" data-aos="fade-up" data-aos-delay="150">

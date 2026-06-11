@@ -10,12 +10,21 @@
     </span>
   </div>
 
-  <button
-    (click)="toggleMenu()"
-    class="md:hidden z-[60] text-white focus:outline-none p-2 transition-transform active:scale-90"
-  >
-    <i class="fas text-2xl" [class.fa-bars]="!isMenuOpen()" [class.fa-times]="isMenuOpen()"></i>
-  </button>
+  <div class="flex items-center gap-4 md:hidden z-[60]">
+    <!-- Selector de idioma móvil -->
+    <button
+      (click)="langService.toggleLanguage()"
+      class="bg-slate-800 border border-slate-700 px-2 py-1 rounded text-xs font-bold text-sky-400"
+    >
+      {{ langService.lang() === 'es' ? 'EN' : 'ES' }}
+    </button>
+    <button
+      (click)="toggleMenu()"
+      class="text-white focus:outline-none p-2 transition-transform active:scale-90"
+    >
+      <i class="fas text-2xl" [class.fa-bars]="!isMenuOpen()" [class.fa-times]="isMenuOpen()"></i>
+    </button>
+  </div>
 
   <div
     id="menu-links"
@@ -30,7 +39,7 @@
       [class.text-white]="activeSection() !== 'inicio'"
       routerLink="/"
       fragment="inicio"
-      >Inicio</a
+      >{{ t().nav.home }}</a
     >
     <a
       (click)="setActive('experiencia')"
@@ -39,7 +48,7 @@
       [class.text-white]="activeSection() !== 'experiencia'"
       routerLink="/"
       fragment="experiencia"
-      >Experiencia</a
+      >{{ t().nav.experience }}</a
     >
     <a
       (click)="setActive('hackathones')"
@@ -48,7 +57,7 @@
       [class.text-white]="activeSection() !== 'hackathones'"
       routerLink="/"
       fragment="hackathones"
-      >Hackathones</a
+      >{{ t().nav.hackathons }}</a
     >
     <a
       (click)="setActive('proyectos')"
@@ -57,7 +66,7 @@
       [class.text-white]="activeSection() !== 'proyectos'"
       routerLink="/"
       fragment="proyectos"
-      >Proyectos</a
+      >{{ t().nav.projects }}</a
     >
     <a
       (click)="setActive('tecnologias')"
@@ -66,7 +75,7 @@
       [class.text-white]="activeSection() !== 'tecnologias'"
       routerLink="/"
       fragment="tecnologias"
-      >Tecnologías</a
+      >{{ t().nav.tech }}</a
     >
     <a
       (click)="setActive('sobre-mi')"
@@ -75,7 +84,7 @@
       [class.text-white]="activeSection() !== 'sobre-mi'"
       routerLink="/"
       fragment="sobre-mi"
-      >Sobre mí</a
+      >{{ t().nav.about }}</a
     >
 
     <div class="flex md:hidden items-center gap-8 mt-4">
@@ -92,6 +101,14 @@
   </div>
 
   <div class="hidden md:flex items-center gap-6">
+    <!-- Selector de idioma escritorio -->
+    <button
+      (click)="langService.toggleLanguage()"
+      class="hover:scale-110 transition-transform bg-slate-800 border border-slate-700 px-3 py-1.5 rounded-lg text-xs font-bold text-sky-400 cursor-pointer"
+    >
+      <i class="fas fa-globe mr-2"></i> {{ langService.lang() === 'es' ? 'English' : 'Español' }}
+    </button>
+
     <a
       class="hover:scale-110 transition-transform opacity-80 hover:opacity-100"
       target="_blank"

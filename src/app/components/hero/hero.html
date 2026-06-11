@@ -25,46 +25,46 @@
         ></span>
         <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
       </span>
-      Disponible para proyectos
+      {{ t().hero.available }}
     </span>
   </div>
 
   <div class="fade-in-up delay-2 mb-8">
     <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-2">
-      Hola, soy
+      {{ t().hero.title_prefix }}
       <span
         class="bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent"
       >
         José Horacio
       </span>
     </h1>
-    <h2 class="text-3xl md:text-5xl font-bold text-slate-300">Construyo soluciones digitales con propósito</h2>
+    <h2 class="text-3xl md:text-5xl font-bold text-slate-300">{{ t().hero.subtitle }}</h2>
   </div>
 
   <div class="fade-in-up delay-3 max-w-3xl text-left space-y-4">
     <p class="text-xl md:text-2xl text-slate-200 leading-relaxed">
-      Me apasiona transformar ideas complejas en productos que la gente realmente disfruta usar.
+      {{ t().hero.description_1 }}
     </p>
     <p class="text-lg md:text-xl text-slate-400 leading-relaxed">
-      Como Ingeniero en TI, combino el rigor técnico con una visión de negocio para crear
-      <span class="text-sky-400 font-medium">software que resuelve problemas reales</span>. Un commit a la vez, ayudo a startups y empresas a escalar sus visiones.
+      {{ t().hero.description_2 }}
+      <span class="text-sky-400 font-medium">{{ t().hero.description_2_bold }}</span>{{ t().hero.description_2_suffix }}
     </p>
 
     <div class="mt-6 flex flex-wrap gap-2">
       <span
         class="rounded-full border border-emerald-400/40 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-300"
       >
-        +2 años creando código
+        {{ t().hero.tag_exp }}
       </span>
       <span
         class="rounded-full border border-sky-400/40 bg-sky-500/10 px-3 py-1 text-xs font-medium text-sky-300"
       >
-        Arquitectura con Alma
+        {{ t().hero.tag_arch }}
       </span>
       <span
         class="rounded-full border border-violet-400/40 bg-violet-500/10 px-3 py-1 text-xs font-medium text-violet-300"
       >
-        Enfoque en el Usuario
+        {{ t().hero.tag_ux }}
       </span>
     </div>
   </div>
@@ -75,7 +75,7 @@
       class="flex items-center gap-3 bg-white text-slate-950 px-8 py-4 rounded-2xl font-bold hover:bg-sky-400 transition-all hover:scale-105 shadow-lg shadow-white/5"
     >
       <i class="fas fa-paper-plane text-lg"></i>
-      ¿Tienes una idea? Hablemos
+      {{ t().hero.cta_idea }}
     </a>
 
     <a
@@ -84,7 +84,7 @@
       class="flex items-center gap-3 bg-slate-800/50 backdrop-blur-md text-white px-8 py-4 rounded-2xl font-bold border border-slate-700 hover:bg-slate-800 transition-all hover:scale-105"
     >
       <i class="fas fa-download text-lg text-sky-400"></i>
-      Descargar CV
+      {{ t().hero.cta_cv }}
     </a>
   </div>
 </section>

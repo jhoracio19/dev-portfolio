@@ -1,6 +1,7 @@
-import { Component, signal, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, signal, OnInit, OnDestroy, Inject, PLATFORM_ID, inject } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,6 +14,10 @@ export class Navbar implements OnInit, OnDestroy {
   isMenuOpen = signal(false);
   activeSection = signal('inicio');
   private observer: IntersectionObserver | null = null;
+  
+  // Inyectamos el servicio de idiomas
+  public langService = inject(LanguageService);
+  t = this.langService.current;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 

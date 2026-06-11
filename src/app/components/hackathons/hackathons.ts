@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 import { Hackathon } from '../../models/hackathon-model';
 import { CommonModule } from '@angular/common';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-hackathons',
@@ -9,6 +10,9 @@ import { CommonModule } from '@angular/common';
   styleUrl: './hackathons.css',
 })
 export class Hackathons {
+  private langService = inject(LanguageService);
+  t = this.langService.current;
+
   hackathons = signal<Hackathon[]>([
     {
       id: 'hack-1',

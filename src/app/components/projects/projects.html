@@ -2,7 +2,7 @@
   <div class="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-6">
     <h2 class="text-3xl font-bold text-white flex items-center gap-3" data-aos="fade-right">
       <span class="text-sky-500 font-mono tracking-tighter">< /></span>
-      Proyectos Relevantes
+      {{ t().projects.title }}
     </h2>
   </div>
 
@@ -63,7 +63,7 @@
       routerLink="/proyectos"
       class="inline-flex items-center gap-3 bg-sky-600 hover:bg-sky-500 text-white px-10 py-4 rounded-2xl font-bold transition-all hover:scale-105 shadow-lg shadow-sky-900/20"
     >
-      Ver todos los proyectos
+      {{ t().projects.cta_all }}
       <i class="fas fa-arrow-right text-sm"></i>
     </a>
   </div>

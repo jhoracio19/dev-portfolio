@@ -1,6 +1,6 @@
 <section id="experiencia" class="py-24 px-6 max-w-7xl mx-auto">
   <h2 class="text-3xl font-bold text-white mb-12 flex items-center gap-3" data-aos="fade-right">
-    Mi Camino Profesional
+    {{ t().experience.title }}
   </h2>
 
   <div class="space-y-12 border-l-2 border-slate-800 ml-4 pl-8">
@@ -9,12 +9,11 @@
         class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-sky-500 shadow-[0_0_10px_#0ea5e9]"
       ></div>
       <h3 class="text-xl font-bold text-white tracking-tight">
-        Desarrollador Web
-         — Socialler
+        {{ t().experience.socialler.title }}
       </h3>
-      <p class="text-sky-400 text-sm font-mono mt-1">Abril 2026 — Actualidad</p>
+      <p class="text-sky-400 text-sm font-mono mt-1">{{ t().experience.socialler.date }}</p>
       <p class="text-slate-400 mt-3 leading-relaxed">
-        Actualmente tengo el reto de dar vida al MVP de Socialler. Estoy implementando una **Arquitectura Hexagonal** para asegurar que el proyecto no solo funcione hoy, sino que sea fácil de mantener y escalar mañana. Es un entorno dinámico donde cada decisión técnica cuenta para el éxito de la startup, y disfruto colaborando estrechamente con el equipo para definir el rumbo del producto.
+        {{ t().experience.socialler.desc }}
       </p>
       <div class="flex flex-wrap gap-2 mt-4">
         <span
@@ -35,11 +34,11 @@
     <div class="relative" data-aos="fade-up" data-aos-delay="200">
       <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-slate-700"></div>
       <h3 class="text-xl font-bold text-white tracking-tight">
-        Soporte Frontend — Basil Soluciones
+        {{ t().experience.basil.title }}
       </h3>
-      <p class="text-slate-500 text-sm font-mono mt-1">Enero 2026 — Febrero 2026</p>
+      <p class="text-slate-500 text-sm font-mono mt-1">{{ t().experience.basil.date }}</p>
       <p class="text-slate-400 mt-3 leading-relaxed">
-        Colaboré en la optimización de plataformas corporativas, enfrentándome a bugs críticos en producción y mejorando la interfaz para que los usuarios finales tuvieran una experiencia más fluida. Aprendí la importancia de la consistencia visual y el rendimiento en aplicaciones de gran escala utilizando Angular.
+        {{ t().experience.basil.desc }}
       </p>
       <div class="flex flex-wrap gap-2 mt-4">
         <span
