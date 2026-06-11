@@ -7,7 +7,7 @@
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-    @for (project of featuredProjects; track project.id) {
+    @for (project of featuredProjects(); track project.id) {
     <article
       data-aos="fade-up"
       class="glass-card group bg-[#0a0c10] rounded-3xl overflow-hidden border border-slate-800 shadow-2xl transition-all hover:border-sky-500/50"
