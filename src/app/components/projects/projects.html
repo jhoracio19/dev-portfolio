@@ -4,27 +4,10 @@
       <span class="text-sky-500 font-mono tracking-tighter">< /></span>
       Proyectos Relevantes
     </h2>
-
-    <!-- Filtros -->
-    <div class="flex flex-wrap gap-2" data-aos="fade-left">
-      @for (category of categories(); track category) {
-      <button
-        (click)="setFilter(category)"
-        [class]="
-          filterSelected() === category
-            ? 'bg-sky-600 text-white border-sky-500'
-            : 'bg-slate-800/50 text-slate-400 border-slate-700 hover:border-slate-500'
-        "
-        class="px-4 py-1.5 rounded-full text-xs font-bold border transition-all cursor-pointer"
-      >
-        {{ category }}
-      </button>
-      }
-    </div>
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-    @for (project of filteredProjects(); track project.id) {
+    @for (project of featuredProjects; track project.id) {
     <article
       data-aos="fade-up"
       class="glass-card group bg-[#0a0c10] rounded-3xl overflow-hidden border border-slate-800 shadow-2xl transition-all hover:border-sky-500/50"
@@ -73,5 +56,15 @@
       </div>
     </article>
     }
+  </div>
+
+  <div class="mt-16 text-center" data-aos="zoom-in">
+    <a
+      routerLink="/proyectos"
+      class="inline-flex items-center gap-3 bg-sky-600 hover:bg-sky-500 text-white px-10 py-4 rounded-2xl font-bold transition-all hover:scale-105 shadow-lg shadow-sky-900/20"
+    >
+      Ver todos los proyectos
+      <i class="fas fa-arrow-right text-sm"></i>
+    </a>
   </div>
 </section>

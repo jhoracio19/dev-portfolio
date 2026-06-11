@@ -18,7 +18,8 @@ export class Navbar implements OnInit, OnDestroy {
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
-      this.initScrollSpy();
+      // Pequeño delay para asegurar que el DOM esté listo
+      setTimeout(() => this.initScrollSpy(), 100);
     }
   }
 
@@ -36,10 +37,15 @@ export class Navbar implements OnInit, OnDestroy {
     this.isMenuOpen.set(false);
   }
 
+  setActive(section: string) {
+    this.activeSection.set(section);
+    this.closeMenu();
+  }
+
   private initScrollSpy() {
     const options = {
       root: null,
-      rootMargin: '-20% 0px -70% 0px', // Ajusta para detectar la sección predominante
+      rootMargin: '-30% 0px -60% 0px', // Detecta la sección cuando está en el tercio superior
       threshold: 0,
     };
 
@@ -51,7 +57,6 @@ export class Navbar implements OnInit, OnDestroy {
       });
     }, options);
 
-    // Observar todas las secciones que tienen un ID
     const sections = document.querySelectorAll('section[id]');
     sections.forEach((section) => this.observer?.observe(section));
   }
