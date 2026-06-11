@@ -67,6 +67,24 @@ export class ProjectService {
       githubUrl: 'https://github.com/jhoracio19/restaurant-order-calculator.git',
       demoUrl: 'https://calculator-tips-jh.netlify.app/'
     },
+    {
+      id: 'frontendstore',
+      title: 'FrontEnd Store',
+      description: "Tienda virtual especializada en camisetas para desarrolladores. Implementa un flujo completo de compra: exploración de productos, vista detallada con selección de tallas y un sistema de carrito interactivo con persistencia en LocalStorage.",
+      image: 'assets/proyects/frontend-store.png', // Reemplazar por imagen real si existe
+      technologies: ['React.js', 'TypeScript', 'CSS Vanilla ','Custom Hooks', 'LocalStorage'],
+      githubUrl: 'https://github.com/jhoracio19/frontend-store.git',
+      demoUrl: 'https://frontend-store-jh.netlify.app/'
+    },
+    {
+      id: 'blackjack-game',
+      title: 'BlackJack Game',
+      description: "Lógica de juego de Blackjack desarrollada con JavaScript moderno (ES6+). Este proyecto forma parte de mi especialización en fundamentos de programación para fortalecer el dominio de estructuras de datos, manejo de arreglos y algoritmos de aleatoriedad",
+      image: 'assets/proyects/blackjack.png', // Reemplazar por imagen real si existe
+      technologies: ['HTML', 'JavaScript', 'CSS Vanilla '],
+      githubUrl: 'https://github.com/jhoracio19/modern-js-blackjack.git',
+      demoUrl: 'https://blackjack-game-jh.netlify.app/'
+    },
     // Añade más proyectos aquí para la página de "Ver más"
 
   ]);
