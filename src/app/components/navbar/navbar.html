@@ -25,45 +25,54 @@
   >
     <a
       (click)="closeMenu()"
-      class="text-2xl md:text-base hover:text-sky-400 transition-all hover:scale-110 cursor-pointer"
+      class="text-2xl md:text-base transition-all hover:scale-110 cursor-pointer"
+      [class.text-sky-400]="activeSection() === 'inicio'"
+      [class.text-white]="activeSection() !== 'inicio'"
       routerLink="/"
       fragment="inicio"
       >Inicio</a
     >
     <a
       (click)="closeMenu()"
-      class="text-2xl md:text-base hover:text-sky-400 transition-all hover:scale-110 cursor-pointer"
-      routerLink="/"
-      fragment="proyectos"
-      >Proyectos</a
-    >
-
-    <!-- <a
-      (click)="closeMenu()"
-      class="text-2xl md:text-base text-emerald-400 hover:text-emerald-300 font-bold transition-all hover:scale-110 flex items-center gap-2 cursor-pointer"
-      routerLink="/clientes"
-      routerLinkActive="text-emerald-300 underline decoration-2 underline-offset-4"
-    >
-      <i class="fas fa-star text-xs animate-pulse"></i> Casos de Éxito
-    </a> -->
-
-    <a
-      (click)="closeMenu()"
-      class="text-2xl md:text-base hover:text-sky-400 transition-all hover:scale-110 cursor-pointer"
+      class="text-2xl md:text-base transition-all hover:scale-110 cursor-pointer"
+      [class.text-sky-400]="activeSection() === 'experiencia'"
+      [class.text-white]="activeSection() !== 'experiencia'"
       routerLink="/"
       fragment="experiencia"
       >Experiencia</a
     >
     <a
       (click)="closeMenu()"
-      class="text-2xl md:text-base hover:text-sky-400 transition-all hover:scale-110 cursor-pointer"
+      class="text-2xl md:text-base transition-all hover:scale-110 cursor-pointer"
+      [class.text-sky-400]="activeSection() === 'hackathones'"
+      [class.text-white]="activeSection() !== 'hackathones'"
+      routerLink="/"
+      fragment="hackathones"
+      >Hackathones</a
+    >
+    <a
+      (click)="closeMenu()"
+      class="text-2xl md:text-base transition-all hover:scale-110 cursor-pointer"
+      [class.text-sky-400]="activeSection() === 'proyectos'"
+      [class.text-white]="activeSection() !== 'proyectos'"
+      routerLink="/"
+      fragment="proyectos"
+      >Proyectos</a
+    >
+    <a
+      (click)="closeMenu()"
+      class="text-2xl md:text-base transition-all hover:scale-110 cursor-pointer"
+      [class.text-sky-400]="activeSection() === 'tecnologias'"
+      [class.text-white]="activeSection() !== 'tecnologias'"
       routerLink="/"
       fragment="tecnologias"
       >Tecnologías</a
     >
     <a
       (click)="closeMenu()"
-      class="text-2xl md:text-base hover:text-sky-400 transition-all hover:scale-110 cursor-pointer"
+      class="text-2xl md:text-base transition-all hover:scale-110 cursor-pointer"
+      [class.text-sky-400]="activeSection() === 'sobre-mi'"
+      [class.text-white]="activeSection() !== 'sobre-mi'"
       routerLink="/"
       fragment="sobre-mi"
       >Sobre mí</a

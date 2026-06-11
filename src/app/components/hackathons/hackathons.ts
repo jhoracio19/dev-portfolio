@@ -10,29 +10,16 @@ import { CommonModule } from '@angular/common';
 })
 export class Hackathons {
   hackathons = signal<Hackathon[]>([
-    // Ejemplo para que veas cómo queda
     {
       id: 'hack-1',
-      name: 'Hackathon "Por Amor a Puebla"',
-      projectCreated: 'Cafetzin',
-      description: 'Plataforma digital desarrollada para conectar directamente a productores de café de la Sierra Norte de Puebla con cafeterías y consumidores finales. Diseñada para promover el comercio justo, optimizar la logística y eliminar intermediarios.',
-      date: 'Mayo 2026)',
-      technologies: ['Python', 'Django', 'API Meta', 'API Gemini'],
-      achievement: 'Top 10',
-      certificateUrl: 'assets/hacks/por_amor_puebla.pdf',
-      repoUrl: 'https://github.com/jhoracio19/cafetzin.git', // Ejemplo de repositorio
-      },
-      {
-      id: 'hack-2',
       name: 'Hackathon Safe Industry 2026',
       projectCreated: 'EcoTrust',
-      description: 'SaaS B2B desarrollado en menos de 10 horas para digitalizar bitácoras de bioseguridad en cocinas industriales. Integra un "Swipe Sanitario" ágil, dashboard directivo y directorio de proveedores.',
+      description: 'En menos de 10 horas, desarrollamos una solución para digitalizar la seguridad en cocinas industriales. Fue una carrera contra el reloj donde la simplicidad y la eficacia fueron nuestras mejores aliadas.',
       date: 'Junio 2026',
-      technologies: ['Python', 'Django'],
-      achievement: 'Top 3',
-      //certificateUrl: 'assets/certificado_programacion.pdf',
-      repoUrl: 'https://github.com/jhoracio19/ecotrust-mvp.git', // Ejemplo de repositorio
-      }
-      ]);
-      }
-
+      technologies: ['Python', 'Django', 'FastAPI'],
+      achievement: 'Top 10 Finalistas',
+      certificateUrl: 'assets/certificado_programacion.pdf',
+      repoUrl: 'https://github.com/jhoracio19',
+    },
+  ]);
+}
