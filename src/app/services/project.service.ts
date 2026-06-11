@@ -60,9 +60,10 @@ export class ProjectService {
         description: isEn
           ? 'Calorie and exercise counter designed for daily health tracking. Allows categorizing activities, calculating caloric balances, and editing records. Built with a robust architecture based on useReducer to ensure data scalability and predictability.'
           : 'Contador de calorías y ejercicios diseñado para el seguimiento diario de la salud. Permite categorizar actividades, calcular balances calóricos y editar registros existentes. Construido con una arquitectura robusta basada en useReducer para garantizar la escalabilidad y predictibilidad de los datos.',
-        image: 'assets/flowcard.png', 
+        image: 'assets/proyects/calorie-tracker.png', 
         technologies: ['React.js', 'TypeScript', 'useReducer', 'Tailwind CSS'],
-        githubUrl: 'https://github.com/jhoracio19',
+        githubUrl: 'https://github.com/jhoracio19/calorie-tracker.git',
+        demoUrl: 'https://calorie-tracker-jh.netlify.app/'
       },
       {
         id: 'guitarla-react',
@@ -70,9 +71,10 @@ export class ProjectService {
         description: isEn
           ? 'E-commerce and shopping cart application developed with React and TypeScript. Implements clean architecture with Custom Hooks, data persistence, and dynamic business logic.'
           : 'Aplicación de e-commerce y carrito de compras desarrollada con React y TypeScript. Implementa arquitectura limpia con Custom Hooks, persistencia de datos y lógica de negocio dinámica.',
-        image: 'assets/flowcard.png', 
+        image: 'assets/proyects/guitarla.png', 
         technologies: ['React.js', 'TypeScript', 'Custom Hooks'],
-        githubUrl: 'https://github.com/jhoracio19',
+        githubUrl: 'https://github.com/jhoracio19/guitarla-react-ts.git',
+        demoUrl: 'https://guitarla-sho.netlify.app/'
       },
       {
         id: 'restaurant-calculator',
@@ -80,19 +82,10 @@ export class ProjectService {
         description: isEn
           ? 'Interactive application for consumption management and dynamic tip calculation. Demonstrates advanced use of Custom Hooks, conditional rendering, derived state with useMemo, and responsive UI design with Tailwind CSS.'
           : 'Aplicación interactiva para la gestión de consumos y cálculo dinámico de propinas. Demuestra el uso avanzado de Custom Hooks, renderizado condicional, estado derivado con useMemo y diseño UI responsive con Tailwind CSS.',
-        image: 'assets/flowcard.png', 
+        image: 'assets/proyects/restaurant-order.png', 
         technologies: ['React.js', 'TypeScript', 'Tailwind CSS', 'useMemo'],
-        githubUrl: 'https://github.com/jhoracio19',
-      },
-      {
-        id: 'proyecto-extra-1',
-        title: isEn ? 'Weather Explorer' : 'Explorador de Clima',
-        description: isEn
-          ? 'A simple yet powerful tool to check global weather in real-time.'
-          : 'Una herramienta sencilla pero potente para consultar el clima mundial en tiempo real.',
-        image: 'assets/flowcard.png',
-        technologies: ['JavaScript', 'API Rest'],
-        githubUrl: 'https://github.com/jhoracio19',
+        githubUrl: 'https://github.com/jhoracio19/restaurant-order-calculator.git',
+        demoUrl: 'https://calculator-tips-jh.netlify.app/'
       },
     ];
   });
