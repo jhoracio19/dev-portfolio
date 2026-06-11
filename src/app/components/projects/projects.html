@@ -1,193 +1,77 @@
 <section id="proyectos" class="py-24 px-6 max-w-7xl mx-auto">
-  <h2 class="text-3xl font-bold text-white mb-12 flex items-center gap-3" data-aos="fade-right">
-    <span class="text-sky-500 font-mono tracking-tighter">< /></span>
-    Proyectos Relevantes
-  </h2>
+  <div class="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-6">
+    <h2 class="text-3xl font-bold text-white flex items-center gap-3" data-aos="fade-right">
+      <span class="text-sky-500 font-mono tracking-tighter">< /></span>
+      Proyectos Relevantes
+    </h2>
+
+    <!-- Filtros -->
+    <div class="flex flex-wrap gap-2" data-aos="fade-left">
+      @for (category of categories(); track category) {
+      <button
+        (click)="setFilter(category)"
+        [class]="
+          filterSelected() === category
+            ? 'bg-sky-600 text-white border-sky-500'
+            : 'bg-slate-800/50 text-slate-400 border-slate-700 hover:border-slate-500'
+        "
+        class="px-4 py-1.5 rounded-full text-xs font-bold border transition-all cursor-pointer"
+      >
+        {{ category }}
+      </button>
+      }
+    </div>
+  </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+    @for (project of filteredProjects(); track project.id) {
     <article
       data-aos="fade-up"
-      data-aos-delay="100"
       class="glass-card group bg-[#0a0c10] rounded-3xl overflow-hidden border border-slate-800 shadow-2xl transition-all hover:border-sky-500/50"
     >
       <div class="aspect-video bg-slate-800 relative overflow-hidden">
         <img
-          src="assets/flowcard.png"
-          alt="Dashboard FlowCard"
+          [src]="project.image"
+          [alt]="project.title"
           class="w-full h-full object-cover transition-transform group-hover:scale-105"
         />
       </div>
       <div class="p-8">
         <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-sky-400 transition-colors">
-          FlowCard
+          {{ project.title }}
         </h3>
         <div class="flex flex-wrap gap-2 mb-4">
+          @for (tech of project.technologies; track tech) {
           <span
-            class="px-3 py-1 bg-green-500/10 text-green-400 text-[10px] font-bold uppercase tracking-wider rounded-full border border-green-500/20"
-            >Django</span
+            class="px-3 py-1 bg-sky-500/10 text-sky-400 text-[10px] font-bold uppercase tracking-wider rounded-full border border-sky-500/20"
           >
-          <span
-            class="px-3 py-1 bg-blue-500/10 text-blue-400 text-[10px] font-bold uppercase tracking-wider rounded-full border border-blue-500/20"
-            >PostgreSQL</span
-          >
+            {{ tech }}
+          </span>
+          }
         </div>
         <p class="text-slate-400 text-sm leading-relaxed mb-6">
-          Plataforma SaaS full-stack para la gestión inteligente y automatización de finanzas
-          personales enfocada en el crédito.
+          {{ project.description }}
         </p>
         <div class="flex flex-wrap gap-3">
           <a
-            href="https://github.com/jhoracio19"
+            [href]="project.githubUrl"
             target="_blank"
-            aria-label="Código de FlowCard"
             class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-5 py-2.5 rounded-xl text-sm font-bold border border-slate-700 transition-transform hover:scale-105"
           >
             <i class="fab fa-github"></i> Code
           </a>
-          <!-- <a href="https://web-production-a45a4.up.railway.app/login/" target="_blank" aria-label="Demo de FlowCard" class="inline-flex items-center gap-2 bg-sky-600 hover:bg-sky-500 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-transform hover:scale-105">
-            <i class="fas fa-external-link-alt text-xs"></i> Demo -->
-          <!-- </a> -->
-        </div>
-      </div>
-    </article>
-
-    <article
-      data-aos="fade-up"
-      data-aos-delay="200"
-      class="glass-card group bg-[#0a0c10] rounded-3xl overflow-hidden border border-slate-800 shadow-2xl transition-all hover:border-sky-500/50"
-    >
-      <div class="aspect-video bg-slate-800 relative overflow-hidden">
-        <img
-          src="assets/gifapp.png"
-          alt="Preview GifApp"
-          class="w-full h-full object-cover transition-transform group-hover:scale-105"
-        />
-      </div>
-      <div class="p-8 text-left">
-        <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-sky-400 transition-colors">
-          GifApp
-        </h3>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span
-            class="px-3 py-1 bg-red-500/10 text-red-400 text-[10px] font-bold uppercase tracking-wider rounded-full border border-red-500/20"
-            >Angular v19</span
-          >
-          <span
-            class="px-3 py-1 bg-blue-500/10 text-blue-400 text-[10px] font-bold uppercase tracking-wider rounded-full border border-blue-500/20"
-            >TypeScript</span
-          >
-        </div>
-        <p class="text-slate-400 text-sm leading-relaxed mb-6">
-          Aplicación de búsqueda en tiempo real con arquitectura basada en servicios reactivos y
-          módulos independientes.
-        </p>
-        <div class="flex flex-wrap gap-3">
+          @if (project.demoUrl) {
           <a
-            href="https://github.com/jhoracio19/GifsApp"
+            [href]="project.demoUrl"
             target="_blank"
-            aria-label="Código de GifApp"
-            class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-5 py-2.5 rounded-xl text-sm font-bold border border-slate-700 transition-transform hover:scale-105"
-          >
-            <i class="fab fa-github"></i> Code
-          </a>
-          <a
-            href="https://gifs-app-jhag.netlify.app/#/dashboard/trending"
-            target="_blank"
-            aria-label="Demo de GifApp"
             class="inline-flex items-center gap-2 bg-sky-600 hover:bg-sky-500 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-transform hover:scale-105"
           >
             <i class="fas fa-external-link-alt text-xs"></i> Demo
           </a>
+          }
         </div>
       </div>
     </article>
-
-    <article
-      data-aos="fade-up"
-      data-aos-delay="300"
-      class="glass-card group bg-[#0a0c10] rounded-3xl overflow-hidden border border-slate-800 shadow-2xl transition-all hover:border-sky-500/50"
-    >
-      <div class="aspect-video bg-slate-800 relative overflow-hidden">
-        <img
-          src="assets/devilearn.png"
-          alt="Preview Devilearn"
-          class="w-full h-full object-cover transition-transform group-hover:scale-105"
-        />
-      </div>
-      <div class="p-8">
-        <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-sky-400 transition-colors">
-          Devilearn
-        </h3>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span
-            class="px-3 py-1 bg-green-500/10 text-green-400 text-[10px] font-bold uppercase tracking-wider rounded-full border border-green-500/20"
-            >Django</span
-          >
-          <span
-            class="px-3 py-1 bg-yellow-500/10 text-yellow-400 text-[10px] font-bold uppercase tracking-wider rounded-full border border-yellow-500/20"
-            >SQLite</span
-          >
-        </div>
-        <p class="text-slate-400 text-sm leading-relaxed mb-6">
-          Plataforma educativa inspirada en Udemy construida con el ORM de Django y arquitectura
-          MVT.
-        </p>
-        <a
-          href="https://github.com/jhoracio19/Devilearn"
-          target="_blank"
-          aria-label="Código de Devilearn"
-          class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-5 py-2.5 rounded-xl text-sm font-bold border border-slate-700 transition-transform hover:scale-105"
-        >
-          <i class="fab fa-github"></i> Code
-        </a>
-      </div>
-    </article>
-
-    <article
-      data-aos="fade-up"
-      data-aos-delay="400"
-      class="glass-card group bg-[#0a0c10] rounded-3xl overflow-hidden border border-slate-800 shadow-2xl transition-all hover:border-sky-500/50"
-    >
-      <div class="aspect-video bg-slate-800 relative overflow-hidden">
-        <img
-          src="assets/minijuego.png"
-          alt="Preview Minijuego"
-          class="w-full h-full object-cover transition-transform group-hover:scale-105"
-        />
-      </div>
-      <div class="p-8">
-        <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-sky-400 transition-colors">
-          Minijuego
-        </h3>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span
-            class="px-3 py-1 bg-cyan-500/10 text-cyan-400 text-[10px] font-bold uppercase tracking-wider rounded-full border border-cyan-500/20"
-            >React.js</span
-          >
-        </div>
-        <p class="text-slate-400 text-sm leading-relaxed mb-6">
-          Minijuego interactivo enfocado en la gestión eficiente de estados globales y lógica de
-          juegos.
-        </p>
-        <div class="flex flex-wrap gap-3">
-          <a
-            href="https://github.com/jhoracio19/hanging"
-            target="_blank"
-            aria-label="Código de Minijuego"
-            class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-5 py-2.5 rounded-xl text-sm font-bold border border-slate-700 transition-transform hover:scale-105"
-          >
-            <i class="fab fa-github"></i> Code
-          </a>
-          <a
-            href="https://minigamejh.netlify.app/"
-            target="_blank"
-            aria-label="Demo de Minijuego"
-            class="inline-flex items-center gap-2 bg-sky-600 hover:bg-sky-500 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-transform hover:scale-105"
-          >
-            <i class="fas fa-external-link-alt text-xs"></i> Demo
-          </a>
-        </div>
-      </div>
-    </article>
+    }
   </div>
 </section>

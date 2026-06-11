@@ -1,0 +1,4 @@
+/* Estilos específicos para hackathones si fueran necesarios */
+.group:hover {
+  transform: translateY(-4px);
+}
