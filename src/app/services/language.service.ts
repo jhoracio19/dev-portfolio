@@ -36,6 +36,7 @@ export class LanguageService {
         title: 'Detrás del código',
         p1: 'Soy José Horacio. Mientras curso mi ingeniería en la BUAP, dedico mis días a explorar cómo el software puede simplificar la vida de las personas. Mi camino en la tecnología no se trata solo de escribir líneas de código, sino de entender los desafíos que enfrentan los negocios y resolverlos con ingeniería creativa.',
         p2: 'Al dirigir mi propia agencia, aprendí que una solución técnica solo es buena si es útil. Por eso, mi enfoque siempre está en el equilibrio: crear sistemas robustos por dentro y experiencias amigables por fuera. Soy un eterno aprendiz, siempre buscando la próxima certificación o el próximo reto que me obligue a pensar fuera de la caja.',
+        agency_cta: 'Dirijo JH Dev Agency',
         card_passion: 'Pasión y Liderazgo',
         card_passion_desc: 'Me gusta liderar con el ejemplo, diseñar arquitecturas que faciliten el trabajo del equipo y comunicar ideas técnicas de forma que todos las entiendan.',
         card_edu: 'Formación',
@@ -91,6 +92,7 @@ export class LanguageService {
       contact: {
         copy_email: 'Copiar Email',
         email_copied: '¡Email copiado!',
+        agency_cta: '¿Buscas un equipo para tu proyecto? Conoce JH Dev Agency',
       }
     },
     en: {
@@ -120,6 +122,7 @@ export class LanguageService {
         title: 'Behind the code',
         p1: "I'm José Horacio. While pursuing my engineering degree at BUAP, I spend my days exploring how software can simplify people's lives. My path in technology isn't just about writing lines of code, but about understanding the challenges businesses face and solving them with creative engineering.",
         p2: "By running my own agency, I learned that a technical solution is only good if it's useful. That's why my focus is always on balance: building robust systems on the inside and user-friendly experiences on the outside. I am a lifelong learner, always looking for the next certification or challenge that forces me to think outside the box.",
+        agency_cta: 'I run JH Dev Agency',
         card_passion: 'Passion & Leadership',
         card_passion_desc: 'I like to lead by example, design architectures that facilitate the team\'s work, and communicate technical ideas so everyone understands them.',
         card_edu: 'Education',
@@ -175,6 +178,7 @@ export class LanguageService {
       contact: {
         copy_email: 'Copy Email',
         email_copied: 'Email copied!',
+        agency_cta: 'Looking for a team for your project? Check out JH Dev Agency',
       }
     },
   };
