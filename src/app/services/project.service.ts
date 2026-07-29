@@ -94,6 +94,42 @@ export class ProjectService {
         githubUrl: 'https://github.com/jhoracio19/restaurant-order-calculator.git',
         demoUrl: 'https://calculator-tips-jh.netlify.app/'
       },
+      {
+        id: 'skycast',
+        title: 'SkyCast',
+        description: isEn
+          ? 'An application that fetches real-time weather data for any city in the world. Consumes a public weather API while handling loading and error states for a smooth experience.'
+          : 'Aplicación que consulta el clima en tiempo real de cualquier ciudad del mundo. Consume una API pública de clima y gestiona estados de carga y error para una experiencia fluida.',
+        image: 'assets/proyects/buscador_clima.png',
+        technologies: ['React.js', 'JavaScript', 'CSS3'],
+        category: 'experiments',
+        githubUrl: 'https://github.com/jhoracio19/SkyCast.git',
+        demoUrl: 'https://weather-jh.netlify.app/',
+      },
+      {
+        id: 'frontend-store',
+        title: 'FrontendStore',
+        description: isEn
+          ? 'Online merch store for frontend developers. Features a product catalog, section-based navigation, and a functional shopping cart.'
+          : 'Tienda en línea de merchandising para developers frontend. Catálogo de productos, navegación por secciones y carrito de compras funcional.',
+        image: 'assets/proyects/frontend-store.png',
+        technologies: ['React.js', 'JavaScript', 'CSS3'],
+        category: 'tools',
+        githubUrl: 'https://github.com/jhoracio19/frontend-store.git',
+        demoUrl: 'https://frontend-store-jh.netlify.app/',
+      },
+      {
+        id: 'gastotrack',
+        title: 'GastoTrack',
+        description: isEn
+          ? 'A personal budgeting tool with a circular progress indicator to visually track spending. Lets you filter expenses by category and reset the budget.'
+          : 'Herramienta de presupuesto personal con seguimiento visual del gasto mediante un indicador circular. Permite filtrar gastos por categoría y reiniciar el presupuesto.',
+        image: 'assets/proyects/planificador_gastos.png',
+        technologies: ['React.js', 'JavaScript', 'CSS3'],
+        category: 'tools',
+        githubUrl: 'https://github.com/jhoracio19/budget-planner-app.git',
+        demoUrl: 'https://manage-cash-jh.netlify.app/',
+      },
     ];
   });
 
