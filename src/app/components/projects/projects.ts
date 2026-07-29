@@ -19,6 +19,7 @@ export class Projects {
   t = this.langService.current;
 
   categoryStyles: Record<ProjectCategory, string> = {
+    clients: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
     platforms: 'bg-sky-500/10 text-sky-400 border-sky-500/20',
     tools: 'bg-violet-500/10 text-violet-400 border-violet-500/20',
     experiments: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',

@@ -1,4 +1,4 @@
-export type ProjectCategory = 'platforms' | 'tools' | 'experiments';
+export type ProjectCategory = 'clients' | 'platforms' | 'tools' | 'experiments';
 
 export interface Project {
   id: string;

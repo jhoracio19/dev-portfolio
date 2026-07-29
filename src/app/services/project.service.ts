@@ -188,10 +188,34 @@ export class ProjectService {
         category: 'platforms',
         githubUrl: 'https://github.com/jhoracio19/bienesRaicesMVC.git',
       },
+      {
+        id: 'otorrino-tlaxcala',
+        title: 'Otorrino Tlaxcala',
+        description: isEn
+          ? 'A professional website for an ENT specialist in Tlaxcala. Includes service details, testimonials, a before-and-after gallery, and an appointment booking system.'
+          : 'Sitio web profesional para un otorrinolaringólogo en Tlaxcala. Incluye información de servicios, testimonios, galería de antes y después, y un sistema de agendado de citas.',
+        image: 'assets/proyects/otorrinotlaxcala.webp',
+        technologies: ['Angular', 'TypeScript'],
+        category: 'clients',
+        githubUrl: 'https://github.com/jhoracio19/dr-roberto-herrera-site.git',
+        demoUrl: 'https://otorrinotlaxcala.com/',
+      },
+      {
+        id: 'cabana-maria-maria',
+        title: 'Cabaña María María',
+        description: isEn
+          ? 'A website for an event venue and garden in Tlaxcala. Features a package quote calculator, gallery, FAQ, and direct WhatsApp contact.'
+          : 'Sitio web para un salón de eventos y jardín en Tlaxcala. Cuenta con cotizador de paquetes, galería, preguntas frecuentes y contacto directo por WhatsApp.',
+        image: 'assets/proyects/cabanamariamaria.webp',
+        technologies: ['Next.js', 'React', 'TypeScript'],
+        category: 'clients',
+        githubUrl: 'https://github.com/jhoracio19/cabanamariamaria.git',
+        demoUrl: 'https://cabanamariamaria.com/',
+      },
     ];
   });
 
-  private categoryOrder: Project['category'][] = ['platforms', 'tools', 'experiments'];
+  private categoryOrder: Project['category'][] = ['clients', 'platforms', 'tools', 'experiments'];
 
   getProjects() {
     return this.projectsData;

@@ -48,9 +48,15 @@ export class LanguageService {
       experience: {
         title: 'Mi Camino Profesional',
         socialler: {
-          title: 'Liderando el MVP — Socialler',
+          title: 'Desarrollador Web — Socialler',
           date: 'Abril 2026 — Actualidad',
-          desc: 'Actualmente tengo el reto de dar vida al MVP de Socialler. Estoy implementando una Arquitectura Hexagonal para asegurar que el proyecto no solo funcione hoy, sino que sea fácil de mantener y escalar mañana. Es un entorno dinámico donde cada decisión técnica cuenta para el éxito de la startup.',
+          desc: 'Como Desarrollador Web en Socialler, formo parte del equipo enfocado en construir desde cero, optimizar y dar seguridad a la plataforma web de la red social, utilizando Next.js y TypeScript.',
+          achievements: [
+            'Construcción de la plataforma: Desarrollo de la versión web de la red social desde cero.',
+            'Ciberseguridad Frontend y Backend: Implementación de políticas de seguridad (CSP, HSTS) y mitigación de vulnerabilidades críticas, incluyendo prevención de Cross-Site Scripting (XSS) y protección contra ataques de Path Traversal en integraciones con buckets de AWS S3.',
+            'Arquitectura y Refactorización: Reducción sistemática de la deuda técnica mediante la aplicación de principios DRY (Don\'t Repeat Yourself), creación de componentes de UI reutilizables y eliminación de código muerto (Dead Code), mejorando el tiempo de carga y la mantenibilidad del proyecto.',
+            'Optimización de Formularios y Flujos: Desarrollo y validación de formularios complejos de autenticación y registro de usuarios utilizando React Hook Form y Zod, asegurando una experiencia de usuario fluida y libre de errores.',
+          ],
         },
         basil: {
           title: 'Soporte Frontend — Basil Soluciones',
@@ -72,6 +78,7 @@ export class LanguageService {
         catalog_desc: 'Explora todas mis creaciones y experimentos.',
         back_home: 'Volver al inicio',
         categories: {
+          clients: 'Proyectos para Clientes',
           platforms: 'Plataformas & SaaS',
           tools: 'Herramientas & E-commerce',
           experiments: 'Experimentos Frontend',
@@ -125,9 +132,15 @@ export class LanguageService {
       experience: {
         title: 'My Professional Path',
         socialler: {
-          title: 'Leading the MVP — Socialler',
+          title: 'Web Developer — Socialler',
           date: 'April 2026 — Present',
-          desc: 'I currently have the challenge of bringing Socialler\'s MVP to life. I am implementing a Hexagonal Architecture to ensure the project not only works today but is easy to maintain and scale tomorrow. It is a dynamic environment where every technical decision counts for the startup\'s success.',
+          desc: 'As a Web Developer at Socialler, I\'m part of the team focused on building, optimizing, and securing the social network\'s web platform from the ground up, using Next.js and TypeScript.',
+          achievements: [
+            'Platform Development: Built the web version of the social network from scratch.',
+            'Frontend & Backend Security: Implemented security policies (CSP, HSTS) and mitigated critical vulnerabilities, including Cross-Site Scripting (XSS) prevention and protection against Path Traversal attacks in AWS S3 bucket integrations.',
+            'Architecture & Refactoring: Systematically reduced technical debt by applying DRY (Don\'t Repeat Yourself) principles, building reusable UI components, and removing dead code — improving load time and project maintainability.',
+            'Forms & Flow Optimization: Developed and validated complex authentication and registration forms using React Hook Form and Zod, ensuring a smooth, error-free user experience.',
+          ],
         },
         basil: {
           title: 'Frontend Support — Basil Soluciones',
@@ -149,6 +162,7 @@ export class LanguageService {
         catalog_desc: 'Explore all my creations and experiments.',
         back_home: 'Back to home',
         categories: {
+          clients: 'Client Projects',
           platforms: 'Platforms & SaaS',
           tools: 'Tools & E-commerce',
           experiments: 'Frontend Experiments',

@@ -21,9 +21,10 @@ export class ProjectListPage {
 
   projects = this.projectService.getProjects();
 
-  categoryOrder: ProjectCategory[] = ['platforms', 'tools', 'experiments'];
+  categoryOrder: ProjectCategory[] = ['clients', 'platforms', 'tools', 'experiments'];
 
   categoryStyles: Record<ProjectCategory, { badge: string; dot: string }> = {
+    clients: { badge: 'bg-amber-500/10 text-amber-400 border-amber-500/20', dot: 'bg-amber-500' },
     platforms: { badge: 'bg-sky-500/10 text-sky-400 border-sky-500/20', dot: 'bg-sky-500' },
     tools: { badge: 'bg-violet-500/10 text-violet-400 border-violet-500/20', dot: 'bg-violet-500' },
     experiments: { badge: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20', dot: 'bg-emerald-500' },

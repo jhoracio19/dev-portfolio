@@ -15,6 +15,14 @@
       <p class="text-slate-400 mt-3 leading-relaxed">
         {{ t().experience.socialler.desc }}
       </p>
+      <ul class="mt-4 space-y-2">
+        @for (achievement of t().experience.socialler.achievements; track achievement) {
+        <li class="text-slate-400 text-sm leading-relaxed flex gap-2">
+          <span class="text-sky-500 mt-1">▹</span>
+          <span>{{ achievement }}</span>
+        </li>
+        }
+      </ul>
       <div class="flex flex-wrap gap-2 mt-4">
         <span
           class="text-[10px] px-2 py-1 rounded-md bg-slate-800 text-slate-400 border border-slate-700 font-mono"
@@ -22,11 +30,11 @@
         >
         <span
           class="text-[10px] px-2 py-1 rounded-md bg-slate-800 text-slate-400 border border-slate-700 font-mono"
-          >Arquitectura Hexagonal</span
+          >Ciberseguridad Web</span
         >
         <span
           class="text-[10px] px-2 py-1 rounded-md bg-slate-800 text-slate-400 border border-slate-700 font-mono"
-          >Startup Mindset</span
+          >React Hook Form · Zod</span
         >
       </div>
     </div>
