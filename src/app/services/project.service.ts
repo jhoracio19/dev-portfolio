@@ -142,6 +142,30 @@ export class ProjectService {
         githubUrl: 'https://github.com/jhoracio19/Pacientes-Zustand.git',
         demoUrl: 'https://pacientes-jh.netlify.app/',
       },
+      {
+        id: 'techno-edm-festival',
+        title: 'Techno & EDM Festival',
+        description: isEn
+          ? 'A landing page for an electronic music festival. Includes lineup, gallery, and ticket sections with an immersive visual design.'
+          : 'Landing page para un festival de música electrónica. Incluye secciones de lineup, galería y venta de boletos con un diseño visual inmersivo.',
+        image: 'assets/proyects/techno.png',
+        technologies: ['HTML5', 'CSS3', 'JavaScript'],
+        category: 'experiments',
+        githubUrl: 'https://github.com/jhoracio19/Techno-EDM-Festival.git',
+        demoUrl: 'https://techno-jh.netlify.app/',
+      },
+      {
+        id: 'blog-de-cafe',
+        title: 'BlogDeCafé',
+        description: isEn
+          ? 'A landing page for a coffee blog, featuring articles, courses, and workshops to learn brewing techniques.'
+          : 'Landing page de un blog especializado en café, con artículos, cursos y talleres para aprender técnicas de preparación.',
+        image: 'assets/proyects/mi-blog-cafe.png',
+        technologies: ['HTML5', 'CSS3', 'JavaScript'],
+        category: 'experiments',
+        githubUrl: 'https://github.com/jhoracio19/BlogCafe.git',
+        demoUrl: 'https://my-coffe-blog-personal.netlify.app/',
+      },
     ];
   });
 
