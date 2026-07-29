@@ -2,6 +2,11 @@
 @import "tailwindcss";
 @import 'aos/dist/aos.css';
 
+@theme {
+  --font-sans: 'Courier Prime', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-mono: 'Courier Prime', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -11,7 +16,7 @@ body {
   background-color: #0a0c10;
   color: #f8fafc; /* Un blanco grisáceo suave para que no canse la vista */
   margin: 0;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Courier Prime', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;

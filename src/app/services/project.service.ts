@@ -20,6 +20,7 @@ export class ProjectService {
           : 'Una plataforma pensada para dar tranquilidad financiera. Ayuda a gestionar créditos y automatizar finanzas personales de forma inteligente.',
         image: 'assets/flowcard.png',
         technologies: ['Django', 'PostgreSQL', 'Python'],
+        category: 'platforms',
         githubUrl: 'https://github.com/jhoracio19',
       },
       {
@@ -30,6 +31,7 @@ export class ProjectService {
           : 'Mi interpretación de una búsqueda reactiva. Una aplicación rápida y fluida que demuestra el poder de los servicios reactivos en Angular.',
         image: 'assets/gifapp.png',
         technologies: ['Angular', 'TypeScript', 'RxJS'],
+        category: 'experiments',
         githubUrl: 'https://github.com/jhoracio19/GifsApp',
         demoUrl: 'https://gifs-app-jhag.netlify.app/#/dashboard/trending',
       },
@@ -41,6 +43,7 @@ export class ProjectService {
           : 'Un espacio dedicado al aprendizaje. Una plataforma educativa robusta inspirada en las mejores prácticas de enseñanza online.',
         image: 'assets/devilearn.png',
         technologies: ['Django', 'SQLite', 'Python'],
+        category: 'platforms',
         githubUrl: 'https://github.com/jhoracio19/Devilearn',
       },
       {
@@ -51,6 +54,7 @@ export class ProjectService {
           : 'Diversión pura con lógica compleja. Un reto personal para dominar la gestión de estados globales y la interactividad en React.',
         image: 'assets/minijuego.png',
         technologies: ['React.js', 'JavaScript'],
+        category: 'experiments',
         githubUrl: 'https://github.com/jhoracio19/hanging',
         demoUrl: 'https://minigamejh.netlify.app/',
       },
@@ -60,8 +64,9 @@ export class ProjectService {
         description: isEn
           ? 'Calorie and exercise counter designed for daily health tracking. Allows categorizing activities, calculating caloric balances, and editing records. Built with a robust architecture based on useReducer to ensure data scalability and predictability.'
           : 'Contador de calorías y ejercicios diseñado para el seguimiento diario de la salud. Permite categorizar actividades, calcular balances calóricos y editar registros existentes. Construido con una arquitectura robusta basada en useReducer para garantizar la escalabilidad y predictibilidad de los datos.',
-        image: 'assets/proyects/calorie-tracker.png', 
+        image: 'assets/proyects/calorie-tracker.png',
         technologies: ['React.js', 'TypeScript', 'useReducer', 'Tailwind CSS'],
+        category: 'tools',
         githubUrl: 'https://github.com/jhoracio19/calorie-tracker.git',
         demoUrl: 'https://calorie-tracker-jh.netlify.app/'
       },
@@ -71,8 +76,9 @@ export class ProjectService {
         description: isEn
           ? 'E-commerce and shopping cart application developed with React and TypeScript. Implements clean architecture with Custom Hooks, data persistence, and dynamic business logic.'
           : 'Aplicación de e-commerce y carrito de compras desarrollada con React y TypeScript. Implementa arquitectura limpia con Custom Hooks, persistencia de datos y lógica de negocio dinámica.',
-        image: 'assets/proyects/guitarla.png', 
+        image: 'assets/proyects/guitarla.png',
         technologies: ['React.js', 'TypeScript', 'Custom Hooks'],
+        category: 'tools',
         githubUrl: 'https://github.com/jhoracio19/guitarla-react-ts.git',
         demoUrl: 'https://guitarla-sho.netlify.app/'
       },
@@ -82,19 +88,37 @@ export class ProjectService {
         description: isEn
           ? 'Interactive application for consumption management and dynamic tip calculation. Demonstrates advanced use of Custom Hooks, conditional rendering, derived state with useMemo, and responsive UI design with Tailwind CSS.'
           : 'Aplicación interactiva para la gestión de consumos y cálculo dinámico de propinas. Demuestra el uso avanzado de Custom Hooks, renderizado condicional, estado derivado con useMemo y diseño UI responsive con Tailwind CSS.',
-        image: 'assets/proyects/restaurant-order.png', 
+        image: 'assets/proyects/restaurant-order.png',
         technologies: ['React.js', 'TypeScript', 'Tailwind CSS', 'useMemo'],
+        category: 'tools',
         githubUrl: 'https://github.com/jhoracio19/restaurant-order-calculator.git',
         demoUrl: 'https://calculator-tips-jh.netlify.app/'
       },
     ];
   });
 
+  private categoryOrder: Project['category'][] = ['platforms', 'tools', 'experiments'];
+
   getProjects() {
     return this.projectsData;
   }
 
   getFeaturedProjects() {
-    return computed(() => this.projectsData().slice(0, 4));
+    return computed(() => {
+      const all = this.projectsData();
+      const featured: Project[] = [];
+
+      for (const category of this.categoryOrder) {
+        const firstInCategory = all.find((p) => p.category === category);
+        if (firstInCategory) featured.push(firstInCategory);
+      }
+
+      for (const project of all) {
+        if (featured.length >= 4) break;
+        if (!featured.includes(project)) featured.push(project);
+      }
+
+      return featured;
+    });
   }
 }

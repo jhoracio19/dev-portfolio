@@ -8,72 +8,91 @@
       <p class="text-slate-400 mt-2 text-lg">{{ t().projects.catalog_desc }}</p>
     </div>
 
-    <!-- Filtros -->
+    <!-- Filtros por categoría -->
     <div class="flex flex-wrap gap-2">
-      @for (category of categories(); track category) {
+      @for (filter of filters(); track filter.key) {
       <button
-        (click)="setFilter(category)"
+        (click)="setFilter(filter.key)"
         [class]="
-          filterSelected() === category || (filterSelected() === 'Todos' && category === t().projects.filter_all)
+          filterSelected() === filter.key
             ? 'bg-sky-600 text-white border-sky-500 shadow-lg shadow-sky-900/40'
             : 'bg-slate-800/50 text-slate-400 border-slate-700 hover:border-slate-500'
         "
         class="px-5 py-2 rounded-full text-xs font-bold border transition-all cursor-pointer"
       >
-        {{ category }}
+        {{ filter.label }}
       </button>
       }
     </div>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    @for (project of filteredProjects(); track project.id) {
-    <article
-      class="glass-card group bg-[#0a0c10] rounded-3xl overflow-hidden border border-slate-800 shadow-2xl transition-all hover:border-sky-500/50"
-    >
-      <div class="aspect-video bg-slate-800 relative overflow-hidden">
-        <img
-          [src]="project.image"
-          [alt]="project.title"
-          class="w-full h-full object-cover transition-transform group-hover:scale-105"
-        />
+  <div class="flex flex-col gap-20">
+    @for (group of groups(); track group.key) {
+    <section>
+      <div class="flex items-center gap-3 mb-8">
+        <span class="w-2.5 h-2.5 rounded-full" [class]="categoryStyles[group.key].dot"></span>
+        <h2 class="text-xl font-bold text-white tracking-tight">{{ group.label }}</h2>
+        <span class="text-slate-600 text-sm">({{ group.projects.length }})</span>
+        <div class="flex-1 h-px bg-slate-800"></div>
       </div>
-      <div class="p-6">
-        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-sky-400 transition-colors">
-          {{ project.title }}
-        </h3>
-        <div class="flex flex-wrap gap-2 mb-4">
-          @for (tech of project.technologies; track tech) {
-          <span
-            class="px-2.5 py-0.5 bg-sky-500/10 text-sky-400 text-[10px] font-bold uppercase tracking-wider rounded-full border border-sky-500/20"
-          >
-            {{ tech }}
-          </span>
-          }
-        </div>
-        <p class="text-slate-400 text-sm leading-relaxed mb-6 line-clamp-3">
-          {{ project.description }}
-        </p>
-        <div class="flex flex-wrap gap-3">
-          <a
-            [href]="project.githubUrl"
-            target="_blank"
-            class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-xl text-xs font-bold border border-slate-700 transition-transform hover:scale-105"
-          >
-            <i class="fab fa-github"></i> Code
-          </a>
-          @if (project.demoUrl) {
-          <a
-            [href]="project.demoUrl"
-            target="_blank"
-            class="inline-flex items-center gap-2 bg-sky-600 hover:bg-sky-500 text-white px-4 py-2 rounded-xl text-xs font-bold transition-transform hover:scale-105"
-          >
-            <i class="fas fa-external-link-alt text-xs"></i> Demo
-          </a>
-          }
-        </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        @for (project of group.projects; track project.id) {
+        <article
+          class="glass-card group bg-[#0a0c10] rounded-3xl overflow-hidden border border-slate-800 shadow-2xl transition-all hover:border-sky-500/50"
+        >
+          <div class="aspect-video bg-slate-800 relative overflow-hidden">
+            <img
+              [src]="project.image"
+              [alt]="project.title"
+              class="w-full h-full object-cover transition-transform group-hover:scale-105"
+            />
+            <span
+              class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border backdrop-blur-md"
+              [class]="categoryStyles[project.category].badge"
+            >
+              {{ group.label }}
+            </span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-sky-400 transition-colors">
+              {{ project.title }}
+            </h3>
+            <div class="flex flex-wrap gap-2 mb-4">
+              @for (tech of project.technologies; track tech) {
+              <span
+                class="px-2.5 py-0.5 bg-sky-500/10 text-sky-400 text-[10px] font-bold uppercase tracking-wider rounded-full border border-sky-500/20"
+              >
+                {{ tech }}
+              </span>
+              }
+            </div>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6 line-clamp-3">
+              {{ project.description }}
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <a
+                [href]="project.githubUrl"
+                target="_blank"
+                class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-xl text-xs font-bold border border-slate-700 transition-transform hover:scale-105"
+              >
+                <i class="fab fa-github"></i> Code
+              </a>
+              @if (project.demoUrl) {
+              <a
+                [href]="project.demoUrl"
+                target="_blank"
+                class="inline-flex items-center gap-2 bg-sky-600 hover:bg-sky-500 text-white px-4 py-2 rounded-xl text-xs font-bold transition-transform hover:scale-105"
+              >
+                <i class="fas fa-external-link-alt text-xs"></i> Demo
+              </a>
+              }
+            </div>
+          </div>
+        </article>
+        }
       </div>
-    </article>
+    </section>
     }
   </div>
 </div>

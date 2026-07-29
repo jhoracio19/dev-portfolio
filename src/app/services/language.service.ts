@@ -71,6 +71,11 @@ export class LanguageService {
         catalog_title: 'Catálogo Completo',
         catalog_desc: 'Explora todas mis creaciones y experimentos.',
         back_home: 'Volver al inicio',
+        categories: {
+          platforms: 'Plataformas & SaaS',
+          tools: 'Herramientas & E-commerce',
+          experiments: 'Experimentos Frontend',
+        },
       },
       tech: {
         title: 'Stack Tecnológico',
@@ -143,6 +148,11 @@ export class LanguageService {
         catalog_title: 'Full Catalog',
         catalog_desc: 'Explore all my creations and experiments.',
         back_home: 'Back to home',
+        categories: {
+          platforms: 'Platforms & SaaS',
+          tools: 'Tools & E-commerce',
+          experiments: 'Frontend Experiments',
+        },
       },
       tech: {
         title: 'Tech Stack',
