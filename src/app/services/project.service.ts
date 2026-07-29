@@ -130,6 +130,18 @@ export class ProjectService {
         githubUrl: 'https://github.com/jhoracio19/budget-planner-app.git',
         demoUrl: 'https://manage-cash-jh.netlify.app/',
       },
+      {
+        id: 'vettrack',
+        title: 'VetTrack',
+        description: isEn
+          ? 'A CRUD system for managing veterinary clinic patients. Lets you register pets, owners, symptoms, and admission dates, with global state managed using Zustand.'
+          : 'Sistema CRUD para la gestión de pacientes de una clínica veterinaria. Permite registrar mascotas, propietarios, síntomas y fecha de alta, gestionando el estado global de la aplicación con Zustand.',
+        image: 'assets/proyects/pacientes-veterinaria.png',
+        technologies: ['React.js', 'Zustand', 'JavaScript'],
+        category: 'tools',
+        githubUrl: 'https://github.com/jhoracio19/Pacientes-Zustand.git',
+        demoUrl: 'https://pacientes-jh.netlify.app/',
+      },
     ];
   });
 
