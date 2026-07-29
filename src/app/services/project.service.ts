@@ -166,6 +166,28 @@ export class ProjectService {
         githubUrl: 'https://github.com/jhoracio19/BlogCafe.git',
         demoUrl: 'https://my-coffe-blog-personal.netlify.app/',
       },
+      {
+        id: 'barberbook',
+        title: 'BarberBook',
+        description: isEn
+          ? 'An appointment management system for a barbershop, built with an MVC architecture in PHP. Lets clients pick services, schedule appointments, and review a summary before confirming.'
+          : 'Sistema de gestión de citas para una barbería, desarrollado con arquitectura MVC en PHP. Permite a los clientes elegir servicios, agendar citas y consultar un resumen antes de confirmar.',
+        image: 'assets/proyects/barberia.png',
+        technologies: ['PHP', 'MVC', 'MySQL'],
+        category: 'platforms',
+        githubUrl: 'https://github.com/jhoracio19/AppSalon_mvc.git',
+      },
+      {
+        id: 'bienes-raices',
+        title: 'BienesRaíces',
+        description: isEn
+          ? 'A real estate platform for listing and selling luxury houses and apartments, built with an MVC architecture in PHP. Includes a blog, listings, and a contact section.'
+          : 'Plataforma de bienes raíces para la publicación y venta de casas y departamentos de lujo, desarrollada con arquitectura MVC en PHP. Incluye blog, anuncios y sección de contacto.',
+        image: 'assets/proyects/bienes_raices.png',
+        technologies: ['PHP', 'MVC', 'MySQL'],
+        category: 'platforms',
+        githubUrl: 'https://github.com/jhoracio19/bienesRaicesMVC.git',
+      },
     ];
   });
 
