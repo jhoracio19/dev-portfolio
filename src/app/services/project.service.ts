@@ -189,6 +189,18 @@ export class ProjectService {
         githubUrl: 'https://github.com/jhoracio19/bienesRaicesMVC.git',
       },
       {
+        id: 'remindhome',
+        title: 'RemindHome',
+        description: isEn
+          ? 'A shared household app that tracks fridge items and recurring chores. Notifies everyone in the home before food expires or a task is due, with real-time updates across all members.'
+          : 'Aplicación compartida para el hogar que registra lo que hay en el refrigerador y las tareas que se repiten. Avisa a todos los de la casa antes de que algo se eche a perder o se les pase una tarea, con actualizaciones en tiempo real.',
+        image: 'assets/proyects/remindhome.webp',
+        technologies: ['Next.js', 'TypeScript', 'Supabase'],
+        category: 'clients',
+        githubUrl: 'https://github.com/jhoracio19/home-mvp.git',
+        demoUrl: 'https://remindhome.app/',
+      },
+      {
         id: 'otorrino-tlaxcala',
         title: 'Otorrino Tlaxcala',
         description: isEn
