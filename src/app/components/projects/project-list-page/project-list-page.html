@@ -12,7 +12,9 @@
     <div class="flex flex-wrap gap-2">
       @for (filter of filters(); track filter.key) {
       <button
+        type="button"
         (click)="setFilter(filter.key)"
+        [attr.aria-pressed]="filterSelected() === filter.key"
         [class]="
           filterSelected() === filter.key
             ? 'bg-sky-600 text-white border-sky-500 shadow-lg shadow-sky-900/40'
@@ -76,6 +78,8 @@
               <a
                 [href]="project.githubUrl"
                 target="_blank"
+                rel="noopener noreferrer"
+                [attr.aria-label]="'Ver código de ' + project.title + ' (abre en una pestaña nueva)'"
                 class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-xl text-xs font-bold border border-slate-700 transition-transform hover:scale-105"
               >
                 <i class="fab fa-github"></i> Code
@@ -84,6 +88,8 @@
               <a
                 [href]="project.demoUrl"
                 target="_blank"
+                rel="noopener noreferrer"
+                [attr.aria-label]="'Ver demo de ' + project.title + ' (abre en una pestaña nueva)'"
                 class="inline-flex items-center gap-2 bg-sky-600 hover:bg-sky-500 text-white px-4 py-2 rounded-xl text-xs font-bold transition-transform hover:scale-105"
               >
                 <i class="fas fa-external-link-alt text-xs"></i> Demo
