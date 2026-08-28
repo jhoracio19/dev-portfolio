@@ -8,4 +8,6 @@ export interface Hackathon {
   certificateUrl?: string;
   repoUrl?: string;
   achievement?: string;
+  prize?: string;
+  demoUrls?: { label: string; url: string; icon: string }[];
 }

@@ -18,6 +18,30 @@ export class Hackathons {
 
     return [
       {
+        id: 'hack-3',
+        name: 'Industry Hack Tec',
+        projectCreated: 'Verdana Loop',
+        description: isEn
+          ? 'Offline-first PWA built in 48 hours (Next.js 16 + Expo, TypeScript monorepo, 26 screens, 4 roles) for a sustainability challenge focused on reusable packaging. 3rd place out of 25 teams.'
+          : 'PWA offline-first construida en 48 horas (Next.js 16 + Expo, monorepo TypeScript, 26 pantallas, 4 roles) para reto de sustentabilidad en empaques reutilizables. 3er lugar de 25 equipos.',
+        date: isEn ? 'August 2026' : 'Agosto 2026',
+        technologies: ['Next.js 16', 'Expo', 'TypeScript', 'Monorepo'],
+        achievement: isEn ? '3rd / 25 teams' : '3er / 25 equipos',
+        prize: isEn ? '$2,000 + Yellow Belt Certification' : '$2,000 + Certificación Yellow Belt',
+        demoUrls: [
+          {
+            label: isEn ? 'Client View' : 'Vista Cliente',
+            url: 'https://verdana-loop-pwa.vercel.app/',
+            icon: 'fas fa-mobile-alt',
+          },
+          {
+            label: isEn ? 'Enterprise Panel' : 'Vista Empresa',
+            url: 'https://verdana-loop.vercel.app/panel',
+            icon: 'fas fa-building',
+          },
+        ],
+      },
+      {
         id: 'hack-1',
         name: 'Hackathon "Por Amor a Puebla"',
         projectCreated: 'Cafetzin',
