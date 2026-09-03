@@ -1,16 +1,12 @@
 <section
   id="inicio"
-  class="flex flex-col items-start justify-center py-24 px-8 md:px-20 bg-[#0a0c10] bg-dark-gradient text-white rounded-[2.5rem] my-8 mx-4 border border-slate-800 shadow-2xl relative overflow-hidden"
+  class="flex flex-col items-start justify-center py-24 px-4 md:px-8 text-white relative"
 >
-  <div class="absolute -top-24 -right-24 w-96 h-96 bg-sky-500/10 blur-[100px] rounded-full"></div>
 
   <div class="fade-in-up delay-1 flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-10">
     <div class="relative group">
       <div
-        class="absolute -inset-1 bg-gradient-to-r from-sky-500 to-blue-600 rounded-full blur opacity-30 group-hover:opacity-100 transition duration-1000"
-      ></div>
-      <div
-        class="w-32 h-32 md:w-40 md:h-40 relative flex-shrink-0 rounded-full bg-slate-900 border-2 border-slate-700/50 overflow-hidden shadow-2xl"
+        class="w-32 h-32 md:w-40 md:h-40 relative flex-shrink-0 rounded-full bg-transparent border border-white/20 overflow-hidden grayscale hover:grayscale-0 transition-all duration-500"
       >
         <img src="memoji.webp" alt="José Horacio" class="w-full h-full object-cover" />
       </div>
@@ -32,9 +28,7 @@
   <div class="fade-in-up delay-2 mb-8">
     <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-2">
       {{ t().hero.title_prefix }}
-      <span
-        class="bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent"
-      >
+      <span class="text-white">
         José Horacio
       </span>
     </h1>
@@ -47,23 +41,17 @@
     </p>
     <p class="text-lg md:text-xl text-slate-400 leading-relaxed">
       {{ t().hero.description_2 }}
-      <span class="text-sky-400 font-medium">{{ t().hero.description_2_bold }}</span>{{ t().hero.description_2_suffix }}
+      <span class="text-white font-medium">{{ t().hero.description_2_bold }}</span>{{ t().hero.description_2_suffix }}
     </p>
 
     <div class="mt-6 flex flex-wrap gap-2">
-      <span
-        class="rounded-full border border-emerald-400/40 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-300"
-      >
+      <span class="rounded-full border border-white/20 bg-transparent px-4 py-1.5 text-xs font-medium text-slate-300">
         {{ t().hero.tag_exp }}
       </span>
-      <span
-        class="rounded-full border border-sky-400/40 bg-sky-500/10 px-3 py-1 text-xs font-medium text-sky-300"
-      >
+      <span class="rounded-full border border-white/20 bg-transparent px-4 py-1.5 text-xs font-medium text-slate-300">
         {{ t().hero.tag_arch }}
       </span>
-      <span
-        class="rounded-full border border-violet-400/40 bg-violet-500/10 px-3 py-1 text-xs font-medium text-violet-300"
-      >
+      <span class="rounded-full border border-white/20 bg-transparent px-4 py-1.5 text-xs font-medium text-slate-300">
         {{ t().hero.tag_ux }}
       </span>
     </div>
@@ -72,7 +60,7 @@
   <div class="fade-in-up delay-3 mt-12 flex flex-wrap gap-5">
     <a
       href="mailto:jhoracio19@hotmail.com"
-      class="flex items-center gap-3 bg-white text-slate-950 px-8 py-4 rounded-2xl font-bold hover:bg-sky-400 transition-all hover:scale-105 shadow-lg shadow-white/5"
+      class="flex items-center gap-3 bg-white text-black px-8 py-4 rounded-full font-semibold hover:bg-gray-200 transition-all"
     >
       <i class="fas fa-paper-plane text-lg"></i>
       {{ t().hero.cta_idea }}
@@ -81,7 +69,7 @@
     <a
       href="assets/mi-cv-2026.pdf"
       download
-      class="flex items-center gap-3 bg-slate-800/50 backdrop-blur-md text-white px-8 py-4 rounded-2xl font-bold border border-slate-700 hover:bg-slate-800 transition-all hover:scale-105"
+      class="flex items-center gap-3 bg-transparent text-white px-8 py-4 rounded-full font-semibold border border-white/20 hover:border-white/60 transition-all"
     >
       <i class="fas fa-download text-lg text-sky-400"></i>
       {{ t().hero.cta_cv }}

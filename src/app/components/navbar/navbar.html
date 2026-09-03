@@ -1,22 +1,22 @@
 <nav
-  class="sticky top-0 z-50 flex items-center justify-between bg-slate-900/90 backdrop-blur-md px-6 py-4 text-white shadow-xl"
+  class="sticky top-0 z-50 flex items-center justify-between border-b border-white/[0.08] bg-[#050505]/80 backdrop-blur-md px-6 md:px-12 py-4 text-white transition-colors"
 >
-  <div class="flex flex-col z-[60]">
-    <span class="text-xl font-bold tracking-tight">
-      José <span class="text-sky-400">Horacio</span>
+  <a routerLink="/" fragment="inicio" (click)="setActive('inicio')" class="flex flex-col z-[60] cursor-pointer group">
+    <span class="text-base font-semibold tracking-tight text-white group-hover:text-zinc-300 transition-colors">
+      José Horacio
     </span>
-    <span class="text-xs font-medium text-slate-400 uppercase tracking-widest whitespace-nowrap">
+    <span class="text-[11px] font-normal text-zinc-500 tracking-wide">
       Fullstack Developer
     </span>
-  </div>
+  </a>
 
-  <div class="flex items-center gap-4 lg:hidden z-[60]">
+  <div class="flex items-center gap-3 lg:hidden z-[60]">
     <!-- Selector de idioma móvil -->
     <button
       type="button"
       (click)="langService.toggleLanguage()"
       [attr.aria-label]="langService.lang() === 'es' ? 'Cambiar idioma a inglés' : 'Switch language to Spanish'"
-      class="bg-slate-800 border border-slate-700 px-2 py-1 rounded text-xs font-bold text-sky-400"
+      class="border border-white/10 hover:border-white/30 bg-transparent px-2.5 py-1 rounded-full text-xs font-medium text-zinc-300 transition-colors"
     >
       {{ langService.lang() === 'es' ? 'EN' : 'ES' }}
     </button>
@@ -26,9 +26,9 @@
       [attr.aria-label]="isMenuOpen() ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'"
       [attr.aria-expanded]="isMenuOpen()"
       aria-controls="menu-links"
-      class="text-white p-2 transition-transform active:scale-90"
+      class="text-zinc-300 hover:text-white p-2 transition-colors"
     >
-      <i aria-hidden="true" class="fas text-2xl" [class.fa-bars]="!isMenuOpen()" [class.fa-times]="isMenuOpen()"></i>
+      <i aria-hidden="true" class="fas text-xl" [class.fa-bars]="!isMenuOpen()" [class.fa-times]="isMenuOpen()"></i>
     </button>
   </div>
 
@@ -36,99 +36,119 @@
     id="menu-links"
     [class.hidden]="!isMenuOpen()"
     [class.flex]="isMenuOpen()"
-    class="fixed lg:static top-0 right-0 h-screen lg:h-auto w-full lg:w-auto bg-slate-900/95 lg:bg-transparent backdrop-blur-lg lg:backdrop-blur-none flex-col lg:flex-row items-center justify-center gap-10 lg:gap-5 font-medium transition-all duration-300 ease-in-out lg:flex"
+    class="fixed lg:static top-0 right-0 h-screen lg:h-auto w-full lg:w-auto bg-[#050505]/95 lg:bg-transparent backdrop-blur-xl lg:backdrop-blur-none flex-col lg:flex-row items-center justify-center gap-8 lg:gap-6 xl:gap-8 text-sm transition-all duration-300 ease-in-out lg:flex"
   >
     <a
       (click)="setActive('inicio')"
-      class="text-2xl lg:text-sm xl:text-base transition-all hover:scale-110 cursor-pointer whitespace-nowrap"
-      [class.text-sky-400]="activeSection() === 'inicio'"
-      [class.text-white]="activeSection() !== 'inicio'"
+      class="text-lg lg:text-xs uppercase tracking-widest transition-colors cursor-pointer py-1"
+      [class.text-white]="activeSection() === 'inicio'"
+      [class.font-semibold]="activeSection() === 'inicio'"
+      [class.text-zinc-400]="activeSection() !== 'inicio'"
+      [class.hover:text-white]="activeSection() !== 'inicio'"
       routerLink="/"
       fragment="inicio"
       >{{ t().nav.home }}</a
     >
     <a
       (click)="setActive('experiencia')"
-      class="text-2xl lg:text-sm xl:text-base transition-all hover:scale-110 cursor-pointer whitespace-nowrap"
-      [class.text-sky-400]="activeSection() === 'experiencia'"
-      [class.text-white]="activeSection() !== 'experiencia'"
+      class="text-lg lg:text-xs uppercase tracking-widest transition-colors cursor-pointer py-1"
+      [class.text-white]="activeSection() === 'experiencia'"
+      [class.font-semibold]="activeSection() === 'experiencia'"
+      [class.text-zinc-400]="activeSection() !== 'experiencia'"
+      [class.hover:text-white]="activeSection() !== 'experiencia'"
       routerLink="/"
       fragment="experiencia"
       >{{ t().nav.experience }}</a
     >
     <a
       (click)="setActive('hackathones')"
-      class="text-2xl lg:text-sm xl:text-base transition-all hover:scale-110 cursor-pointer whitespace-nowrap"
-      [class.text-sky-400]="activeSection() === 'hackathones'"
-      [class.text-white]="activeSection() !== 'hackathones'"
+      class="text-lg lg:text-xs uppercase tracking-widest transition-colors cursor-pointer py-1"
+      [class.text-white]="activeSection() === 'hackathones'"
+      [class.font-semibold]="activeSection() === 'hackathones'"
+      [class.text-zinc-400]="activeSection() !== 'hackathones'"
+      [class.hover:text-white]="activeSection() !== 'hackathones'"
       routerLink="/"
       fragment="hackathones"
       >{{ t().nav.hackathons }}</a
     >
     <a
       (click)="setActive('proyectos')"
-      class="text-2xl lg:text-sm xl:text-base transition-all hover:scale-110 cursor-pointer whitespace-nowrap"
-      [class.text-sky-400]="activeSection() === 'proyectos'"
-      [class.text-white]="activeSection() !== 'proyectos'"
+      class="text-lg lg:text-xs uppercase tracking-widest transition-colors cursor-pointer py-1"
+      [class.text-white]="activeSection() === 'proyectos'"
+      [class.font-semibold]="activeSection() === 'proyectos'"
+      [class.text-zinc-400]="activeSection() !== 'proyectos'"
+      [class.hover:text-white]="activeSection() !== 'proyectos'"
       routerLink="/"
       fragment="proyectos"
       >{{ t().nav.projects }}</a
     >
     <a
       (click)="setActive('tecnologias')"
-      class="text-2xl lg:text-sm xl:text-base transition-all hover:scale-110 cursor-pointer whitespace-nowrap"
-      [class.text-sky-400]="activeSection() === 'tecnologias'"
-      [class.text-white]="activeSection() !== 'tecnologias'"
+      class="text-lg lg:text-xs uppercase tracking-widest transition-colors cursor-pointer py-1"
+      [class.text-white]="activeSection() === 'tecnologias'"
+      [class.font-semibold]="activeSection() === 'tecnologias'"
+      [class.text-zinc-400]="activeSection() !== 'tecnologias'"
+      [class.hover:text-white]="activeSection() !== 'tecnologias'"
       routerLink="/"
       fragment="tecnologias"
       >{{ t().nav.tech }}</a
     >
     <a
       (click)="setActive('sobre-mi')"
-      class="text-2xl lg:text-sm xl:text-base transition-all hover:scale-110 cursor-pointer whitespace-nowrap"
-      [class.text-sky-400]="activeSection() === 'sobre-mi'"
-      [class.text-white]="activeSection() !== 'sobre-mi'"
+      class="text-lg lg:text-xs uppercase tracking-widest transition-colors cursor-pointer py-1"
+      [class.text-white]="activeSection() === 'sobre-mi'"
+      [class.font-semibold]="activeSection() === 'sobre-mi'"
+      [class.text-zinc-400]="activeSection() !== 'sobre-mi'"
+      [class.hover:text-white]="activeSection() !== 'sobre-mi'"
       routerLink="/"
       fragment="sobre-mi"
       >{{ t().nav.about }}</a
     >
 
-    <div class="flex lg:hidden items-center gap-8 mt-4">
-      <a aria-label="GitHub de José Horacio (abre en una pestaña nueva)" rel="noopener noreferrer" class="text-3xl hover:text-sky-400" href="https://github.com/jhoracio19" target="_blank"
-        ><i aria-hidden="true" class="fab fa-github"></i
-      ></a>
+    <div class="flex lg:hidden items-center gap-6 mt-4">
       <a
-        class="bg-sky-600 px-8 py-3 rounded-xl font-bold"
+        aria-label="GitHub de José Horacio"
+        rel="noopener noreferrer"
+        class="text-2xl text-zinc-400 hover:text-white transition-colors"
+        href="https://github.com/jhoracio19"
+        target="_blank"
+      >
+        <i aria-hidden="true" class="fab fa-github"></i>
+      </a>
+      <a
+        class="bg-white text-black px-6 py-2.5 rounded-full text-xs font-semibold hover:bg-zinc-200 transition-colors"
         href="https://www.linkedin.com/in/jhoracio19/"
         target="_blank"
         rel="noopener noreferrer"
-        >LinkedIn</a
       >
+        LinkedIn
+      </a>
     </div>
   </div>
 
-  <div class="hidden lg:flex items-center gap-3 xl:gap-6 ml-4 xl:ml-8 flex-shrink-0">
+  <div class="hidden lg:flex items-center gap-4 xl:gap-5 ml-4 xl:ml-8 flex-shrink-0">
     <!-- Selector de idioma escritorio -->
     <button
       type="button"
       (click)="langService.toggleLanguage()"
       [attr.aria-label]="langService.lang() === 'es' ? 'Cambiar idioma a inglés' : 'Switch language to Spanish'"
-      class="hover:scale-110 transition-transform bg-slate-800 border border-slate-700 px-3 py-1.5 rounded-lg text-xs font-bold text-sky-400 cursor-pointer whitespace-nowrap"
+      class="border border-white/10 hover:border-white/30 bg-transparent text-zinc-300 hover:text-white px-3 py-1.5 rounded-full text-xs font-medium transition-colors cursor-pointer flex items-center gap-1.5"
     >
-      <i class="fas fa-globe mr-2"></i> {{ langService.lang() === 'es' ? 'English' : 'Español' }}
+      <i class="fas fa-globe text-[11px] text-zinc-400"></i>
+      <span>{{ langService.lang() === 'es' ? 'EN' : 'ES' }}</span>
     </button>
 
     <a
-      class="hover:scale-110 transition-transform opacity-80 hover:opacity-100"
+      class="text-zinc-400 hover:text-white transition-colors"
       target="_blank"
       href="https://github.com/jhoracio19"
       rel="noopener noreferrer"
-      aria-label="GitHub de José Horacio (abre en una pestaña nueva)"
+      aria-label="GitHub de José Horacio"
     >
-      <i aria-hidden="true" class="fab fa-github text-xl"></i>
+      <i aria-hidden="true" class="fab fa-github text-lg"></i>
     </a>
     <a
-      class="bg-sky-600 hover:bg-sky-500 px-4 py-2 rounded-lg text-sm font-semibold shadow-lg shadow-sky-900/20 transition-all whitespace-nowrap"
+      class="bg-white text-black hover:bg-zinc-200 px-4 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer whitespace-nowrap"
       target="_blank"
       href="https://www.linkedin.com/in/jhoracio19/"
       rel="noopener noreferrer"
