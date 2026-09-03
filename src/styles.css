@@ -36,6 +36,62 @@ body {
   overflow-x: hidden;
 }
 
+/* Puntero interactivo suave integrado con Lenis */
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  pointer-events: none;
+  border-radius: 9999px;
+  opacity: 0;
+  will-change: transform, opacity;
+  mix-blend-mode: difference;
+}
+
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #ffffff;
+  transition: opacity 0.2s ease;
+}
+
+.cursor-ring {
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.05);
+  transition:
+    opacity 0.2s ease,
+    width 0.22s cubic-bezier(0.25, 1, 0.5, 1),
+    height 0.22s cubic-bezier(0.25, 1, 0.5, 1),
+    background-color 0.2s ease;
+}
+
+.cursor-dot.is-visible,
+.cursor-ring.is-visible {
+  opacity: 1;
+}
+
+.cursor-ring.is-hovering {
+  width: 48px;
+  height: 48px;
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.cursor-dot.is-hovering {
+  opacity: 0;
+}
+
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body.has-custom-cursor,
+  body.has-custom-cursor * {
+    cursor: none !important;
+  }
+}
+
 /* Minimalist Card */
 .glass-card {
   background: transparent;

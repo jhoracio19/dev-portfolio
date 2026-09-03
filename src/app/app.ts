@@ -24,6 +24,17 @@ export class App implements OnInit, OnDestroy {
   private lenis?: Lenis;
   private animationFrameId?: number;
 
+  private cursorDot?: HTMLElement;
+  private cursorRing?: HTMLElement;
+  private targetX = 0;
+  private targetY = 0;
+  private ringX = 0;
+  private ringY = 0;
+  private cursorInitialized = false;
+
+  private pointerMoveHandler?: (event: PointerEvent) => void;
+  private pointerLeaveHandler?: () => void;
+
   constructor(
     private titleService: Title,
     private metaService: Meta,
@@ -51,8 +62,13 @@ export class App implements OnInit, OnDestroy {
       anchors: true,
     });
 
+    if (window.matchMedia('(pointer: fine)').matches) {
+      this.initCustomCursor();
+    }
+
     const animate = (time: number) => {
       this.lenis?.raf(time);
+      this.updateCursor();
       this.animationFrameId = requestAnimationFrame(animate);
     };
 
@@ -62,5 +78,64 @@ export class App implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.animationFrameId) cancelAnimationFrame(this.animationFrameId);
     this.lenis?.destroy();
+
+    if (this.pointerMoveHandler) {
+      document.removeEventListener('pointermove', this.pointerMoveHandler);
+    }
+    if (this.pointerLeaveHandler) {
+      document.removeEventListener('mouseleave', this.pointerLeaveHandler);
+    }
+
+    document.body.classList.remove('has-custom-cursor');
+  }
+
+  private initCustomCursor() {
+    this.cursorDot = document.querySelector<HTMLElement>('.cursor-dot') ?? undefined;
+    this.cursorRing = document.querySelector<HTMLElement>('.cursor-ring') ?? undefined;
+
+    if (!this.cursorDot || !this.cursorRing) return;
+
+    document.body.classList.add('has-custom-cursor');
+
+    this.pointerMoveHandler = (event: PointerEvent) => {
+      this.targetX = event.clientX;
+      this.targetY = event.clientY;
+
+      if (!this.cursorInitialized) {
+        this.cursorInitialized = true;
+        this.ringX = event.clientX;
+        this.ringY = event.clientY;
+        this.cursorDot!.classList.add('is-visible');
+        this.cursorRing!.classList.add('is-visible');
+      }
+
+      this.cursorDot!.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0) translate(-50%, -50%)`;
+
+      const target = event.target instanceof Element ? event.target : null;
+      const isInteractive = Boolean(
+        target?.closest('a, button, input, textarea, select, [role="button"], .cursor-pointer')
+      );
+      this.cursorRing!.classList.toggle('is-hovering', isInteractive);
+      this.cursorDot!.classList.toggle('is-hovering', isInteractive);
+    };
+
+    this.pointerLeaveHandler = () => {
+      this.cursorDot?.classList.remove('is-visible');
+      this.cursorRing?.classList.remove('is-visible');
+      this.cursorInitialized = false;
+    };
+
+    document.addEventListener('pointermove', this.pointerMoveHandler, { passive: true });
+    document.addEventListener('mouseleave', this.pointerLeaveHandler);
+  }
+
+  private updateCursor() {
+    if (!this.cursorRing || !this.cursorInitialized) return;
+
+    // Interpolación lineal suave (lerp) sincronizada con el frame de Lenis
+    this.ringX += (this.targetX - this.ringX) * 0.15;
+    this.ringY += (this.targetY - this.ringY) * 0.15;
+
+    this.cursorRing.style.transform = `translate3d(${this.ringX}px, ${this.ringY}px, 0) translate(-50%, -50%)`;
   }
 }

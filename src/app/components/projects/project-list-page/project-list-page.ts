@@ -3,7 +3,7 @@ import { ProjectService } from '../../../services/project.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { LanguageService } from '../../../services/language.service';
-import { ProjectCategory } from '../../../models/project-model';
+import { Project, ProjectCategory } from '../../../models/project-model';
 
 type CategoryFilter = ProjectCategory | 'all';
 
@@ -23,38 +23,85 @@ export class ProjectListPage {
 
   categoryOrder: ProjectCategory[] = ['clients', 'platforms', 'tools', 'experiments'];
 
-  categoryStyles: Record<ProjectCategory, { badge: string; dot: string }> = {
-    clients: { badge: 'bg-amber-500/10 text-amber-400 border-amber-500/20', dot: 'bg-amber-500' },
-    platforms: { badge: 'bg-sky-500/10 text-sky-400 border-sky-500/20', dot: 'bg-sky-500' },
-    tools: { badge: 'bg-violet-500/10 text-violet-400 border-violet-500/20', dot: 'bg-violet-500' },
-    experiments: { badge: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20', dot: 'bg-emerald-500' },
+  categoryBadge: Record<ProjectCategory, string> = {
+    clients: 'border border-amber-400/30 text-amber-300 bg-amber-400/5',
+    platforms: 'border border-sky-400/30 text-sky-300 bg-sky-400/5',
+    tools: 'border border-violet-400/30 text-violet-300 bg-violet-400/5',
+    experiments: 'border border-emerald-400/30 text-emerald-300 bg-emerald-400/5',
   };
 
   filterSelected = signal<CategoryFilter>('all');
+  searchQuery = signal<string>('');
+
+  i18n = computed(() => {
+    const isEs = this.langService.lang() === 'es';
+    return {
+      searchPlaceholder: isEs
+        ? 'Buscar por proyecto o tecnología (ej. React, Django, Next.js, API)...'
+        : 'Search by project or tech (e.g. React, Django, Next.js, API)...',
+      showing: isEs ? 'Mostrando' : 'Showing',
+      of: isEs ? 'de' : 'of',
+      projectsText: isEs ? 'proyectos' : 'projects',
+      clearSearch: isEs ? 'Limpiar filtros' : 'Clear filters',
+      noResultsTitle: isEs ? 'No se encontraron proyectos' : 'No projects found',
+      noResultsDesc: isEs
+        ? 'No hay resultados que coincidan con tu búsqueda. Intenta con otra palabra clave o categoría.'
+        : 'No results match your search. Try another keyword or select another category.',
+      viewCode: isEs ? 'Código' : 'Code',
+      liveDemo: isEs ? 'Sitio en vivo' : 'Live Site',
+    };
+  });
 
   filters = computed(() => {
     const labels = this.t().projects.categories;
+    const all = this.projects();
     return [
-      { key: 'all' as CategoryFilter, label: this.t().projects.filter_all },
-      ...this.categoryOrder.map((key) => ({ key: key as CategoryFilter, label: labels[key] })),
+      {
+        key: 'all' as CategoryFilter,
+        label: this.t().projects.filter_all,
+        count: all.length,
+      },
+      ...this.categoryOrder.map((key) => ({
+        key: key as CategoryFilter,
+        label: labels[key],
+        count: all.filter((p) => p.category === key).length,
+      })),
     ];
   });
 
-  groups = computed(() => {
+  filteredProjects = computed<Project[]>(() => {
     const filter = this.filterSelected();
-    const labels = this.t().projects.categories;
-    const categories = filter === 'all' ? this.categoryOrder : this.categoryOrder.filter((c) => c === filter);
+    const query = this.searchQuery().trim().toLowerCase();
 
-    return categories
-      .map((category) => ({
-        key: category,
-        label: labels[category],
-        projects: this.projects().filter((p) => p.category === category),
-      }))
-      .filter((group) => group.projects.length > 0);
+    return this.projects().filter((p) => {
+      const matchesCategory = filter === 'all' || p.category === filter;
+      if (!matchesCategory) return false;
+
+      if (!query) return true;
+
+      const inTitle = p.title.toLowerCase().includes(query);
+      const inDesc = p.description.toLowerCase().includes(query);
+      const inTech = p.technologies.some((t) => t.toLowerCase().includes(query));
+
+      return inTitle || inDesc || inTech;
+    });
   });
 
   setFilter(filter: CategoryFilter) {
     this.filterSelected.set(filter);
+  }
+
+  onSearch(event: Event) {
+    const target = event.target as HTMLInputElement;
+    this.searchQuery.set(target.value);
+  }
+
+  clearSearch() {
+    this.searchQuery.set('');
+    this.filterSelected.set('all');
+  }
+
+  categoryLabel(category: ProjectCategory) {
+    return this.t().projects.categories[category];
   }
 }
