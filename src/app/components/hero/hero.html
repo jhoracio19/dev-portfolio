@@ -1,87 +1,44 @@
-<section
-  id="inicio"
-  class="flex flex-col items-start justify-center py-24 px-4 md:px-8 text-white relative"
->
-
-  <div class="fade-in-up delay-1 flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-10">
-    <div class="relative group">
-      <div
-        class="w-32 h-32 md:w-40 md:h-40 relative flex-shrink-0 rounded-full bg-transparent border border-white/20 overflow-hidden grayscale hover:grayscale-0 transition-all duration-500"
-      >
-        <img
-          src="memoji.webp"
-          alt="José Horacio"
-          width="160"
-          height="160"
-          loading="eager"
-          fetchpriority="high"
-          decoding="sync"
-          class="w-full h-full object-cover"
-        />
-      </div>
+<section id="inicio" class="hero-layout">
+  <div class="hero-copy">
+    <div class="identity-line">
+      <img src="memoji.webp" alt="" width="48" height="48" fetchpriority="high" />
+      <span>José Horacio <span class="identity-role">Fullstack developer</span></span>
     </div>
-
-    <span
-      class="inline-flex items-center rounded-full bg-emerald-500/10 px-4 py-1.5 text-xs font-bold text-emerald-400 ring-1 ring-inset ring-emerald-500/20 uppercase tracking-wider"
-    >
-      <span class="relative flex h-2 w-2 mr-3">
-        <span
-          class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"
-        ></span>
-        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
-      </span>
-      {{ t().hero.available }}
-    </span>
-  </div>
-
-  <div class="fade-in-up delay-2 mb-8">
-    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-2">
-      {{ t().hero.title_prefix }}
-      <span class="text-white">
-        José Horacio
-      </span>
-    </h1>
-    <h2 class="text-3xl md:text-5xl font-bold text-slate-300">{{ t().hero.subtitle }}</h2>
-  </div>
-
-  <div class="fade-in-up delay-3 max-w-3xl text-left space-y-4">
-    <p class="text-xl md:text-2xl text-slate-200 leading-relaxed">
-      {{ t().hero.description_1 }}
-    </p>
-    <p class="text-lg md:text-xl text-slate-400 leading-relaxed">
-      {{ t().hero.description_2 }}
-      <span class="text-white font-medium">{{ t().hero.description_2_bold }}</span>{{ t().hero.description_2_suffix }}
-    </p>
-
-    <div class="mt-6 flex flex-wrap gap-2">
-      <span class="rounded-full border border-white/20 bg-transparent px-4 py-1.5 text-xs font-medium text-slate-300">
-        {{ t().hero.tag_exp }}
-      </span>
-      <span class="rounded-full border border-white/20 bg-transparent px-4 py-1.5 text-xs font-medium text-slate-300">
-        {{ t().hero.tag_arch }}
-      </span>
-      <span class="rounded-full border border-white/20 bg-transparent px-4 py-1.5 text-xs font-medium text-slate-300">
-        {{ t().hero.tag_ux }}
-      </span>
+    <h1>{{ t().design.headline }}</h1>
+    <p class="hero-intro">{{ t().design.intro }}</p>
+    <div class="action-row">
+      <a href="#proyectos" class="button button-primary">{{ t().design.viewWork }}</a>
+      <a href="#contacto" class="button button-secondary">{{ t().design.talk }}</a>
+    </div>
+    <div class="hero-meta">
+      <span class="availability">{{ t().hero.available }}</span
+      ><a href="assets/mi-cv-2026.pdf" download class="text-link">{{ t().hero.cta_cv }}</a>
     </div>
   </div>
-
-  <div class="fade-in-up delay-3 mt-12 flex flex-wrap gap-5">
-    <a
-      href="mailto:jhoracio19@hotmail.com"
-      class="flex items-center gap-3 bg-white text-black px-8 py-4 rounded-full font-semibold hover:bg-gray-200 transition-all"
-    >
-      <i class="fas fa-paper-plane text-lg"></i>
-      {{ t().hero.cta_idea }}
-    </a>
-
-    <a
-      href="assets/mi-cv-2026.pdf"
-      download
-      class="flex items-center gap-3 bg-transparent text-white px-8 py-4 rounded-full font-semibold border border-white/20 hover:border-white/60 transition-all"
-    >
-      <i class="fas fa-download text-lg text-sky-400"></i>
-      {{ t().hero.cta_cv }}
-    </a>
-  </div>
+  <a href="#project-remindhome" class="hero-preview" [attr.aria-label]="t().design.previewLabel">
+    <div class="preview-heading">
+      <span>RemindHome</span><span>{{ t().design.selectedProduct }}</span>
+    </div>
+    <div class="preview-image">
+      <img
+        src="assets/proyects/remindhome.webp"
+        alt="RemindHome"
+        width="900"
+        height="600"
+        decoding="async"
+      />
+    </div>
+    <div class="preview-caption">
+      <span>{{ t().design.productCaption }}</span
+      ><span aria-hidden="true">↗</span>
+    </div>
+  </a>
 </section>
+<a href="#hackathones" class="achievement-strip"
+  ><span class="achievement-mark" aria-hidden="true">✳</span
+  ><strong>{{ t().design.achievement }}</strong
+  ><span>Industry Hack Tec · 2026</span
+  ><span class="achievement-link"
+    >{{ t().design.seeChallenge }} <span aria-hidden="true">↗</span></span
+  ></a
+>

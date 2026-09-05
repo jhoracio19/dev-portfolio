@@ -1,84 +1,82 @@
-<section id="proyectos" class="py-24 px-6 max-w-7xl mx-auto">
-  <div class="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-6">
-    <h2 class="text-3xl font-bold text-white flex items-center gap-3" data-aos="fade-right">
-      <span class="text-sky-500 font-mono tracking-tighter">< /></span>
-      {{ t().projects.title }}
-    </h2>
-  </div>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-    @for (project of featuredProjects(); track project.id) {
-    <article
-      data-aos="fade-up"
-      class="glass-card group bg-[#0a0c10] rounded-3xl overflow-hidden border border-slate-800 shadow-2xl transition-all hover:border-sky-500/50"
+<section id="proyectos" class="content-section">
+  <div class="section-heading">
+    <div>
+      <h2>{{ t().design.selectedWork }}</h2>
+      <p>{{ t().design.workIntro }}</p>
+    </div>
+    <a routerLink="/proyectos" class="text-link"
+      >{{ t().projects.cta_all }} <span aria-hidden="true">↗</span></a
     >
-      <div class="aspect-video bg-slate-800 relative overflow-hidden">
-        <img
-          [src]="project.image"
-          [alt]="project.title"
-          width="600"
-          height="338"
-          loading="lazy"
-          decoding="async"
-          class="w-full h-full object-cover transition-transform group-hover:scale-105"
-        />
-        <span
-          class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border backdrop-blur-md"
-          [class]="categoryStyles[project.category]"
+  </div>
+  <div class="selected-projects">
+    @for (project of featuredProjects(); track project.id) {
+      <article class="project-feature" [id]="'project-' + project.id">
+        <a
+          [href]="project.demoUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-image"
+          [attr.aria-label]="
+            t().design.liveSite + ': ' + project.title + ' (' + t().design.newTab + ')'
+          "
         >
-          {{ categoryLabel(project.category) }}
-        </span>
-      </div>
-      <div class="p-8">
-        <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-sky-400 transition-colors">
-          {{ project.title }}
-        </h3>
-        <div class="flex flex-wrap gap-2 mb-4">
-          @for (tech of project.technologies; track tech) {
-          <span
-            class="px-3 py-1 bg-sky-500/10 text-sky-400 text-[10px] font-bold uppercase tracking-wider rounded-full border border-sky-500/20"
-          >
-            {{ tech }}
-          </span>
-          }
-        </div>
-        <p class="text-slate-400 text-sm leading-relaxed mb-6">
-          {{ project.description }}
-        </p>
-        <div class="flex flex-wrap gap-3">
-          <a
-            [href]="project.githubUrl"
-            target="_blank"
-            rel="noopener noreferrer"
-            [attr.aria-label]="'Ver código de ' + project.title + ' (abre en una pestaña nueva)'"
-            class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-5 py-2.5 rounded-xl text-sm font-bold border border-slate-700 transition-transform hover:scale-105"
-          >
-            <i class="fab fa-github"></i> Code
-          </a>
-          @if (project.demoUrl) {
-          <a
-                [href]="project.demoUrl"
+          <img
+            [src]="project.image"
+            [alt]="project.title"
+            width="900"
+            height="600"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
+        <div class="project-copy">
+          <span class="project-kind">{{ categoryLabel(project.category) }}</span>
+          <h3>{{ project.title }}</h3>
+          <p>{{ cases()[project.id].summary }}</p>
+          <div class="technology-list">
+            @for (tech of project.technologies.slice(0, 3); track tech) {
+              <span>{{ tech }}</span>
+            }
+          </div>
+          <div class="action-row">
+            <a
+              [href]="project.demoUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="button button-primary"
+              [attr.aria-label]="
+                t().design.liveSite + ': ' + project.title + ' (' + t().design.newTab + ')'
+              "
+              >{{ t().design.liveSite }} <span aria-hidden="true">↗</span></a
+            >
+            @if (project.githubUrl) {
+              <a
+                [href]="project.githubUrl"
                 target="_blank"
                 rel="noopener noreferrer"
-                [attr.aria-label]="'Ver demo de ' + project.title + ' (abre en una pestaña nueva)'"
-            class="inline-flex items-center gap-2 bg-sky-600 hover:bg-sky-500 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-transform hover:scale-105"
-          >
-            <i class="fas fa-external-link-alt text-xs"></i> Demo
-          </a>
-          }
+                class="text-link"
+                [attr.aria-label]="
+                  t().design.code + ': ' + project.title + ' (' + t().design.newTab + ')'
+                "
+                >{{ t().design.code }}</a
+              >
+            }
+          </div>
+          <details class="case-details">
+            <summary>
+              {{ t().design.caseStudy }}<span class="sr-only">: {{ project.title }}</span>
+            </summary>
+            <dl>
+              <dt>{{ t().design.challenge }}</dt>
+              <dd>{{ cases()[project.id].challenge }}</dd>
+              <dt>{{ t().design.implementation }}</dt>
+              <dd>{{ cases()[project.id].implementation }}</dd>
+              <dt>{{ t().design.result }}</dt>
+              <dd>{{ cases()[project.id].result }}</dd>
+            </dl>
+          </details>
         </div>
-      </div>
-    </article>
+      </article>
     }
-  </div>
-
-  <div class="mt-16 text-center" data-aos="zoom-in">
-    <a
-      routerLink="/proyectos"
-      class="inline-flex items-center gap-3 bg-sky-600 hover:bg-sky-500 text-white px-10 py-4 rounded-2xl font-bold transition-all hover:scale-105 shadow-lg shadow-sky-900/20"
-    >
-      {{ t().projects.cta_all }}
-      <i class="fas fa-arrow-right text-sm"></i>
-    </a>
   </div>
 </section>

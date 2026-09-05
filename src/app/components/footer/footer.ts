@@ -14,10 +14,17 @@ export class Footer {
 
   emailCopied = signal(false);
 
-  copyEmail() {
-    navigator.clipboard.writeText('jhoracio19@hotmail.com').then(() => {
+  copyFailed = signal(false);
+
+  async copyEmail() {
+    this.copyFailed.set(false);
+    try {
+      await navigator.clipboard.writeText('jhoracio19@hotmail.com');
       this.emailCopied.set(true);
       setTimeout(() => this.emailCopied.set(false), 2500); // Reset después de 2.5s
-    });
+    } catch {
+      this.emailCopied.set(false);
+      this.copyFailed.set(true);
+    }
   }
 }

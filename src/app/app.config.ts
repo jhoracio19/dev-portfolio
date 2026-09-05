@@ -17,8 +17,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(
       routes,
       withInMemoryScrolling({
-        anchorScrolling: 'enabled', // Permite que funcionen los links tipo #proyectos
-        scrollPositionRestoration: 'enabled', // Te regresa arriba cuando cambias de página
+        anchorScrolling: 'enabled',
+        scrollPositionRestoration: 'enabled',
       }),
       withViewTransitions(), // Hace que el cambio de página sea suave y moderno
     ),

@@ -1,25 +1,30 @@
-import { isPlatformBrowser } from '@angular/common';
-import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID, signal } from '@angular/core';
+import { isPlatformBrowser, ViewportScroller } from '@angular/common';
+import {
+  Component,
+  Inject,
+  OnDestroy,
+  OnInit,
+  AfterViewInit,
+  PLATFORM_ID,
+  signal,
+  inject,
+} from '@angular/core';
 import { Navbar } from './components/navbar/navbar';
 import { Footer } from './components/footer/footer';
 import { Title, Meta } from '@angular/platform-browser';
 import AOS from 'aos';
 import Lenis from 'lenis';
-// IMPORT CORRECTO:
 import { RouterOutlet } from '@angular/router';
+import { ScrollService } from './services/scroll.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrl: './app.css',
   standalone: true,
-  imports: [
-    Navbar,
-    Footer,
-    RouterOutlet, // Aquí se inyectará el contenido dinámicamente
-  ],
+  imports: [Navbar, Footer, RouterOutlet],
 })
-export class App implements OnInit, OnDestroy {
+export class App implements OnInit, AfterViewInit, OnDestroy {
   protected readonly appTitle = signal('mi-portfolio-dev');
   private lenis?: Lenis;
   private animationFrameId?: number;
@@ -35,36 +40,39 @@ export class App implements OnInit, OnDestroy {
   private pointerMoveHandler?: (event: PointerEvent) => void;
   private pointerLeaveHandler?: () => void;
 
+  private scrollService = inject(ScrollService);
+  private viewportScroller = inject(ViewportScroller);
+
   constructor(
     private titleService: Title,
     private metaService: Meta,
     @Inject(PLATFORM_ID) private platformId: object,
   ) {
-    this.titleService.setTitle('José Horacio | Desarrollador Fullstack & Ing. en TI BUAP');
+    this.viewportScroller.setOffset([0, 100]);
+    this.titleService.setTitle('José Horacio | Desarrollador Fullstack | Estudiante BUAP');
   }
 
   ngOnInit() {
     if (!isPlatformBrowser(this.platformId)) return;
 
     AOS.init({
-      duration: 1000,
-      once: false,
-      mirror: true,
-      easing: 'ease-out-back',
+      duration: 700,
+      once: true,
+      disable: () => window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+      easing: 'ease-out-cubic',
     });
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     this.lenis = new Lenis({
-      duration: 1.1,
+      duration: 1.2,
       smoothWheel: true,
+      wheelMultiplier: 0.85,
       syncTouch: false,
-      anchors: true,
+      anchors: false,
     });
 
-    if (window.matchMedia('(pointer: fine)').matches) {
-      this.initCustomCursor();
-    }
+    this.scrollService.setLenis(this.lenis);
 
     const animate = (time: number) => {
       this.lenis?.raf(time);
@@ -75,18 +83,22 @@ export class App implements OnInit, OnDestroy {
     this.animationFrameId = requestAnimationFrame(animate);
   }
 
+  ngAfterViewInit() {
+    if (!isPlatformBrowser(this.platformId)) return;
+    if (window.matchMedia('(pointer: fine) and (prefers-reduced-motion: no-preference)').matches)
+      this.initCustomCursor();
+  }
+
   ngOnDestroy() {
     if (this.animationFrameId) cancelAnimationFrame(this.animationFrameId);
     this.lenis?.destroy();
 
     if (this.pointerMoveHandler) {
-      document.removeEventListener('pointermove', this.pointerMoveHandler);
+      window.removeEventListener('pointermove', this.pointerMoveHandler);
     }
     if (this.pointerLeaveHandler) {
       document.removeEventListener('mouseleave', this.pointerLeaveHandler);
     }
-
-    document.body.classList.remove('has-custom-cursor');
   }
 
   private initCustomCursor() {
@@ -94,8 +106,6 @@ export class App implements OnInit, OnDestroy {
     this.cursorRing = document.querySelector<HTMLElement>('.cursor-ring') ?? undefined;
 
     if (!this.cursorDot || !this.cursorRing) return;
-
-    document.body.classList.add('has-custom-cursor');
 
     this.pointerMoveHandler = (event: PointerEvent) => {
       this.targetX = event.clientX;
@@ -105,18 +115,18 @@ export class App implements OnInit, OnDestroy {
         this.cursorInitialized = true;
         this.ringX = event.clientX;
         this.ringY = event.clientY;
-        this.cursorDot!.classList.add('is-visible');
-        this.cursorRing!.classList.add('is-visible');
+        this.cursorDot?.classList.add('is-visible');
+        this.cursorRing?.classList.add('is-visible');
       }
 
       this.cursorDot!.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0) translate(-50%, -50%)`;
 
       const target = event.target instanceof Element ? event.target : null;
       const isInteractive = Boolean(
-        target?.closest('a, button, input, textarea, select, [role="button"], .cursor-pointer')
+        target?.closest('a, button, input, textarea, select, [role="button"], .cursor-pointer'),
       );
-      this.cursorRing!.classList.toggle('is-hovering', isInteractive);
-      this.cursorDot!.classList.toggle('is-hovering', isInteractive);
+      this.cursorRing?.classList.toggle('is-hovering', isInteractive);
+      this.cursorDot?.classList.toggle('is-hovering', isInteractive);
     };
 
     this.pointerLeaveHandler = () => {
@@ -125,16 +135,15 @@ export class App implements OnInit, OnDestroy {
       this.cursorInitialized = false;
     };
 
-    document.addEventListener('pointermove', this.pointerMoveHandler, { passive: true });
+    window.addEventListener('pointermove', this.pointerMoveHandler, { passive: true });
     document.addEventListener('mouseleave', this.pointerLeaveHandler);
   }
 
   private updateCursor() {
     if (!this.cursorRing || !this.cursorInitialized) return;
 
-    // Interpolación lineal suave (lerp) sincronizada con el frame de Lenis
-    this.ringX += (this.targetX - this.ringX) * 0.15;
-    this.ringY += (this.targetY - this.ringY) * 0.15;
+    this.ringX += (this.targetX - this.ringX) * 0.11;
+    this.ringY += (this.targetY - this.ringY) * 0.11;
 
     this.cursorRing.style.transform = `translate3d(${this.ringX}px, ${this.ringY}px, 0) translate(-50%, -50%)`;
   }

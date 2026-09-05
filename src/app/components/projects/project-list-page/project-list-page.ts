@@ -19,16 +19,13 @@ export class ProjectListPage {
   public langService = inject(LanguageService);
   t = this.langService.current;
 
-  projects = this.projectService.getProjects();
+  projects = computed(() =>
+    [...this.projectService.getProjects()()].sort(
+      (a, b) => this.categoryOrder.indexOf(a.category) - this.categoryOrder.indexOf(b.category),
+    ),
+  );
 
   categoryOrder: ProjectCategory[] = ['clients', 'platforms', 'tools', 'experiments'];
-
-  categoryBadge: Record<ProjectCategory, string> = {
-    clients: 'border border-amber-400/30 text-amber-300 bg-amber-400/5',
-    platforms: 'border border-sky-400/30 text-sky-300 bg-sky-400/5',
-    tools: 'border border-violet-400/30 text-violet-300 bg-violet-400/5',
-    experiments: 'border border-emerald-400/30 text-emerald-300 bg-emerald-400/5',
-  };
 
   filterSelected = signal<CategoryFilter>('all');
   searchQuery = signal<string>('');
@@ -36,9 +33,7 @@ export class ProjectListPage {
   i18n = computed(() => {
     const isEs = this.langService.lang() === 'es';
     return {
-      searchPlaceholder: isEs
-        ? 'Buscar por proyecto o tecnología (ej. React, Django, Next.js, API)...'
-        : 'Search by project or tech (e.g. React, Django, Next.js, API)...',
+      searchPlaceholder: isEs ? 'Buscar proyecto o tecnología' : 'Search projects or technologies',
       showing: isEs ? 'Mostrando' : 'Showing',
       of: isEs ? 'de' : 'of',
       projectsText: isEs ? 'proyectos' : 'projects',
@@ -47,8 +42,8 @@ export class ProjectListPage {
       noResultsDesc: isEs
         ? 'No hay resultados que coincidan con tu búsqueda. Intenta con otra palabra clave o categoría.'
         : 'No results match your search. Try another keyword or select another category.',
-      viewCode: isEs ? 'Código' : 'Code',
-      liveDemo: isEs ? 'Sitio en vivo' : 'Live Site',
+      viewCode: isEs ? 'Ver código' : 'View code',
+      liveDemo: isEs ? 'Visitar sitio' : 'Visit website',
     };
   });
 

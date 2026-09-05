@@ -1,43 +1,42 @@
-<footer class="mt-20 py-12 border-t border-slate-800/50 text-center relative z-10">
-  <div class="max-w-xl mx-auto mb-8 flex flex-col items-center gap-4">
-    <button
-      type="button"
-      (click)="copyEmail()"
-      aria-label="Copiar el correo jhoracio19@hotmail.com"
-      class="group relative inline-flex items-center gap-3 bg-slate-800/80 hover:bg-slate-700/80 backdrop-blur-md text-white px-6 py-3 rounded-full font-bold border border-slate-700 transition-all hover:scale-105 overflow-hidden"
-    >
-      <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-r from-sky-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-      
-      @if (emailCopied()) {
-        <i aria-hidden="true" class="fas fa-check text-emerald-400"></i>
-        <span class="text-emerald-400" aria-live="polite">{{ t().contact.email_copied }}</span>
-      } @else {
-        <i aria-hidden="true" class="fas fa-copy text-sky-400 group-hover:animate-bounce"></i>
-        <span>{{ t().contact.copy_email }}</span>
-      }
-    </button>
+<footer id="contacto" class="contact-section">
+  <div class="contact-inner">
+    <div class="contact-heading">
+      <span class="availability">{{ t().hero.available }}</span>
+      <h2>{{ t().design.contactTitle }}</h2>
+      <p>{{ t().design.contactIntro }}</p>
+    </div>
+    <div class="contact-actions">
+      <a href="mailto:jhoracio19@hotmail.com" class="contact-email">jhoracio19&#64;hotmail.com</a>
+      <div class="action-row">
+        <a href="mailto:jhoracio19@hotmail.com" class="button button-primary"
+          ><i class="fa-solid fa-paper-plane" aria-hidden="true"></i>{{
+          t().design.sendEmail
+        }}</a
+        ><button type="button" (click)="copyEmail()" class="button button-secondary">
+          <i
+            class="fa-solid"
+            [class.fa-copy]="!emailCopied()"
+            [class.fa-check]="emailCopied()"
+            aria-hidden="true"
+          ></i>
+          {{ t().contact.copy_email }}
+        </button>
+      </div>
+      <p class="copy-status" role="status">
+        {{ emailCopied() ? t().contact.email_copied : copyFailed() ? t().design.copyFailed : '' }}
+      </p>
+    </div>
+    <div class="footer-bottom">
+      <span>José Horacio © 2026</span>
+      <div class="social-links">
+        <a href="https://github.com/jhoracio19" target="_blank" rel="noopener noreferrer"
+          ><i class="fa-brands fa-github" aria-hidden="true"></i><span>GitHub</span></a
+        ><a href="https://www.linkedin.com/in/jhoracio19/" target="_blank" rel="noopener noreferrer"
+          ><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i><span>LinkedIn</span></a
+        ><a href="https://jhdevagency.com/" target="_blank" rel="noopener noreferrer"
+          ><i class="fa-solid fa-building" aria-hidden="true"></i><span>JH Dev Agency</span></a
+        >
+      </div>
+    </div>
   </div>
-
-  <a
-    href="https://jhdevagency.com/"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="inline-block text-slate-400 hover:text-sky-400 text-sm font-medium transition-colors mb-8"
-  >
-    {{ t().contact.agency_cta }} <i class="fas fa-arrow-right text-xs"></i>
-  </a>
-
-  <div class="flex justify-center gap-6 mb-6">
-    <a aria-label="GitHub de José Horacio (abre en una pestaña nueva)" href="https://github.com/jhoracio19" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors text-2xl hover:scale-110">
-      <i aria-hidden="true" class="fab fa-github"></i>
-    </a>
-    <a aria-label="LinkedIn de José Horacio (abre en una pestaña nueva)" href="https://www.linkedin.com/in/jhoracio19/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-sky-500 transition-colors text-2xl hover:scale-110">
-      <i aria-hidden="true" class="fab fa-linkedin"></i>
-    </a>
-    <a aria-label="Enviar un correo a José Horacio" href="mailto:jhoracio19@hotmail.com" class="text-slate-400 hover:text-red-400 transition-colors text-2xl hover:scale-110">
-      <i aria-hidden="true" class="fas fa-envelope"></i>
-    </a>
-  </div>
-  
-  <p class="text-slate-500 text-xs font-mono">Diseñado y desarrollado por José Horacio © 2026</p>
 </footer>

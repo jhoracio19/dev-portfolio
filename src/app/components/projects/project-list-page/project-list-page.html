@@ -1,11 +1,11 @@
-<div class="py-16 md:py-24 px-4 sm:px-6 max-w-7xl mx-auto min-h-screen">
+<div class="catalog-page content-section">
   <!-- Back button & Page header -->
   <div class="mb-6">
     <a
       routerLink="/"
       class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-zinc-400 hover:text-white transition-colors mb-6 group cursor-pointer"
     >
-      <i class="fas fa-arrow-left text-[10px] transition-transform group-hover:-translate-x-1"></i>
+      <i class="fas fa-arrow-left text-xs transition-transform group-hover:-translate-x-1"></i>
       {{ t().projects.back_home }}
     </a>
     <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-3">
@@ -17,31 +17,38 @@
   </div>
 
   <!-- Search and summary stats -->
-  <div class="mt-8 mb-6 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
+  <div
+    class="mt-8 mb-6 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4"
+  >
     <!-- Search bar -->
     <div class="relative flex-1 max-w-lg">
-      <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 text-xs"></i>
+      <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 text-xs"></i>
+      <label for="project-search" class="sr-only">{{ i18n().searchPlaceholder }}</label>
       <input
+        id="project-search"
         type="text"
         [value]="searchQuery()"
         (input)="onSearch($event)"
         [placeholder]="i18n().searchPlaceholder"
-        class="w-full bg-white/[0.03] border border-white/10 focus:border-white/40 rounded-full pl-10 pr-10 py-2.5 text-xs sm:text-sm text-white placeholder:text-zinc-500 outline-none transition-all"
+        class="w-full bg-white/[0.03] border border-white/10 focus:border-white/40 rounded-full pl-10 pr-10 py-2.5 text-sm text-white placeholder:text-zinc-400 outline-none transition-all"
       />
       @if (searchQuery()) {
-      <button
-        type="button"
-        (click)="clearSearch()"
-        class="absolute right-3.5 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-white transition-colors text-xs p-1 cursor-pointer"
-        aria-label="Borrar búsqueda"
-      >
-        <i class="fas fa-times"></i>
-      </button>
+        <button
+          type="button"
+          (click)="clearSearch()"
+          class="absolute right-3.5 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-white transition-colors text-xs p-1 cursor-pointer"
+          [attr.aria-label]="i18n().clearSearch"
+        >
+          <i class="fas fa-times"></i>
+        </button>
       }
     </div>
 
     <!-- Counters summary -->
-    <div class="text-xs text-zinc-400 font-mono flex items-center gap-1.5 self-start lg:self-center">
+    <div
+      role="status"
+      class="text-sm text-zinc-400 flex items-center gap-1.5 self-start lg:self-center"
+    >
       <span>{{ i18n().showing }}</span>
       <span class="text-white font-bold">{{ filteredProjects().length }}</span>
       <span>{{ i18n().of }} {{ projects().length }} {{ i18n().projectsText }}</span>
@@ -51,123 +58,131 @@
   <!-- Category filter tabs -->
   <div class="flex flex-wrap items-center gap-2 mb-10 border-b border-white/[0.08] pb-6">
     @for (filter of filters(); track filter.key) {
-    <button
-      type="button"
-      (click)="setFilter(filter.key)"
-      [attr.aria-pressed]="filterSelected() === filter.key"
-      [class]="
-        filterSelected() === filter.key
-          ? 'bg-white text-black font-semibold shadow-sm'
-          : 'bg-transparent text-zinc-400 hover:text-white border border-white/10 hover:border-white/30'
-      "
-      class="px-3.5 py-1.5 rounded-full text-xs transition-all cursor-pointer inline-flex items-center gap-2"
-    >
-      <span>{{ filter.label }}</span>
-      <span
+      <button
+        type="button"
+        (click)="setFilter(filter.key)"
+        [attr.aria-pressed]="filterSelected() === filter.key"
         [class]="
           filterSelected() === filter.key
-            ? 'bg-black/10 text-black font-bold'
-            : 'bg-white/10 text-zinc-400'
+            ? 'bg-white text-black font-semibold shadow-sm'
+            : 'bg-transparent text-zinc-400 hover:text-white border border-white/10 hover:border-white/30'
         "
-        class="text-[10px] px-1.5 py-0.5 rounded-full font-mono"
+        class="px-3.5 py-1.5 rounded-full text-sm min-h-11 transition-all cursor-pointer inline-flex items-center gap-2"
       >
-        {{ filter.count }}
-      </span>
-    </button>
+        <span>{{ filter.label }}</span>
+        <span
+          [class]="
+            filterSelected() === filter.key
+              ? 'bg-black/10 text-black font-bold'
+              : 'bg-white/10 text-zinc-400'
+          "
+          class="text-xs px-1.5 py-0.5 rounded-full font-mono"
+        >
+          {{ filter.count }}
+        </span>
+      </button>
     }
   </div>
 
   <!-- Projects Grid -->
   @if (filteredProjects().length > 0) {
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    @for (project of filteredProjects(); track project.id) {
-    <article
-      class="group border border-white/10 hover:border-white/30 bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-300 rounded-2xl overflow-hidden flex flex-col"
-    >
-      <!-- Thumbnail & Category badge -->
-      <div class="aspect-video relative overflow-hidden bg-zinc-900">
-        <img
-          [src]="project.image"
-          [alt]="project.title"
-          width="600"
-          height="338"
-          loading="lazy"
-          decoding="async"
-          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60"></div>
-        <span
-          class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-medium tracking-wide border backdrop-blur-md"
-          [class]="categoryBadge[project.category]"
-        >
-          {{ categoryLabel(project.category) }}
-        </span>
-      </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      @for (project of filteredProjects(); track project.id) {
+        <article class="catalog-card">
+          <!-- Thumbnail & Category badge -->
+          <div class="aspect-video relative overflow-hidden bg-zinc-900">
+            <img
+              [src]="project.image"
+              [alt]="project.title"
+              width="600"
+              height="338"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60"
+            ></div>
+            <span class="catalog-category">
+              {{ categoryLabel(project.category) }}
+            </span>
+          </div>
 
-      <!-- Details -->
-      <div class="p-5 sm:p-6 flex flex-col flex-1">
-        <h2 class="text-lg font-semibold text-white mb-2 group-hover:text-zinc-200 transition-colors">
-          {{ project.title }}
-        </h2>
+          <!-- Details -->
+          <div class="p-5 sm:p-6 flex flex-col flex-1">
+            <h2
+              class="text-lg font-semibold text-white mb-2 group-hover:text-zinc-200 transition-colors"
+            >
+              {{ project.title }}
+            </h2>
 
-        <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-5 line-clamp-3">
-          {{ project.description }}
-        </p>
+            <p class="text-zinc-400 text-sm leading-relaxed mb-5">
+              {{ project.description }}
+            </p>
 
-        <!-- Tech badges -->
-        <div class="flex flex-wrap gap-1.5 mb-6">
-          @for (tech of project.technologies; track tech) {
-          <span
-            class="px-2 py-0.5 bg-white/[0.04] text-zinc-300 text-[11px] rounded-md border border-white/[0.08] font-mono"
-          >
-            {{ tech }}
-          </span>
-          }
-        </div>
+            <!-- Tech badges -->
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              @for (tech of project.technologies; track tech) {
+                <span
+                  class="px-2 py-0.5 bg-white/[0.04] text-zinc-300 text-xs rounded-md border border-white/[0.08] font-mono"
+                >
+                  {{ tech }}
+                </span>
+              }
+            </div>
 
-        <!-- Links -->
-        <div class="mt-auto pt-4 border-t border-white/[0.06] flex items-center justify-between gap-3">
-          <a
-            [href]="project.githubUrl"
-            target="_blank"
-            rel="noopener noreferrer"
-            [attr.aria-label]="'Ver código de ' + project.title"
-            class="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-white transition-colors"
-          >
-            <i class="fab fa-github"></i>
-            <span>{{ i18n().viewCode }}</span>
-          </a>
-
-          @if (project.demoUrl) {
-          <a
-            [href]="project.demoUrl"
-            target="_blank"
-            rel="noopener noreferrer"
-            [attr.aria-label]="'Ver demo de ' + project.title"
-            class="inline-flex items-center gap-1.5 bg-white text-black hover:bg-zinc-200 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all"
-          >
-            <span>{{ i18n().liveDemo }}</span>
-            <i class="fas fa-arrow-up-right-from-square text-[10px]"></i>
-          </a>
-          }
-        </div>
-      </div>
-    </article>
-    }
-  </div>
+            <!-- Links -->
+            <div
+              class="mt-auto pt-4 border-t border-white/[0.06] flex items-center justify-between gap-3"
+            >
+              @if (project.githubUrl) {
+                <a
+                  [href]="project.githubUrl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  [attr.aria-label]="
+                    i18n().viewCode + ': ' + project.title + ' (' + t().design.newTab + ')'
+                  "
+                  class="text-link"
+                >
+                  <i class="fab fa-github"></i>
+                  <span>{{ i18n().viewCode }}</span>
+                </a>
+              }
+              @if (project.demoUrl) {
+                <a
+                  [href]="project.demoUrl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  [attr.aria-label]="
+                    i18n().liveDemo + ': ' + project.title + ' (' + t().design.newTab + ')'
+                  "
+                  class="button button-primary"
+                >
+                  <span>{{ i18n().liveDemo }}</span>
+                  <i class="fas fa-arrow-up-right-from-square text-xs"></i>
+                </a>
+              }
+            </div>
+          </div>
+        </article>
+      }
+    </div>
   } @else {
-  <!-- Empty state -->
-  <div class="py-20 text-center flex flex-col items-center justify-center border border-dashed border-white/10 rounded-2xl p-8">
-    <i class="fas fa-folder-open text-3xl text-zinc-600 mb-4"></i>
-    <h3 class="text-base font-semibold text-white mb-1">{{ i18n().noResultsTitle }}</h3>
-    <p class="text-zinc-400 text-xs max-w-sm mb-6">{{ i18n().noResultsDesc }}</p>
-    <button
-      type="button"
-      (click)="clearSearch()"
-      class="border border-white/20 hover:border-white/40 text-xs text-white px-4 py-2 rounded-full transition-colors cursor-pointer"
+    <!-- Empty state -->
+    <div
+      class="py-20 text-center flex flex-col items-center justify-center border border-dashed border-white/10 rounded-2xl p-8"
     >
-      {{ i18n().clearSearch }}
-    </button>
-  </div>
+      <i class="fas fa-folder-open text-3xl text-zinc-600 mb-4"></i>
+      <h3 class="text-base font-semibold text-white mb-1">{{ i18n().noResultsTitle }}</h3>
+      <p class="text-zinc-400 text-xs max-w-sm mb-6">{{ i18n().noResultsDesc }}</p>
+      <button
+        type="button"
+        (click)="clearSearch()"
+        class="border border-white/20 hover:border-white/40 text-xs text-white px-4 py-2 rounded-full transition-colors cursor-pointer"
+      >
+        {{ i18n().clearSearch }}
+      </button>
+    </div>
   }
 </div>

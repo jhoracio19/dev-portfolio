@@ -15,13 +15,12 @@ export class ProjectService {
       {
         id: 'flowcard',
         title: 'FlowCard',
-        description: isEn 
-          ? 'A platform designed to provide financial peace of mind. Helps manage credits and automate personal finances intelligently.' 
+        description: isEn
+          ? 'A platform designed to provide financial peace of mind. Helps manage credits and automate personal finances intelligently.'
           : 'Una plataforma pensada para dar tranquilidad financiera. Ayuda a gestionar créditos y automatizar finanzas personales de forma inteligente.',
         image: 'assets/flowcard.webp',
         technologies: ['Django', 'PostgreSQL', 'Python'],
         category: 'platforms',
-        githubUrl: 'https://github.com/jhoracio19',
       },
       {
         id: 'gifapp',
@@ -68,7 +67,7 @@ export class ProjectService {
         technologies: ['React.js', 'TypeScript', 'useReducer', 'Tailwind CSS'],
         category: 'tools',
         githubUrl: 'https://github.com/jhoracio19/calorie-tracker.git',
-        demoUrl: 'https://calorie-tracker-jh.netlify.app/'
+        demoUrl: 'https://calorie-tracker-jh.netlify.app/',
       },
       {
         id: 'guitarla-react',
@@ -80,7 +79,7 @@ export class ProjectService {
         technologies: ['React.js', 'TypeScript', 'Custom Hooks'],
         category: 'tools',
         githubUrl: 'https://github.com/jhoracio19/guitarla-react-ts.git',
-        demoUrl: 'https://guitarla-sho.netlify.app/'
+        demoUrl: 'https://guitarla-sho.netlify.app/',
       },
       {
         id: 'restaurant-calculator',
@@ -92,7 +91,7 @@ export class ProjectService {
         technologies: ['React.js', 'TypeScript', 'Tailwind CSS', 'useMemo'],
         category: 'tools',
         githubUrl: 'https://github.com/jhoracio19/restaurant-order-calculator.git',
-        demoUrl: 'https://calculator-tips-jh.netlify.app/'
+        demoUrl: 'https://calculator-tips-jh.netlify.app/',
       },
       {
         id: 'skycast',
@@ -227,28 +226,17 @@ export class ProjectService {
     ];
   });
 
-  private categoryOrder: Project['category'][] = ['clients', 'platforms', 'tools', 'experiments'];
-
   getProjects() {
     return this.projectsData;
   }
 
   getFeaturedProjects() {
-    return computed(() => {
-      const all = this.projectsData();
-      const featured: Project[] = [];
-
-      for (const category of this.categoryOrder) {
-        const firstInCategory = all.find((p) => p.category === category);
-        if (firstInCategory) featured.push(firstInCategory);
-      }
-
-      for (const project of all) {
-        if (featured.length >= 4) break;
-        if (!featured.includes(project)) featured.push(project);
-      }
-
-      return featured;
-    });
+    const selectedIds = ['remindhome', 'otorrino-tlaxcala', 'cabana-maria-maria'];
+    return computed(() =>
+      selectedIds.flatMap((id) => {
+        const project = this.projectsData().find((project) => project.id === id);
+        return project ? [project] : [];
+      }),
+    );
   }
 }

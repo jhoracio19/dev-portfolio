@@ -1,63 +1,27 @@
-<section id="experiencia" class="py-24 px-6 max-w-7xl mx-auto">
-  <h2 class="text-3xl font-bold text-white mb-12 flex items-center gap-3" data-aos="fade-right">
-    {{ t().experience.title }}
-  </h2>
-
-  <div class="space-y-12 border-l-2 border-slate-800 ml-4 pl-8">
-    <div class="relative" data-aos="fade-up" data-aos-delay="100">
-      <div
-        class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-sky-500 shadow-[0_0_10px_#0ea5e9]"
-      ></div>
-      <h3 class="text-xl font-bold text-white tracking-tight">
-        {{ t().experience.socialler.title }}
-      </h3>
-      <p class="text-sky-400 text-sm font-mono mt-1">{{ t().experience.socialler.date }}</p>
-      <p class="text-slate-400 mt-3 leading-relaxed">
-        {{ t().experience.socialler.desc }}
-      </p>
-      <ul class="mt-4 space-y-2">
-        @for (achievement of t().experience.socialler.achievements; track achievement) {
-        <li class="text-slate-400 text-sm leading-relaxed flex gap-2">
-          <span class="text-sky-500 mt-1">▹</span>
-          <span>{{ achievement }}</span>
-        </li>
+<section id="experiencia" class="content-section">
+  <div class="section-heading">
+    <h2>{{ t().experience.title }}</h2>
+    <a href="assets/mi-cv-2026.pdf" download class="text-link">{{ t().hero.cta_cv }}</a>
+  </div>
+  <div class="experience-row">
+    <div>
+      <h3>{{ t().experience.socialler.title }}</h3>
+      <p class="muted">{{ t().experience.socialler.date }}</p>
+    </div>
+    <div>
+      <p>{{ t().design.sociallerIntro }}</p>
+      <ul class="contribution-list">
+        @for (item of t().design.contributions; track item) {
+          <li>{{ item }}</li>
         }
       </ul>
-      <div class="flex flex-wrap gap-2 mt-4">
-        <span
-          class="text-[10px] px-2 py-1 rounded-md bg-slate-800 text-slate-400 border border-slate-700 font-mono"
-          >Next.js · TypeScript</span
-        >
-        <span
-          class="text-[10px] px-2 py-1 rounded-md bg-slate-800 text-slate-400 border border-slate-700 font-mono"
-          >Ciberseguridad Web</span
-        >
-        <span
-          class="text-[10px] px-2 py-1 rounded-md bg-slate-800 text-slate-400 border border-slate-700 font-mono"
-          >React Hook Form · Zod</span
-        >
-      </div>
     </div>
-
-    <div class="relative" data-aos="fade-up" data-aos-delay="200">
-      <div class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-slate-700"></div>
-      <h3 class="text-xl font-bold text-white tracking-tight">
-        {{ t().experience.basil.title }}
-      </h3>
-      <p class="text-slate-500 text-sm font-mono mt-1">{{ t().experience.basil.date }}</p>
-      <p class="text-slate-400 mt-3 leading-relaxed">
-        {{ t().experience.basil.desc }}
-      </p>
-      <div class="flex flex-wrap gap-2 mt-4">
-        <span
-          class="text-[10px] px-2 py-1 rounded-md bg-slate-800 text-slate-400 border border-slate-700 font-mono"
-          >Angular · UI/UX</span
-        >
-        <span
-          class="text-[10px] px-2 py-1 rounded-md bg-slate-800 text-slate-400 border border-slate-700 font-mono"
-          >Problem Solving</span
-        >
-      </div>
+  </div>
+  <div class="experience-row">
+    <div>
+      <h3>{{ t().experience.basil.title }}</h3>
+      <p class="muted">{{ t().experience.basil.date }}</p>
     </div>
+    <p>{{ t().experience.basil.desc }}</p>
   </div>
 </section>

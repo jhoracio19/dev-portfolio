@@ -1,68 +1,118 @@
-import { Component, signal, OnInit, OnDestroy, Inject, PLATFORM_ID, inject } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import {
+  Component,
+  computed,
+  signal,
+  OnInit,
+  OnDestroy,
+  inject,
+  ElementRef,
+  ViewChild,
+} from '@angular/core';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID } from '@angular/core';
+import { NavigationEnd, Router, RouterLink } from '@angular/router';
+import { Subscription, filter } from 'rxjs';
+import { ScrollService } from '../../services/scroll.service';
 import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [RouterLink],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
 export class Navbar implements OnInit, OnDestroy {
   isMenuOpen = signal(false);
   activeSection = signal('inicio');
-  private observer: IntersectionObserver | null = null;
-  
-  // Inyectamos el servicio de idiomas
   public langService = inject(LanguageService);
   t = this.langService.current;
-
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  links = computed(() => [
+    { id: 'proyectos', label: this.t().nav.projects },
+    { id: 'experiencia', label: this.t().nav.experience },
+    { id: 'sobre-mi', label: this.t().nav.about },
+  ]);
+  @ViewChild('menuToggle') menuToggle?: ElementRef<HTMLButtonElement>;
+  private document = inject(DOCUMENT);
+  private platform = inject(PLATFORM_ID);
+  private router = inject(Router);
+  private scrollService = inject(ScrollService);
+  private observer?: IntersectionObserver;
+  private navigation?: Subscription;
+  private timer?: ReturnType<typeof setTimeout>;
+  private oldOverflow = '';
+  private breakpoint?: MediaQueryList;
+  private resize = () => {
+    if (this.breakpoint?.matches) this.closeMenu(false);
+  };
 
   ngOnInit() {
-    if (isPlatformBrowser(this.platformId)) {
-      // Pequeño delay para asegurar que el DOM esté listo
-      setTimeout(() => this.initScrollSpy(), 100);
-    }
+    if (!isPlatformBrowser(this.platform)) return;
+    this.scheduleObserver();
+    this.navigation = this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => this.scheduleObserver());
+    this.breakpoint = window.matchMedia('(min-width: 900px)');
+    this.breakpoint.addEventListener('change', this.resize);
   }
-
   ngOnDestroy() {
-    if (this.observer) {
-      this.observer.disconnect();
+    this.observer?.disconnect();
+    this.navigation?.unsubscribe();
+    clearTimeout(this.timer);
+    this.breakpoint?.removeEventListener('change', this.resize);
+    this.closeMenu(false);
+  }
+  toggleMenu() {
+    if (this.isMenuOpen()) return this.closeMenu();
+    this.oldOverflow = this.document.body.style.overflow;
+    this.document.body.style.overflow = 'hidden';
+    this.scrollService.setScrollLocked(true);
+    this.isMenuOpen.set(true);
+  }
+  closeMenu(restoreFocus = true) {
+    if (!this.isMenuOpen()) return;
+    this.isMenuOpen.set(false);
+    this.document.body.style.overflow = this.oldOverflow;
+    this.scrollService.setScrollLocked(false);
+    if (restoreFocus) this.menuToggle?.nativeElement.focus();
+  }
+  onMenuKeydown(event: KeyboardEvent) {
+    if (!this.isMenuOpen()) return;
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      this.closeMenu();
+      return;
+    }
+    if (event.key !== 'Tab') return;
+    const nav = this.menuToggle?.nativeElement.closest('nav');
+    const elements = Array.from(nav?.querySelectorAll<HTMLElement>('a[href], button') ?? []).filter(
+      (el) => el.getClientRects().length > 0,
+    );
+    const first = elements[0],
+      last = elements[elements.length - 1];
+    if (event.shiftKey && this.document.activeElement === first) {
+      event.preventDefault();
+      last?.focus();
+    } else if (!event.shiftKey && this.document.activeElement === last) {
+      event.preventDefault();
+      first?.focus();
     }
   }
-
-  toggleMenu() {
-    this.isMenuOpen.update((val) => !val);
-  }
-
-  closeMenu() {
-    this.isMenuOpen.set(false);
-  }
-
-  setActive(section: string) {
-    this.activeSection.set(section);
-    this.closeMenu();
-  }
-
-  private initScrollSpy() {
-    const options = {
-      root: null,
-      rootMargin: '-30% 0px -60% 0px', // Detecta la sección cuando está en el tercio superior
-      threshold: 0,
-    };
-
-    this.observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          this.activeSection.set(entry.target.id);
-        }
-      });
-    }, options);
-
-    const sections = document.querySelectorAll('section[id]');
-    sections.forEach((section) => this.observer?.observe(section));
+  private scheduleObserver() {
+    clearTimeout(this.timer);
+    this.timer = setTimeout(() => {
+      this.observer?.disconnect();
+      this.activeSection.set('');
+      this.observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries)
+            if (entry.isIntersecting) this.activeSection.set(entry.target.id);
+        },
+        { rootMargin: '-15% 0px -65% 0px' },
+      );
+      this.document
+        .querySelectorAll('section[id], footer[id]')
+        .forEach((el) => this.observer?.observe(el));
+    }, 100);
   }
 }
