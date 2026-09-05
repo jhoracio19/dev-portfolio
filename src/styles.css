@@ -300,6 +300,9 @@ input {
   gap: 32px;
 }
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   font-weight: 600;
   font-size: 16px;
   letter-spacing: -0.025em;
@@ -313,6 +316,14 @@ input {
   margin-top: 3px;
   letter-spacing: 0;
 }
+.brand .brand-name {
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 0;
+}
+.brand-mark { flex: 0 0 40px; }
+.footer-signature { display: inline-flex; align-items: center; gap: 14px; }
 .nav-controls {
   order: 3;
   display: flex;
@@ -406,6 +417,24 @@ input {
   color: var(--muted);
   margin: 24px 0 28px;
 }
+.hero-copy .hero-name {
+  font-size: clamp(72px, 7.7vw, 108px);
+  line-height: .95;
+  letter-spacing: -.075em;
+  font-weight: 700;
+}
+.hero-name > span { display: block; }
+.name-period { color: var(--accent); }
+.hero-statement {
+  font-size: clamp(21px, 2.1vw, 27px);
+  line-height: 1.35;
+  letter-spacing: -.035em;
+  max-width: 29ch;
+  margin-top: 28px;
+}
+.hero-statement + .hero-intro { font-size: 15px; margin-top: 18px; }
+.button-primary { border-radius: 3px 14px 3px 14px; }
+.preview-heading { border-left: 3px solid var(--accent); }
 .hero-meta {
   display: flex;
   align-items: center;
@@ -811,7 +840,12 @@ input {
 .education-panel {
   border-left: 1px solid var(--line);
   padding-left: 32px;
+  align-self: start;
 }
+.personal-notes { margin: 28px 0 20px; }
+.personal-note { padding: 20px 0; border-top: 1px solid var(--line); }
+.personal-note h3 { font-size: 17px; margin-bottom: 10px; }
+.personal-note p { color: var(--muted); font-size: 14px; line-height: 1.75; max-width: 60ch; }
 .education-panel h3 {
   font-size: 20px;
   margin-bottom: 20px;
@@ -1034,6 +1068,7 @@ input {
   .hero-copy h1 {
     font-size: 46px;
   }
+  .hero-copy .hero-name { font-size: clamp(60px, 8.5vw, 76px); }
   .hack-grid {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -1072,6 +1107,8 @@ input {
     font-size: clamp(36px, 10.6vw, 46px);
     max-width: 14ch;
   }
+  .hero-copy .hero-name { font-size: clamp(66px, 18.5vw, 90px); }
+  .hero-statement { font-size: 23px; margin-top: 22px; }
   .hero-intro {
     font-size: 16px;
     margin: 20px 0 24px;

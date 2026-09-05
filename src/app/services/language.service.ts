@@ -17,10 +17,10 @@ export class LanguageService {
   translations = {
     es: {
       design: {
-        headline: 'Sitios y aplicaciones web para negocios.',
+        headline: 'Desarrollo experiencias web, de la idea al producto.',
         intro:
-          'Trabajo con React, Next.js y Angular. Desde la interfaz hasta la integración con backend.',
-        viewWork: 'Ver proyectos',
+          'Soy desarrollador fullstack y estudiante de Ingeniería en TI en la BUAP. Construyo sitios y aplicaciones para negocios y dirijo JH Dev Agency.',
+        viewWork: 'Ver mi trabajo',
         talk: 'Hablemos',
         previewLabel: 'Conocer el proyecto RemindHome',
         selectedProduct: 'Producto seleccionado',
@@ -48,6 +48,11 @@ export class LanguageService {
           'Soy José Horacio, desarrollador fullstack y estudiante de Ingeniería en TI en la BUAP.',
         aboutBody:
           'Dirijo JH Dev Agency y desarrollo sitios y aplicaciones para negocios. Me interesa conectar una buena experiencia de uso con código que se pueda mantener.',
+        personalNotes: [
+          { title: 'De una necesidad a una interfaz', body: 'Mis proyectos conectan tareas concretas con experiencias web: organizar un hogar en RemindHome, agendar una consulta o cotizar un espacio para eventos.' },
+          { title: 'También trabajo detrás de la pantalla', body: 'Mi trabajo abarca componentes, formularios e integración con backend. En Socialler participo en mejoras de seguridad y refactorización, además de desarrollar la interfaz.' },
+          { title: 'Construir en equipo, contra reloj', body: 'Los hackathones también forman parte de mi recorrido. Con Verdana Loop, mi equipo obtuvo el tercer lugar entre 25 equipos en Industry Hack Tec.' },
+        ],
         programming: 'Principios de programación',
         architecture:
           'Mi enfoque actual: arquitectura hexagonal, Clean Code, SOLID e integración de APIs.',
@@ -155,9 +160,9 @@ export class LanguageService {
     },
     en: {
       design: {
-        headline: 'Websites and applications for businesses.',
-        intro: 'I work with React, Next.js and Angular. From the interface to backend integration.',
-        viewWork: 'View projects',
+        headline: 'I build web experiences, from idea to product.',
+        intro: 'I’m a fullstack developer and IT Engineering student at BUAP. I build websites and applications for businesses and run JH Dev Agency.',
+        viewWork: 'View my work',
         talk: 'Let’s talk',
         previewLabel: 'Explore the RemindHome project',
         selectedProduct: 'Selected product',
@@ -184,6 +189,11 @@ export class LanguageService {
         aboutIntro: 'I’m José Horacio, a fullstack developer and IT Engineering student at BUAP.',
         aboutBody:
           'I run JH Dev Agency and build websites and applications for businesses. I care about connecting a good user experience with maintainable code.',
+        personalNotes: [
+          { title: 'From a need to an interface', body: 'My projects connect everyday tasks with web experiences: organizing a household in RemindHome, booking an appointment or estimating an event venue package.' },
+          { title: 'Behind the screen, too', body: 'My work spans components, forms and backend integration. At Socialler, I contribute to security improvements and refactoring alongside interface development.' },
+          { title: 'Building together, against the clock', body: 'Hackathons are part of my journey, too. With Verdana Loop, my team placed third out of 25 teams at Industry Hack Tec.' },
+        ],
         programming: 'Programming principles',
         architecture:
           'My current focus: hexagonal architecture, Clean Code, SOLID and API integration.',

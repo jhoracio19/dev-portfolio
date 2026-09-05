@@ -3,6 +3,14 @@
     <h2>{{ t().about.title }}</h2>
     <p class="about-intro">{{ t().design.aboutIntro }}</p>
     <p class="muted">{{ t().design.aboutBody }}</p>
+    <div class="personal-notes">
+      @for (note of t().design.personalNotes; track note.title) {
+        <div class="personal-note">
+          <h3>{{ note.title }}</h3>
+          <p>{{ note.body }}</p>
+        </div>
+      }
+    </div>
     <a href="https://jhdevagency.com/" target="_blank" rel="noopener noreferrer" class="text-link"
       >{{ t().about.agency_cta }} <span aria-hidden="true">↗</span></a
     >
