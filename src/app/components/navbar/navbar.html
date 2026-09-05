@@ -25,10 +25,10 @@
         aria-controls="menu-links"
         [attr.aria-label]="isMenuOpen() ? t().design.closeMenu : t().design.openMenu"
       >
-        <span aria-hidden="true">{{ isMenuOpen() ? '✕' : '☰' }}</span>
+        <span class="menu-icon" [class.is-open]="isMenuOpen()" aria-hidden="true"><span></span><span></span><span></span></span>
       </button>
     </div>
-    <div id="menu-links" class="nav-links" [class.is-open]="isMenuOpen()">
+    <div id="menu-links" class="nav-links" [class.is-open]="isMenuOpen()" [attr.inert]="isMobile() && !isMenuOpen() ? '' : null" [attr.aria-hidden]="isMobile() && !isMenuOpen() ? 'true' : null" data-lenis-prevent>
       @for (item of links(); track item.id) {
         <a
           routerLink="/"

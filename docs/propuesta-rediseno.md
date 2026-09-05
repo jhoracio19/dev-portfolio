@@ -4,18 +4,18 @@
 
 Un portfolio de desarrollador orientado a mostrar productos reales y facilitar el contacto. La propuesta ya está implementada en la aplicación Angular; se puede revisar con `npm start` en http://127.0.0.1:4200.
 
-Se conserva la personalidad oscura y el avatar. El elemento protagonista es el trabajo publicado: una vista de RemindHome acompaña la portada en escritorio, y las capturas de los proyectos conducen el recorrido. En móvil se prioriza el mensaje y las acciones.
+La segunda propuesta adopta una interfaz futurista centrada en productos reales. RemindHome y Otorrino forman una composición con profundidad, retícula técnica y una firma JH/dev. En móvil también aparece esta composición después del mensaje y las acciones. La entrada se anima una sola vez y respeta la preferencia de movimiento reducido.
 
 ## Sistema visual
 
 | Elemento                  | Propuesta                                                                   |
 | ------------------------- | --------------------------------------------------------------------------- |
-| Fondo                     | Grafito `#101214`                                                           |
-| Superficies               | `#191C20`                                                                   |
-| Texto principal           | `#F4F5F7`                                                                   |
-| Texto secundario          | `#B0B5BF`                                                                   |
-| Bordes                    | `#34383F`                                                                   |
-| Acento y acción principal | Lavanda `#B7C3FF`                                                           |
+| Fondo                     | Carbón azulado `#080C14`                                                    |
+| Superficies               | `#101827`                                                                   |
+| Texto principal           | `#EDF4FF`                                                                   |
+| Texto secundario          | `#A5B4CB`                                                                   |
+| Bordes                    | `#29384C`                                                                   |
+| Acentos                   | Cian `#71E4F5` y violeta `#AD9AFF`                                          |
 | Tipografía                | Inter: titulares con peso 600 y espaciado compacto; cuerpo entre 14 y 17 px |
 | Contenido                 | Ancho máximo de 1180 px, alineación a la izquierda                          |
 | Botones                   | Dos variantes, altura mínima de 46 px y radio de 10 px                      |
@@ -51,7 +51,25 @@ Cada destacado incluye problema, implementación y resultado publicado. El conte
 - Copia del correo con confirmación y alternativa si el navegador la rechaza.
 - Preferencia de movimiento reducido respetada; cursor personalizado limitado a puntero preciso sin reducción de movimiento.
 
-## Verificación
+## Verificación de la segunda propuesta
+
+### Movimiento e interacción
+
+Lenis comparte un solo ciclo de animación con el cursor. Los enlaces internos y los eventos de scroll del router pasan por el servicio de desplazamiento, con un margen de 100 px para la cabecera. El desplazamiento táctil sigue siendo nativo y la preferencia de movimiento reducido se respeta también al cambiarla durante la sesión.
+
+Los bloques aparecen al entrar en pantalla una sola vez. Los detalles animan su altura al abrir y cerrar, admiten inversión con clics rápidos y conservan el control por teclado. El menú móvil anima panel e icono y mantiene inaccesibles los enlaces mientras está cerrado.
+
+Pruebas de interacción: apertura, cierre con Enter, clics rápidos, bloqueo de scroll del menú, Escape y devolución del foco, navegación desde el catálogo, margen de anclas, interpolación de rueda y ausencia de animación con movimiento reducido.
+
+### Diseño
+
+- Compilación de producción y tres rutas prerenderizadas.
+- Capturas revisadas de portada en escritorio y móvil y del stack en escritorio.
+- Sin desbordamiento horizontal a 320, 390, 768 y 1440 px después de ajustar las órbitas decorativas.
+- Imágenes cargadas comprobadas sin recursos rotos.
+- Movimiento reducido: la composición permanece visible y sin animación.
+
+## Verificación de la primera propuesta
 
 - Compilación de producción y prerenderizado de las rutas.
 - Revisión visual de escritorio, móvil de 390 × 844 px y tablet de 768 × 1024 px.

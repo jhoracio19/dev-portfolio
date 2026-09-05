@@ -24,6 +24,7 @@ import { LanguageService } from '../../services/language.service';
 })
 export class Navbar implements OnInit, OnDestroy {
   isMenuOpen = signal(false);
+  isMobile = signal(false);
   activeSection = signal('inicio');
   public langService = inject(LanguageService);
   t = this.langService.current;
@@ -43,6 +44,7 @@ export class Navbar implements OnInit, OnDestroy {
   private oldOverflow = '';
   private breakpoint?: MediaQueryList;
   private resize = () => {
+    this.isMobile.set(!this.breakpoint?.matches);
     if (this.breakpoint?.matches) this.closeMenu(false);
   };
 
@@ -53,6 +55,7 @@ export class Navbar implements OnInit, OnDestroy {
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => this.scheduleObserver());
     this.breakpoint = window.matchMedia('(min-width: 900px)');
+    this.resize();
     this.breakpoint.addEventListener('change', this.resize);
   }
   ngOnDestroy() {
@@ -64,15 +67,15 @@ export class Navbar implements OnInit, OnDestroy {
   }
   toggleMenu() {
     if (this.isMenuOpen()) return this.closeMenu();
-    this.oldOverflow = this.document.body.style.overflow;
-    this.document.body.style.overflow = 'hidden';
+    this.oldOverflow = this.document.documentElement.style.overflow;
+    this.document.documentElement.style.overflow = 'hidden';
     this.scrollService.setScrollLocked(true);
     this.isMenuOpen.set(true);
   }
   closeMenu(restoreFocus = true) {
     if (!this.isMenuOpen()) return;
     this.isMenuOpen.set(false);
-    this.document.body.style.overflow = this.oldOverflow;
+    this.document.documentElement.style.overflow = this.oldOverflow;
     this.scrollService.setScrollLocked(false);
     if (restoreFocus) this.menuToggle?.nativeElement.focus();
   }

@@ -12,10 +12,10 @@ import {
 import { Navbar } from './components/navbar/navbar';
 import { Footer } from './components/footer/footer';
 import { Title, Meta } from '@angular/platform-browser';
-import AOS from 'aos';
 import Lenis from 'lenis';
 import { RouterOutlet } from '@angular/router';
 import { ScrollService } from './services/scroll.service';
+import { MotionService } from './services/motion.service';
 
 @Component({
   selector: 'app-root',
@@ -41,6 +41,7 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
   private pointerLeaveHandler?: () => void;
 
   private scrollService = inject(ScrollService);
+  private motionService = inject(MotionService);
   private viewportScroller = inject(ViewportScroller);
 
   constructor(
@@ -55,21 +56,13 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
     if (!isPlatformBrowser(this.platformId)) return;
 
-    AOS.init({
-      duration: 700,
-      once: true,
-      disable: () => window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-      easing: 'ease-out-cubic',
-    });
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
     this.lenis = new Lenis({
-      duration: 1.2,
+      lerp: 0.085,
       smoothWheel: true,
-      wheelMultiplier: 0.85,
+      wheelMultiplier: 1,
       syncTouch: false,
       anchors: false,
+      respectReducedMotion: true,
     });
 
     this.scrollService.setLenis(this.lenis);
@@ -85,6 +78,7 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     if (!isPlatformBrowser(this.platformId)) return;
+    this.motionService.init();
     if (window.matchMedia('(pointer: fine) and (prefers-reduced-motion: no-preference)').matches)
       this.initCustomCursor();
   }
@@ -92,6 +86,8 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy() {
     if (this.animationFrameId) cancelAnimationFrame(this.animationFrameId);
     this.lenis?.destroy();
+    this.scrollService.ngOnDestroy();
+    this.motionService.ngOnDestroy();
 
     if (this.pointerMoveHandler) {
       window.removeEventListener('pointermove', this.pointerMoveHandler);

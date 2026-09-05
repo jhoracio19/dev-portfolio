@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { LanguageService } from '../../services/language.service';
 import { ProjectCategory } from '../../models/project-model';
+import { AnimatedDetailsDirective } from '../../directives/animated-details.directive';
 
 @Component({
   selector: 'app-projects',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, AnimatedDetailsDirective],
   templateUrl: './projects.html',
   styleUrl: './projects.css',
 })

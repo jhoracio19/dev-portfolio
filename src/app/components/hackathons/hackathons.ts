@@ -2,10 +2,11 @@ import { Component, computed, inject } from '@angular/core';
 import { Hackathon } from '../../models/hackathon-model';
 import { CommonModule } from '@angular/common';
 import { LanguageService } from '../../services/language.service';
+import { AnimatedDetailsDirective } from '../../directives/animated-details.directive';
 
 @Component({
   selector: 'app-hackathons',
-  imports: [CommonModule],
+  imports: [CommonModule, AnimatedDetailsDirective],
   templateUrl: './hackathons.html',
   styleUrl: './hackathons.css',
 })

@@ -3,7 +3,7 @@ import {
   provideBrowserGlobalErrorListeners,
   provideZonelessChangeDetection,
 } from '@angular/core';
-import { provideRouter, withInMemoryScrolling, withViewTransitions } from '@angular/router'; // <--- IMPORTANTE: Agregar estos imports
+import { provideRouter, withInMemoryScrolling, withRouterConfig } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
@@ -16,11 +16,11 @@ export const appConfig: ApplicationConfig = {
     // Aquí es donde activamos la magia de la navegación
     provideRouter(
       routes,
+      withRouterConfig({ onSameUrlNavigation: 'reload' }),
       withInMemoryScrolling({
-        anchorScrolling: 'enabled',
+        anchorScrolling: 'disabled',
         scrollPositionRestoration: 'enabled',
       }),
-      withViewTransitions(), // Hace que el cambio de página sea suave y moderno
     ),
 
     provideClientHydration(withEventReplay()),
