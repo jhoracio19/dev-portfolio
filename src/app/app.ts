@@ -84,6 +84,8 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    if (isPlatformBrowser(this.platformId))
+      document.documentElement.classList.remove('custom-cursor-active');
     if (this.animationFrameId) cancelAnimationFrame(this.animationFrameId);
     this.lenis?.destroy();
     this.scrollService.ngOnDestroy();
@@ -104,6 +106,10 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
     if (!this.cursorDot || !this.cursorRing) return;
 
     this.pointerMoveHandler = (event: PointerEvent) => {
+      if (event.pointerType !== 'mouse') {
+        this.pointerLeaveHandler?.();
+        return;
+      }
       this.targetX = event.clientX;
       this.targetY = event.clientY;
 
@@ -111,21 +117,24 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
         this.cursorInitialized = true;
         this.ringX = event.clientX;
         this.ringY = event.clientY;
+        this.cursorRing!.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0) translate(-50%, -50%)`;
         this.cursorDot?.classList.add('is-visible');
         this.cursorRing?.classList.add('is-visible');
+        document.documentElement.classList.add('custom-cursor-active');
       }
 
       this.cursorDot!.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0) translate(-50%, -50%)`;
 
       const target = event.target instanceof Element ? event.target : null;
       const isInteractive = Boolean(
-        target?.closest('a, button, input, textarea, select, [role="button"], .cursor-pointer'),
+        target?.closest('a, button, summary, input, textarea, select, [role="button"], .cursor-pointer'),
       );
       this.cursorRing?.classList.toggle('is-hovering', isInteractive);
       this.cursorDot?.classList.toggle('is-hovering', isInteractive);
     };
 
     this.pointerLeaveHandler = () => {
+      document.documentElement.classList.remove('custom-cursor-active');
       this.cursorDot?.classList.remove('is-visible');
       this.cursorRing?.classList.remove('is-visible');
       this.cursorInitialized = false;

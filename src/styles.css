@@ -37,6 +37,13 @@ body {
 }
 
 /* Puntero interactivo suave integrado con Lenis */
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  html.custom-cursor-active,
+  html.custom-cursor-active * {
+    cursor: none !important;
+  }
+}
+
 .cursor-dot {
   position: fixed;
   top: 0;
