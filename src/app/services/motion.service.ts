@@ -9,7 +9,7 @@ export class MotionService implements OnDestroy {
   private frame = 0;
   private animations = new Set<Animation>();
   private seen = new WeakSet<Element>();
-  private selector = '.section-heading, .project-feature, .experience-row, .hack-card, .stack-group, .about-layout > div, .contact-heading, .contact-actions, .catalog-card';
+  private selector = '.hero-stage, .achievement-strip, .section-heading, .project-feature, .experience-row, .hack-card, .stack-group, .about-layout > div, .contact-heading, .contact-actions, .catalog-card';
   private onPreference = () => {
     if (this.preference?.matches) this.animations.forEach(animation => animation.finish());
   };
@@ -22,12 +22,14 @@ export class MotionService implements OnDestroy {
         if (!entry.isIntersecting) return;
         this.observer?.unobserve(entry.target);
         if (this.preference?.matches) return;
+        const siblings = Array.from(entry.target.parentElement?.children ?? []).filter(element => element.matches(this.selector));
+        const delay = siblings.length > 1 ? (siblings.indexOf(entry.target) % 3) * 90 : 0;
         const animation = entry.target.animate(
-          [{ opacity: 0, transform: 'translateY(24px)' }, { opacity: 1, transform: 'translateY(0)' }],
-          { duration: 650, easing: 'cubic-bezier(.2,.7,.2,1)' },
+          [{ opacity: 0, transform: 'translateY(30px)' }, { opacity: 1, transform: 'translateY(0)' }],
+          { duration: 750, delay, fill: 'backwards', easing: 'cubic-bezier(.16,1,.3,1)' },
         );
         this.animations.add(animation);
-        animation.onfinish = () => this.animations.delete(animation);
+        animation.onfinish = animation.oncancel = () => this.animations.delete(animation);
       });
     }, { threshold: 0.08 });
     this.scan();

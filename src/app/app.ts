@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import { Navbar } from './components/navbar/navbar';
 import { Footer } from './components/footer/footer';
+import { FloatingActions } from './components/floating-actions/floating-actions';
 import { Title, Meta } from '@angular/platform-browser';
 import Lenis from 'lenis';
 import { RouterOutlet } from '@angular/router';
@@ -22,7 +23,7 @@ import { MotionService } from './services/motion.service';
   templateUrl: './app.html',
   styleUrl: './app.css',
   standalone: true,
-  imports: [Navbar, Footer, RouterOutlet],
+  imports: [Navbar, Footer, RouterOutlet, FloatingActions],
 })
 export class App implements OnInit, AfterViewInit, OnDestroy {
   protected readonly appTitle = signal('mi-portfolio-dev');

@@ -1,0 +1,87 @@
+.floating-actions {
+  position: fixed;
+  right: max(24px, env(safe-area-inset-right));
+  bottom: max(24px, env(safe-area-inset-bottom));
+  z-index: 90;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 12px;
+}
+.floating-links { display: flex; flex-direction: column; gap: 10px; }
+.floating-link, .floating-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 12%);
+  font-size: 18px;
+  text-decoration: none;
+}
+.floating-toggle { display: none; background: var(--accent-fill); border-color: var(--accent-fill); color: #fff; }
+.floating-link:hover, .floating-link:focus-visible { border-color: var(--accent); color: var(--accent); }
+.floating-label {
+  position: absolute;
+  right: calc(100% + 12px);
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.floating-link:hover .floating-label, .floating-link:focus-visible .floating-label { opacity: 1; visibility: visible; }
+@media (prefers-reduced-motion: no-preference) {
+  .floating-actions { animation: dock-arrive 350ms ease-out both; }
+  .floating-link, .floating-toggle { transition: transform 200ms, color 200ms, border-color 200ms; }
+  .floating-label { transition: opacity 160ms; }
+  .floating-link:active, .floating-toggle:active { transform: scale(.94); }
+  @keyframes dock-arrive { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .floating-link:hover { scale: 1.06; }
+}
+@media (max-width: 640px) {
+  .floating-actions {
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(16px, env(safe-area-inset-bottom));
+    display: block;
+    width: 48px;
+    height: 48px;
+  }
+  .floating-toggle { display: inline-flex; z-index: 2; }
+  .floating-links {
+    position: absolute;
+    inset: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .floating-link {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transform: translate(0, 0) scale(.65);
+  }
+  .is-expanded .floating-links { visibility: visible; }
+  .is-expanded .floating-link { opacity: 1; pointer-events: auto; }
+  .is-expanded .floating-link:nth-child(1) { transform: translate(0, -108px); }
+  .is-expanded .floating-link:nth-child(2) { transform: translate(-76px, -76px); }
+  .is-expanded .floating-link:nth-child(3) { transform: translate(-108px, 0); }
+}
+@media (max-width: 640px) and (prefers-reduced-motion: no-preference) {
+  .floating-links { transition: visibility 0s 280ms; }
+  .is-expanded .floating-links { transition-delay: 0s; }
+  .floating-link { transition: transform 280ms cubic-bezier(.16,1,.3,1), opacity 180ms, color 200ms, border-color 200ms, scale 200ms; }
+  .is-expanded .floating-link:nth-child(2) { transition-delay: 35ms; }
+  .is-expanded .floating-link:nth-child(3) { transition-delay: 70ms; }
+}

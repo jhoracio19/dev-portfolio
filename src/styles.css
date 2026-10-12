@@ -1151,3 +1151,51 @@ input {
   .nav-controls { gap: 4px; }
   .theme-button, .language-button, .menu-toggle { width: 44px; min-width: 44px; }
 }
+
+/* Motion follows the same timing and distance across the portfolio. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-copy > * {
+    animation: hero-reveal 750ms cubic-bezier(.16, 1, .3, 1) backwards;
+  }
+  .hero-copy > :nth-child(2) { animation-delay: 80ms; }
+  .hero-copy > :nth-child(3) { animation-delay: 160ms; }
+  .hero-copy > :nth-child(4) { animation-delay: 240ms; }
+  .hero-copy > :nth-child(5) { animation-delay: 320ms; }
+  .hero-copy > :nth-child(6) { animation-delay: 400ms; }
+  @keyframes hero-reveal {
+    from { opacity: 0; transform: translateY(22px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .button, .theme-button, .language-button, .tech-item, .brand-mark {
+    transition: transform 220ms cubic-bezier(.2,.7,.2,1), background-color 220ms, border-color 220ms, box-shadow 220ms;
+  }
+  .button:active, .theme-button:active, .language-button:active { transform: scale(.96); }
+  .hero-preview, .satellite-preview, .project-feature, .hack-card, .stack-group, .catalog-card {
+    transition: translate 280ms cubic-bezier(.2,.7,.2,1), border-color 220ms, box-shadow 280ms;
+  }
+  .text-link i, .text-link > span:last-child, .tech-item i, .tech-monogram {
+    transition: transform 220ms cubic-bezier(.2,.7,.2,1);
+  }
+  .text-link:hover i { transform: translateY(-2px); }
+  .case-details[open] > :not(summary) { animation: details-reveal 280ms ease-out; }
+  @keyframes details-reveal {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  ::view-transition-old(root) { animation: theme-out 220ms ease-in both; }
+  ::view-transition-new(root) { animation: theme-in 300ms ease-out both; }
+  @keyframes theme-out { to { opacity: 0; } }
+  @keyframes theme-in { from { opacity: 0; } }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .button:hover { transform: translateY(-3px); }
+  .brand:hover .brand-mark { transform: rotate(-5deg); }
+  .hero-preview:hover, .satellite-preview:hover, .project-feature:hover,
+  .hack-card:hover, .stack-group:hover, .catalog-card:hover {
+    translate: 0 -5px;
+    border-color: var(--accent);
+    box-shadow: var(--shadow);
+  }
+  .tech-item:hover { transform: translateY(-3px); border-color: var(--tech-color, var(--accent)); }
+  .tech-item:hover i, .tech-item:hover .tech-monogram { transform: scale(1.15); }
+}

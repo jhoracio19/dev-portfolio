@@ -14,8 +14,13 @@ export class ThemeService {
 
   toggle() {
     const next = this.theme() === 'dark' ? 'light' : 'dark';
-    this.theme.set(next);
-    this.document.documentElement.dataset['theme'] = next;
-    try { this.document.defaultView?.localStorage.setItem('portfolio-theme', next); } catch {}
+    const apply = () => {
+      this.theme.set(next);
+      this.document.documentElement.dataset['theme'] = next;
+      try { this.document.defaultView?.localStorage.setItem('portfolio-theme', next); } catch {}
+    };
+    const reduced = this.document.defaultView?.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduced && this.document.startViewTransition) this.document.startViewTransition(apply);
+    else apply();
   }
 }

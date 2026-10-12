@@ -1,0 +1,23 @@
+@if (visible()) {
+  <nav class="floating-actions" [class.is-expanded]="expanded()" [attr.aria-label]="labels().navigation">
+    <button #toggleButton type="button" class="floating-toggle" (click)="toggle()"
+      [attr.aria-label]="expanded() ? labels().close : labels().open"
+      [attr.aria-expanded]="expanded()" aria-controls="quick-contact-links">
+      <i class="fa-solid fa-house" aria-hidden="true"></i>
+    </button>
+    <div id="quick-contact-links" class="floating-links"
+      [attr.inert]="mobile() && !expanded() ? '' : null"
+      [attr.aria-hidden]="mobile() && !expanded() ? 'true' : null">
+      <a href="https://www.linkedin.com/in/jhoracio19/" target="_blank" rel="noopener noreferrer"
+        class="floating-link" [attr.aria-label]="labels().linkedin" [attr.title]="labels().linkedin" (click)="expanded.set(false)">
+        <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i><span class="floating-label">LinkedIn</span>
+      </a>
+      <a href="mailto:jhoracio19@hotmail.com" class="floating-link" [attr.aria-label]="labels().email" [attr.title]="labels().email" (click)="expanded.set(false)">
+        <i class="fa-solid fa-envelope" aria-hidden="true"></i><span class="floating-label">{{ labels().email }}</span>
+      </a>
+      <a href="assets/mi-cv-2026.pdf" download class="floating-link" [attr.aria-label]="labels().cv" [attr.title]="labels().cv" (click)="expanded.set(false)">
+        <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i><span class="floating-label">{{ labels().cv }}</span>
+      </a>
+    </div>
+  </nav>
+}
