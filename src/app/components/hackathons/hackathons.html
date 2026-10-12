@@ -14,12 +14,16 @@
             <strong>{{ hack.achievement }}</strong>
           }
         </div>
-        <h3>{{ hack.projectCreated }}</h3>
-        <p class="muted">{{ hack.name }}</p>
-        @if (hack.prize) {
-          <p class="prize">{{ hack.prize }}</p>
-        }
-        <details class="case-details">
+        <div class="hack-heading">
+          <h3>{{ hack.projectCreated }}</h3>
+          <p class="muted">{{ hack.name }}</p>
+        </div>
+        <div class="hack-prize">
+          @if (hack.prize) {
+            <p class="prize">{{ hack.prize }}</p>
+          }
+        </div>
+        <details class="case-details" name="hackathon-challenges">
           <summary>{{ t().design.seeChallenge }}</summary>
           <p>{{ hack.description }}</p>
           @if (hack.technologies.length) {
@@ -27,16 +31,33 @@
           }
         </details>
         <div class="hack-links">
+          <div class="hack-socials">
           @if (hack.linkedinUrl) {
             <a
               [href]="hack.linkedinUrl"
               target="_blank"
               rel="noopener noreferrer"
-              class="linkedin-button"
+              class="social-button linkedin-button"
               [attr.aria-label]="t().hackathons.linkedin_post + ': ' + hack.projectCreated"
               [attr.title]="t().hackathons.linkedin_post"
             ><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
           }
+          @if (hack.repoUrl) {
+            <a [href]="hack.repoUrl" target="_blank" rel="noopener noreferrer"
+              class="social-button github-button"
+              [attr.aria-label]="t().hackathons.view_repo + ': ' + hack.projectCreated + ' (' + t().design.newTab + ')'"
+              [attr.title]="t().hackathons.view_repo"
+            ><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+          }
+          @if (hack.certificateUrl) {
+            <a [href]="hack.certificateUrl" target="_blank" rel="noopener noreferrer"
+              class="social-button certificate-button"
+              [attr.aria-label]="t().hackathons.view_cert + ': ' + hack.projectCreated + ' (' + t().design.newTab + ')'"
+              [attr.title]="t().hackathons.view_cert"
+            ><i class="fa-solid fa-award" aria-hidden="true"></i></a>
+          }
+          </div>
+          <div class="hack-actions">
           @if (hack.demoUrls) {
             @for (demo of hack.demoUrls; track demo.url) {
               <a [href]="demo.url" target="_blank" rel="noopener noreferrer" class="text-link"
@@ -44,20 +65,8 @@
               >
             }
           }
-          @if (hack.repoUrl) {
-            <a [href]="hack.repoUrl" target="_blank" rel="noopener noreferrer" class="text-link">{{
-              t().hackathons.view_repo
-            }}</a>
-          }
-          @if (hack.certificateUrl) {
-            <a
-              [href]="hack.certificateUrl"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-link"
-              >{{ t().hackathons.view_cert }}</a
-            >
-          }
+
+          </div>
         </div>
       </article>
     }

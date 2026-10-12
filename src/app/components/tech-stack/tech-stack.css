@@ -1,1 +1,37 @@
+.tech-item i,
+.tech-item .tech-monogram {
+  color: var(--tech-color, var(--ink));
+}
 
+.tech-react { --tech-color: #149eca; }
+.tech-expo, .tech-next, .tech-github { --tech-color: var(--ink); }
+.tech-angular { --tech-color: #ed3566; }
+.tech-typescript { --tech-color: #3178c6; }
+.tech-html { --tech-color: #e35b2d; }
+.tech-css { --tech-color: #347ac6; }
+.tech-tailwind { --tech-color: #0891b2; }
+.tech-django { --tech-color: #23975d; }
+.tech-php { --tech-color: #858cc5; }
+.tech-fastapi { --tech-color: #009688; }
+.tech-postgres { --tech-color: #4e8fbd; }
+.tech-mysql { --tech-color: #d88a24; }
+.tech-supabase { --tech-color: #27a873; }
+.tech-git { --tech-color: #f05032; }
+.tech-docker { --tech-color: #2496ed; }
+.tech-linux { --tech-color: #c99316; }
+.tech-google { --tech-color: #4285f4; }
+.tech-api { --tech-color: #9570db; }
+
+.stack-group:nth-child(1) h3 i { color: #149eca; }
+.stack-group:nth-child(2) h3 i { color: #23975d; }
+.stack-group:nth-child(3) h3 i { color: #9570db; }
+
+:host-context([data-theme='dark']) {
+  .tech-react { --tech-color: #61dafb; }
+  .tech-typescript { --tech-color: #68aaf0; }
+  .tech-tailwind { --tech-color: #38bdf8; }
+  .tech-django { --tech-color: #5ecb8c; }
+  .tech-fastapi { --tech-color: #43caba; }
+  .tech-supabase { --tech-color: #3ecf8e; }
+  .tech-linux { --tech-color: #f0c94d; }
+}

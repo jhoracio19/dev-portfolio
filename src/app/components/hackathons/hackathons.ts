@@ -2,11 +2,10 @@ import { Component, computed, inject } from '@angular/core';
 import { Hackathon } from '../../models/hackathon-model';
 import { CommonModule } from '@angular/common';
 import { LanguageService } from '../../services/language.service';
-import { AnimatedDetailsDirective } from '../../directives/animated-details.directive';
 
 @Component({
   selector: 'app-hackathons',
-  imports: [CommonModule, AnimatedDetailsDirective],
+  imports: [CommonModule],
   templateUrl: './hackathons.html',
   styleUrl: './hackathons.css',
 })
@@ -25,7 +24,7 @@ export class Hackathons {
         description: isEn
           ? 'Financial resilience simulator for SMEs, built in 36 hours. Stackly projects the cash-flow impact of hiring, new projects, inventory purchases, and extending credit before a decision is made. Its deterministic Python and NumPy engine processes scenarios day by day with reproducible, traceable results. Go orchestration uses hexagonal architecture and a contract-first approach, while PostgreSQL and TimescaleDB model money as financial events over time. If more than 20% of the required financial profile is unknown, the system abstains from projecting rather than providing misleading precision. Second place in the Capital One track at HackMTY 2026.'
           : 'Simulador de resiliencia financiera para pymes, construido en 36 horas. Stackly proyecta el impacto de contratar personal, aceptar proyectos, comprar inventario u otorgar crédito sobre el flujo de caja antes de tomar una decisión. Su motor determinista en Python y NumPy procesa escenarios día a día con resultados reproducibles y trazables. La orquestación en Go utiliza arquitectura hexagonal y un enfoque contract-first, mientras PostgreSQL y TimescaleDB modelan el dinero como eventos financieros en el tiempo. Si se desconoce más del 20% del perfil financiero necesario, el sistema se abstiene de proyectar para evitar una precisión engañosa. Segundo lugar en el reto de Capital One en HackMTY 2026.',
-        date: '2026',
+        date: isEn ? 'September 2026' : 'Septiembre 2026',
         technologies: ['Python', 'NumPy', 'Go', 'PostgreSQL', 'TimescaleDB'],
         linkedinUrl: 'https://lnkd.in/p/eBVaw-KU',
         achievement: isEn ? '2nd place · Capital One' : '2.º lugar · Capital One',

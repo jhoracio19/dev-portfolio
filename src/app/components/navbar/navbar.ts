@@ -13,6 +13,7 @@ import { PLATFORM_ID } from '@angular/core';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { Subscription, filter } from 'rxjs';
 import { ScrollService } from '../../services/scroll.service';
+import { ThemeService } from '../../services/theme.service';
 import { LanguageService } from '../../services/language.service';
 
 @Component({
@@ -27,6 +28,7 @@ export class Navbar implements OnInit, OnDestroy {
   isMobile = signal(false);
   activeSection = signal('inicio');
   public langService = inject(LanguageService);
+  readonly themeService = inject(ThemeService);
   t = this.langService.current;
   links = computed(() => [
     { id: 'proyectos', label: this.t().nav.projects },

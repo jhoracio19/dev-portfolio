@@ -3,15 +3,15 @@
   <div class="mb-6">
     <a
       routerLink="/"
-      class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-zinc-400 hover:text-white transition-colors mb-6 group cursor-pointer"
+      class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[var(--muted)] hover:text-[var(--accent)] transition-colors mb-6 group cursor-pointer"
     >
       <i class="fas fa-arrow-left text-xs transition-transform group-hover:-translate-x-1"></i>
       {{ t().projects.back_home }}
     </a>
-    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-3">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[var(--ink)] mb-3">
       {{ t().projects.catalog_title }}
     </h1>
-    <p class="text-zinc-400 text-sm sm:text-base max-w-2xl leading-relaxed">
+    <p class="text-[var(--muted)] text-sm sm:text-base max-w-2xl leading-relaxed">
       {{ t().projects.catalog_desc }}
     </p>
   </div>
@@ -22,7 +22,7 @@
   >
     <!-- Search bar -->
     <div class="relative flex-1 max-w-lg">
-      <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 text-xs"></i>
+      <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-[var(--muted)] text-xs"></i>
       <label for="project-search" class="sr-only">{{ i18n().searchPlaceholder }}</label>
       <input
         id="project-search"
@@ -30,13 +30,13 @@
         [value]="searchQuery()"
         (input)="onSearch($event)"
         [placeholder]="i18n().searchPlaceholder"
-        class="w-full bg-white/[0.03] border border-white/10 focus:border-white/40 rounded-full pl-10 pr-10 py-2.5 text-sm text-white placeholder:text-zinc-400 outline-none transition-all"
+        class="w-full bg-[var(--surface)] border border-[var(--line)] focus:border-[var(--accent)] rounded-full pl-10 pr-10 py-2.5 text-sm text-[var(--ink)] placeholder:text-[var(--muted)] transition-all"
       />
       @if (searchQuery()) {
         <button
           type="button"
           (click)="clearSearch()"
-          class="absolute right-3.5 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-white transition-colors text-xs p-1 cursor-pointer"
+          class="absolute right-3.5 top-1/2 -translate-y-1/2 text-[var(--muted)] hover:text-[var(--accent)] transition-colors text-xs p-1 cursor-pointer"
           [attr.aria-label]="i18n().clearSearch"
         >
           <i class="fas fa-times"></i>
@@ -47,16 +47,16 @@
     <!-- Counters summary -->
     <div
       role="status"
-      class="text-sm text-zinc-400 flex items-center gap-1.5 self-start lg:self-center"
+      class="text-sm text-[var(--muted)] flex items-center gap-1.5 self-start lg:self-center"
     >
       <span>{{ i18n().showing }}</span>
-      <span class="text-white font-bold">{{ filteredProjects().length }}</span>
+      <span class="text-[var(--ink)] font-bold">{{ filteredProjects().length }}</span>
       <span>{{ i18n().of }} {{ projects().length }} {{ i18n().projectsText }}</span>
     </div>
   </div>
 
   <!-- Category filter tabs -->
-  <div class="flex flex-wrap items-center gap-2 mb-10 border-b border-white/[0.08] pb-6">
+  <div class="flex flex-wrap items-center gap-2 mb-10 border-b border-[var(--line)] pb-6">
     @for (filter of filters(); track filter.key) {
       <button
         type="button"
@@ -64,8 +64,8 @@
         [attr.aria-pressed]="filterSelected() === filter.key"
         [class]="
           filterSelected() === filter.key
-            ? 'bg-white text-black font-semibold shadow-sm'
-            : 'bg-transparent text-zinc-400 hover:text-white border border-white/10 hover:border-white/30'
+            ? 'bg-[var(--accent-fill)] text-white font-semibold shadow-sm'
+            : 'bg-transparent text-[var(--muted)] hover:text-[var(--accent)] border border-[var(--line)] hover:border-[var(--muted)]'
         "
         class="px-3.5 py-1.5 rounded-full text-sm min-h-11 transition-all cursor-pointer inline-flex items-center gap-2"
       >
@@ -73,8 +73,8 @@
         <span
           [class]="
             filterSelected() === filter.key
-              ? 'bg-black/10 text-black font-bold'
-              : 'bg-white/10 text-zinc-400'
+              ? 'bg-white/20 text-white font-bold'
+              : 'bg-[var(--surface-raised)] text-[var(--muted)]'
           "
           class="text-xs px-1.5 py-0.5 rounded-full font-mono"
         >
@@ -111,12 +111,12 @@
           <!-- Details -->
           <div class="p-5 sm:p-6 flex flex-col flex-1">
             <h2
-              class="text-lg font-semibold text-white mb-2 group-hover:text-zinc-200 transition-colors"
+              class="text-lg font-semibold text-[var(--ink)] mb-2 group-hover:text-[var(--ink)] transition-colors"
             >
               {{ project.title }}
             </h2>
 
-            <p class="text-zinc-400 text-sm leading-relaxed mb-5">
+            <p class="text-[var(--muted)] text-sm leading-relaxed mb-5">
               {{ project.description }}
             </p>
 
@@ -124,7 +124,7 @@
             <div class="flex flex-wrap gap-1.5 mb-6">
               @for (tech of project.technologies; track tech) {
                 <span
-                  class="px-2 py-0.5 bg-white/[0.04] text-zinc-300 text-xs rounded-md border border-white/[0.08] font-mono"
+                  class="px-2 py-0.5 bg-[var(--surface-raised)] text-[var(--muted)] text-xs rounded-md border border-[var(--line)] font-mono"
                 >
                   {{ tech }}
                 </span>
@@ -133,7 +133,7 @@
 
             <!-- Links -->
             <div
-              class="mt-auto pt-4 border-t border-white/[0.06] flex items-center justify-between gap-3"
+              class="mt-auto pt-4 border-t border-[var(--line)] flex items-center justify-between gap-3"
             >
               @if (project.githubUrl) {
                 <a
@@ -171,15 +171,15 @@
   } @else {
     <!-- Empty state -->
     <div
-      class="py-20 text-center flex flex-col items-center justify-center border border-dashed border-white/10 rounded-2xl p-8"
+      class="py-20 text-center flex flex-col items-center justify-center border border-dashed border-[var(--line)] rounded-2xl p-8"
     >
-      <i class="fas fa-folder-open text-3xl text-zinc-600 mb-4"></i>
-      <h3 class="text-base font-semibold text-white mb-1">{{ i18n().noResultsTitle }}</h3>
-      <p class="text-zinc-400 text-xs max-w-sm mb-6">{{ i18n().noResultsDesc }}</p>
+      <i class="fas fa-folder-open text-3xl text-[var(--muted)] mb-4"></i>
+      <h3 class="text-base font-semibold text-[var(--ink)] mb-1">{{ i18n().noResultsTitle }}</h3>
+      <p class="text-[var(--muted)] text-xs max-w-sm mb-6">{{ i18n().noResultsDesc }}</p>
       <button
         type="button"
         (click)="clearSearch()"
-        class="border border-white/20 hover:border-white/40 text-xs text-white px-4 py-2 rounded-full transition-colors cursor-pointer"
+        class="border border-[var(--line)] hover:border-[var(--accent)] text-xs text-[var(--ink)] px-4 py-2 rounded-full transition-colors cursor-pointer"
       >
         {{ i18n().clearSearch }}
       </button>

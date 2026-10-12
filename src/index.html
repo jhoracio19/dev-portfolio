@@ -9,6 +9,14 @@
     />
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      (() => {
+        let theme;
+        try { theme = localStorage.getItem('portfolio-theme'); } catch {}
+        document.documentElement.dataset.theme = theme === 'light' || theme === 'dark'
+          ? theme : (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      })();
+    </script>
     <link rel="icon" type="image/svg+xml" href="jh-mark.svg" />
     <link rel="preload" as="image" href="memoji.webp" type="image/webp" fetchpriority="high" />
     <link rel="canonical" href="https://jhoracio.dev/" />
@@ -40,7 +48,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
     />
     <meta name="google-site-verification" content="ui2ZwuRe2CSM2A7Yi6MSb_gYUnBGZypHKkBuQUcmYsc" />
   </head>

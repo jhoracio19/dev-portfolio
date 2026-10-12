@@ -1,15 +1,42 @@
-/* Estilos específicos para hackathones si fueran necesarios */
-.group:hover {
-  transform: translateY(-4px);
+.hack-grid { align-items: start; }
+.hack-meta { min-height: 32px; }
+
+.hack-card {
+  display: grid;
+  grid-template-rows: auto auto auto auto auto;
+  row-gap: 0;
+  min-width: 0;
+}
+
+.hack-heading { min-height: 100px; }
+.hack-prize { min-height: 40px; }
+
+.hack-heading p, .hack-prize {
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 .hack-links {
-  align-items: center;
-  gap: 12px 20px;
-  padding-top: 12px;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  align-items: start;
+  gap: 16px;
+  margin-top: 0;
+  padding-top: 16px;
+  min-height: 172px;
 }
 
-.linkedin-button {
+.hack-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hack-actions .text-link {
+  min-height: 44px;
+}
+
+.social-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -30,11 +57,33 @@
   color: #fff;
 }
 
-.linkedin-button:focus-visible {
+.social-button:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 4px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .linkedin-button { transition: none; }
+  .social-button { transition: none; }
+}
+
+@media (max-width: 899px) {
+  .hack-meta, .hack-heading, .hack-prize, .hack-links { min-height: 0; }
+}
+
+.hack-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.github-button:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--surface);
+}
+
+.certificate-button:hover {
+  background: var(--accent-fill);
+  border-color: var(--accent-fill);
+  color: #fff;
 }

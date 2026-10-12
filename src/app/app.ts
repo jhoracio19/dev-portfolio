@@ -29,17 +29,6 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
   private lenis?: Lenis;
   private animationFrameId?: number;
 
-  private cursorDot?: HTMLElement;
-  private cursorRing?: HTMLElement;
-  private targetX = 0;
-  private targetY = 0;
-  private ringX = 0;
-  private ringY = 0;
-  private cursorInitialized = false;
-
-  private pointerMoveHandler?: (event: PointerEvent) => void;
-  private pointerLeaveHandler?: () => void;
-
   private scrollService = inject(ScrollService);
   private motionService = inject(MotionService);
   private viewportScroller = inject(ViewportScroller);
@@ -69,7 +58,6 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
 
     const animate = (time: number) => {
       this.lenis?.raf(time);
-      this.updateCursor();
       this.animationFrameId = requestAnimationFrame(animate);
     };
 
@@ -79,77 +67,12 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     if (!isPlatformBrowser(this.platformId)) return;
     this.motionService.init();
-    if (window.matchMedia('(pointer: fine) and (prefers-reduced-motion: no-preference)').matches)
-      this.initCustomCursor();
   }
 
   ngOnDestroy() {
-    if (isPlatformBrowser(this.platformId))
-      document.documentElement.classList.remove('custom-cursor-active');
     if (this.animationFrameId) cancelAnimationFrame(this.animationFrameId);
     this.lenis?.destroy();
     this.scrollService.ngOnDestroy();
     this.motionService.ngOnDestroy();
-
-    if (this.pointerMoveHandler) {
-      window.removeEventListener('pointermove', this.pointerMoveHandler);
-    }
-    if (this.pointerLeaveHandler) {
-      document.removeEventListener('mouseleave', this.pointerLeaveHandler);
-    }
-  }
-
-  private initCustomCursor() {
-    this.cursorDot = document.querySelector<HTMLElement>('.cursor-dot') ?? undefined;
-    this.cursorRing = document.querySelector<HTMLElement>('.cursor-ring') ?? undefined;
-
-    if (!this.cursorDot || !this.cursorRing) return;
-
-    this.pointerMoveHandler = (event: PointerEvent) => {
-      if (event.pointerType !== 'mouse') {
-        this.pointerLeaveHandler?.();
-        return;
-      }
-      this.targetX = event.clientX;
-      this.targetY = event.clientY;
-
-      if (!this.cursorInitialized) {
-        this.cursorInitialized = true;
-        this.ringX = event.clientX;
-        this.ringY = event.clientY;
-        this.cursorRing!.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0) translate(-50%, -50%)`;
-        this.cursorDot?.classList.add('is-visible');
-        this.cursorRing?.classList.add('is-visible');
-        document.documentElement.classList.add('custom-cursor-active');
-      }
-
-      this.cursorDot!.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0) translate(-50%, -50%)`;
-
-      const target = event.target instanceof Element ? event.target : null;
-      const isInteractive = Boolean(
-        target?.closest('a, button, summary, input, textarea, select, [role="button"], .cursor-pointer'),
-      );
-      this.cursorRing?.classList.toggle('is-hovering', isInteractive);
-      this.cursorDot?.classList.toggle('is-hovering', isInteractive);
-    };
-
-    this.pointerLeaveHandler = () => {
-      document.documentElement.classList.remove('custom-cursor-active');
-      this.cursorDot?.classList.remove('is-visible');
-      this.cursorRing?.classList.remove('is-visible');
-      this.cursorInitialized = false;
-    };
-
-    window.addEventListener('pointermove', this.pointerMoveHandler, { passive: true });
-    document.addEventListener('mouseleave', this.pointerLeaveHandler);
-  }
-
-  private updateCursor() {
-    if (!this.cursorRing || !this.cursorInitialized) return;
-
-    this.ringX += (this.targetX - this.ringX) * 0.11;
-    this.ringY += (this.targetY - this.ringY) * 0.11;
-
-    this.cursorRing.style.transform = `translate3d(${this.ringX}px, ${this.ringY}px, 0) translate(-50%, -50%)`;
   }
 }
