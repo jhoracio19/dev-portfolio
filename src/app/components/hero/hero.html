@@ -2,7 +2,7 @@
   <div class="hero-copy">
     <div class="identity-line">
       <img src="memoji.webp" alt="" width="48" height="48" fetchpriority="high" />
-      <span>Fullstack developer <span class="identity-role">JH Dev Agency · BUAP</span></span>
+      <span>{{ t().design.role }} <span class="identity-role">JH Dev Agency · BUAP</span></span>
     </div>
     <h1 class="hero-name">José <span>Horacio<span class="name-period" aria-hidden="true">.</span></span></h1>
     <p class="hero-statement">{{ t().design.headline }}</p>
@@ -13,7 +13,7 @@
     </div>
     <div class="hero-meta">
       <span class="availability">{{ t().hero.available }}</span
-      ><a href="assets/mi-cv-2026.pdf" download class="text-link">{{ t().hero.cta_cv }}</a>
+      ><a href="assets/Jose_Horacio_Ahuactzin_Garcia_Resume.pdf" download class="text-link">{{ t().hero.cta_cv }}</a>
     </div>
   </div>
   <div class="hero-stage">
@@ -39,14 +39,33 @@
       <span class="satellite-heading"><span class="window-dots" aria-hidden="true">↗</span> Otorrino Tlaxcala</span>
       <img src="assets/proyects/otorrinotlaxcala.webp" alt="Otorrino Tlaxcala" width="900" height="600" decoding="async" />
     </a>
-    <div class="stage-stack" aria-hidden="true"><span>Angular</span><span>React</span><span>Next.js</span></div>
+    <div class="stage-stack" aria-hidden="true"><span>Angular</span><span>React</span><span>Next.js</span><span>React Native</span><span>Expo</span></div>
   </div>
 </section>
-<a href="#hackathones" class="achievement-strip"
-  ><span class="achievement-mark" aria-hidden="true">✳</span
-  ><strong>{{ t().design.achievement }}</strong
-  ><span>Industry Hack Tec · 2026</span
-  ><span class="achievement-link"
-    >{{ t().design.seeChallenge }} <span aria-hidden="true">↗</span></span
-  ></a
->
+<div class="achievement-strip">
+  <div class="achievement-award">
+    <i class="fa-solid fa-medal achievement-icon" aria-hidden="true"></i>
+    <div>
+      <strong>{{ t().design.hackMtyAchievement }}</strong>
+      <span class="award-event">HackMTY · 2026</span>
+    </div>
+    <div class="achievement-info-wrap">
+      <button type="button" class="achievement-info"
+        [attr.aria-label]="t().design.hackMtyInfoLabel" aria-describedby="hackmty-info"
+        (mouseenter)="infoOpen.set(true)" (mouseleave)="infoOpen.set(false)"
+        (focus)="infoOpen.set(true)" (blur)="infoOpen.set(false)"
+        (click)="infoOpen.set(true)" (keydown.escape)="infoOpen.set(false)">
+        <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+      </button>
+      <span id="hackmty-info" role="tooltip" class="achievement-tooltip" [hidden]="!infoOpen()">{{ t().design.hackMtyInfo }}</span>
+    </div>
+  </div>
+  <div class="achievement-award">
+    <i class="fa-solid fa-medal achievement-icon" aria-hidden="true"></i>
+    <div>
+      <strong>{{ t().design.achievement }}</strong>
+      <span class="award-event">Industry Hack Tec · 2026</span>
+    </div>
+  </div>
+  <a href="#hackathones" class="achievement-link text-link">{{ t().design.seeChallenge }} <span aria-hidden="true">↗</span></a>
+</div>

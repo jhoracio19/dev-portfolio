@@ -6,7 +6,7 @@
     (keydown)="onMenuKeydown($event)"
   >
     <a routerLink="/" fragment="inicio" class="brand" (click)="closeMenu(false)"
-      ><img src="jh-mark.svg" class="brand-mark" alt="" width="40" height="40" /><span class="brand-name">José Horacio<span>Fullstack developer</span></span></a
+      ><img src="jh-mark.svg" class="brand-mark" alt="" width="40" height="40" /><span class="brand-name">José Horacio<span>{{ t().design.role }}</span></span></a
     >
     <div class="nav-controls">
       <button type="button" class="theme-button" (click)="themeService.toggle()"

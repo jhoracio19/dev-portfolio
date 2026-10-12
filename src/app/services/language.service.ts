@@ -17,15 +17,19 @@ export class LanguageService {
   translations = {
     es: {
       design: {
-        headline: 'Desarrollo experiencias web, de la idea al producto.',
+        role: 'Desarrollador web y móvil',
+        headline: 'Desarrollo aplicaciones web y móviles, de la idea al producto.',
         intro:
-          'Soy desarrollador fullstack y estudiante de Ingeniería en TI en la BUAP. Construyo sitios y aplicaciones para negocios y dirijo JH Dev Agency.',
+          'Soy desarrollador fullstack y estudiante de Ingeniería en TI en la BUAP. Desarrollo productos web y aplicaciones móviles con React Native y Expo, y dirijo JH Dev Agency.',
         viewWork: 'Ver mi trabajo',
         talk: 'Hablemos',
         previewLabel: 'Conocer el proyecto RemindHome',
         selectedProduct: 'Producto seleccionado',
         productCaption: 'Menos pendientes. Más vida en casa.',
         achievement: '3.er lugar entre 25 equipos',
+        hackMtyAchievement: '2.º lugar · Capital One',
+        hackMtyInfoLabel: 'Acerca de HackMTY',
+        hackMtyInfo: 'HackMTY es uno de los hackathones estudiantiles más grandes de Latinoamérica. Organizado por TEC ACM en el Tecnológico de Monterrey, reúne equipos para construir soluciones en 36 horas.',
         seeChallenge: 'Conocer el reto',
         selectedWork: 'Trabajo seleccionado',
         workIntro: 'Productos y sitios publicados, con un problema concreto detrás.',
@@ -127,9 +131,9 @@ export class LanguageService {
           ],
         },
         basil: {
-          title: 'Soporte Frontend — Basil Soluciones',
-          date: 'Enero 2026 — Febrero 2026',
-          desc: 'Colaboré en la optimización de plataformas corporativas, enfrentándome a bugs críticos en producción y mejorando la interfaz para que los usuarios finales tuvieran una experiencia más fluida.',
+          title: 'Desarrollador Web Frontend — Basil Soluciones',
+          date: 'Enero 2025 — Febrero 2026',
+          desc: 'Participé en el desarrollo y mejora del frontend de plataformas corporativas, implementando funcionalidades y ajustes de interfaz. Resolví bugs en producción y optimicé la experiencia de navegación, contribuyendo al mantenimiento y la evolución de las aplicaciones web.',
         },
       },
       hackathons: {
@@ -165,14 +169,18 @@ export class LanguageService {
     },
     en: {
       design: {
-        headline: 'I build web experiences, from idea to product.',
-        intro: 'I’m a fullstack developer and IT Engineering student at BUAP. I build websites and applications for businesses and run JH Dev Agency.',
+        role: 'Web & mobile developer',
+        headline: 'I build web and mobile applications, from idea to product.',
+        intro: 'I’m a fullstack developer and IT Engineering student at BUAP. I build web products and mobile apps with React Native and Expo, and run JH Dev Agency.',
         viewWork: 'View my work',
         talk: 'Let’s talk',
         previewLabel: 'Explore the RemindHome project',
         selectedProduct: 'Selected product',
         productCaption: 'Fewer chores. More life at home.',
         achievement: '3rd place out of 25 teams',
+        hackMtyAchievement: '2nd place · Capital One',
+        hackMtyInfoLabel: 'About HackMTY',
+        hackMtyInfo: 'HackMTY is one of Latin America’s largest student hackathons. Organized by TEC ACM at Tecnológico de Monterrey, it brings teams together to build solutions in 36 hours.',
         seeChallenge: 'Explore the challenge',
         selectedWork: 'Selected work',
         workIntro: 'Published products and websites, each solving a specific problem.',
@@ -272,9 +280,9 @@ export class LanguageService {
           ],
         },
         basil: {
-          title: 'Frontend Support — Basil Soluciones',
-          date: 'January 2026 — February 2026',
-          desc: 'Collaborated on the optimization of corporate platforms, facing critical bugs in production and improving the interface for a smoother end-user experience.',
+          title: 'Frontend Web Developer — Basil Soluciones',
+          date: 'January 2025 — February 2026',
+          desc: 'Contributed to frontend development and improvements across corporate platforms, implementing features and interface updates. Fixed production bugs and improved the navigation experience, supporting the maintenance and ongoing development of web applications.',
         },
       },
       hackathons: {

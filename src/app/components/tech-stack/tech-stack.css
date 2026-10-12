@@ -21,6 +21,9 @@
 .tech-linux { --tech-color: #c99316; }
 .tech-google { --tech-color: #4285f4; }
 .tech-api { --tech-color: #9570db; }
+.tech-rabbitmq { --tech-color: #e66a16; }
+.tech-logto { --tech-color: #7957c7; }
+.tech-soap { --tech-color: #287eaa; }
 
 .stack-group:nth-child(1) h3 i { color: #149eca; }
 .stack-group:nth-child(2) h3 i { color: #23975d; }
@@ -34,4 +37,7 @@
   .tech-fastapi { --tech-color: #43caba; }
   .tech-supabase { --tech-color: #3ecf8e; }
   .tech-linux { --tech-color: #f0c94d; }
+  .tech-rabbitmq { --tech-color: #ff934f; }
+  .tech-logto { --tech-color: #b098f0; }
+  .tech-soap { --tech-color: #69bedf; }
 }
