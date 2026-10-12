@@ -36,8 +36,10 @@ export class LanguageService {
         challenge: 'El problema',
         implementation: 'La implementación',
         result: 'El resultado',
-        sociallerIntro: 'Desarrollo de la plataforma web de Socialler con Next.js y TypeScript.',
+        sociallerIntro: 'Desarrollo web con Next.js y TypeScript, y desarrollo móvil con Expo en Socialler.',
         contributions: [
+          'Migración de autenticación OIDC de NextAuth a Logto, manteniendo el flujo completo funcionando e integrado con el backend anterior y el nuevo.',
+          'Desarrollo de funcionalidades y resolución de bugs en la aplicación móvil con Expo.',
           'Construcción de interfaces y componentes reutilizables para la versión web.',
           'Mejoras de seguridad y refactorización para mantener el código y reducir deuda técnica.',
           'Formularios de autenticación y registro con React Hook Form y Zod.',
@@ -50,7 +52,7 @@ export class LanguageService {
           'Dirijo JH Dev Agency y desarrollo sitios y aplicaciones para negocios. Me interesa conectar una buena experiencia de uso con código que se pueda mantener.',
         personalNotes: [
           { title: 'De una necesidad a una interfaz', body: 'Mis proyectos conectan tareas concretas con experiencias web: organizar un hogar en RemindHome, agendar una consulta o cotizar un espacio para eventos.' },
-          { title: 'También trabajo detrás de la pantalla', body: 'Mi trabajo abarca componentes, formularios e integración con backend. En Socialler participo en mejoras de seguridad y refactorización, además de desarrollar la interfaz.' },
+          { title: 'También trabajo detrás de la pantalla', body: 'Mi trabajo abarca componentes, formularios e integración con backend. En Socialler participé en mejoras de seguridad, refactorización y desarrollo móvil con Expo.' },
           { title: 'Construir en equipo, contra reloj', body: 'Los hackathones también forman parte de mi recorrido. Con Verdana Loop, mi equipo obtuvo el tercer lugar entre 25 equipos en Industry Hack Tec.' },
         ],
         programming: 'Principios de programación',
@@ -112,10 +114,12 @@ export class LanguageService {
       experience: {
         title: 'Mi Camino Profesional',
         socialler: {
-          title: 'Desarrollador Web — Socialler',
-          date: 'Abril 2026 — Actualidad',
-          desc: 'Como Desarrollador Web en Socialler, formo parte del equipo enfocado en construir desde cero, optimizar y dar seguridad a la plataforma web de la red social, utilizando Next.js y TypeScript.',
+          title: 'Desarrollador Web y Móvil — Socialler',
+          date: 'Abril 2026 — Octubre 2026',
+          desc: 'En Socialler, participé en la construcción, optimización y seguridad de la plataforma web con Next.js y TypeScript, y en el desarrollo de funcionalidades y resolución de bugs de la aplicación móvil con Expo.',
           achievements: [
+            'Migración de autenticación OIDC de NextAuth a Logto, manteniendo el flujo completo funcionando e integrado con el backend anterior y el nuevo.',
+            'Desarrollo móvil con Expo: Implementación de funcionalidades y resolución de bugs en la aplicación móvil.',
             'Construcción de la plataforma: Desarrollo de la versión web de la red social desde cero.',
             'Ciberseguridad Frontend y Backend: Implementación de políticas de seguridad (CSP, HSTS) y mitigación de vulnerabilidades críticas, incluyendo prevención de Cross-Site Scripting (XSS) y protección contra ataques de Path Traversal en integraciones con buckets de AWS S3.',
             "Arquitectura y Refactorización: Reducción sistemática de la deuda técnica mediante la aplicación de principios DRY (Don't Repeat Yourself), creación de componentes de UI reutilizables y eliminación de código muerto (Dead Code), mejorando el tiempo de carga y la mantenibilidad del proyecto.",
@@ -129,6 +133,7 @@ export class LanguageService {
         },
       },
       hackathons: {
+        linkedin_post: 'Ver publicación en LinkedIn (abre en una pestaña nueva)',
         title: 'Hackathones & Retos',
         project: 'Proyecto:',
         view_cert: 'Ver Certificado',
@@ -178,8 +183,10 @@ export class LanguageService {
         challenge: 'The problem',
         implementation: 'The implementation',
         result: 'The result',
-        sociallerIntro: 'Building Socialler’s web platform with Next.js and TypeScript.',
+        sociallerIntro: 'Web development with Next.js and TypeScript, and mobile development with Expo at Socialler.',
         contributions: [
+          'Migrated OIDC authentication from NextAuth to Logto, keeping the complete flow working and integrated with both the legacy and new backends.',
+          'Developed features and fixed bugs in the mobile application with Expo.',
           'Building interfaces and reusable components for the web platform.',
           'Security improvements and refactoring to maintain the code and reduce technical debt.',
           'Authentication and registration forms with React Hook Form and Zod.',
@@ -191,7 +198,7 @@ export class LanguageService {
           'I run JH Dev Agency and build websites and applications for businesses. I care about connecting a good user experience with maintainable code.',
         personalNotes: [
           { title: 'From a need to an interface', body: 'My projects connect everyday tasks with web experiences: organizing a household in RemindHome, booking an appointment or estimating an event venue package.' },
-          { title: 'Behind the screen, too', body: 'My work spans components, forms and backend integration. At Socialler, I contribute to security improvements and refactoring alongside interface development.' },
+          { title: 'Behind the screen, too', body: 'My work spans components, forms and backend integration. At Socialler, I contributed to security improvements, refactoring, and mobile development with Expo.' },
           { title: 'Building together, against the clock', body: 'Hackathons are part of my journey, too. With Verdana Loop, my team placed third out of 25 teams at Industry Hack Tec.' },
         ],
         programming: 'Programming principles',
@@ -252,10 +259,12 @@ export class LanguageService {
       experience: {
         title: 'My Professional Path',
         socialler: {
-          title: 'Web Developer — Socialler',
-          date: 'April 2026 — Present',
-          desc: "As a Web Developer at Socialler, I'm part of the team focused on building, optimizing, and securing the social network's web platform from the ground up, using Next.js and TypeScript.",
+          title: 'Web & Mobile Developer — Socialler',
+          date: 'April 2026 — October 2026',
+          desc: "At Socialler, I contributed to building, optimizing, and securing the web platform with Next.js and TypeScript, and developed features and fixed bugs in the mobile application with Expo.",
           achievements: [
+            'Migrated OIDC authentication from NextAuth to Logto, keeping the complete flow working and integrated with both the legacy and new backends.',
+            'Mobile Development with Expo: Implemented features and fixed bugs in the mobile application.',
             'Platform Development: Built the web version of the social network from scratch.',
             'Frontend & Backend Security: Implemented security policies (CSP, HSTS) and mitigated critical vulnerabilities, including Cross-Site Scripting (XSS) prevention and protection against Path Traversal attacks in AWS S3 bucket integrations.',
             "Architecture & Refactoring: Systematically reduced technical debt by applying DRY (Don't Repeat Yourself) principles, building reusable UI components, and removing dead code — improving load time and project maintainability.",
@@ -269,6 +278,7 @@ export class LanguageService {
         },
       },
       hackathons: {
+        linkedin_post: 'View LinkedIn post (opens in a new tab)',
         title: 'Hackathons & Challenges',
         project: 'Project:',
         view_cert: 'View Certificate',

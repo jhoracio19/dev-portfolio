@@ -22,9 +22,21 @@
         <details class="case-details">
           <summary>{{ t().design.seeChallenge }}</summary>
           <p>{{ hack.description }}</p>
-          <p class="muted">{{ hack.technologies.join(' · ') }}</p>
+          @if (hack.technologies.length) {
+            <p class="muted">{{ hack.technologies.join(' · ') }}</p>
+          }
         </details>
         <div class="hack-links">
+          @if (hack.linkedinUrl) {
+            <a
+              [href]="hack.linkedinUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="linkedin-button"
+              [attr.aria-label]="t().hackathons.linkedin_post + ': ' + hack.projectCreated"
+              [attr.title]="t().hackathons.linkedin_post"
+            ><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+          }
           @if (hack.demoUrls) {
             @for (demo of hack.demoUrls; track demo.url) {
               <a [href]="demo.url" target="_blank" rel="noopener noreferrer" class="text-link"

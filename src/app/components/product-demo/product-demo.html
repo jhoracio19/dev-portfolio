@@ -1,0 +1,64 @@
+<section id="demo" class="content-section">
+  <div class="section-heading"><div><h2>{{ copy().title }}</h2><p>{{ copy().intro }}</p></div></div>
+  <div class="demo-console">
+    <div class="demo-toolbar">
+      <span class="demo-brand"><span aria-hidden="true">⌂</span> RemindHome <small>{{ copy().demo }}</small></span>
+      <div class="demo-switch" [attr.aria-label]="copy().demo" role="group">
+        <button type="button" [attr.aria-pressed]="view() === 'experience'" aria-controls="demo-panel" (click)="view.set('experience')">{{ copy().experience }}</button>
+        <button type="button" [attr.aria-pressed]="view() === 'architecture'" aria-controls="demo-panel" (click)="explain()">{{ copy().architecture }}</button>
+      </div>
+    </div>
+    <div id="demo-panel">
+      @if (view() === 'experience') {
+        <div class="demo-experience demo-enter">
+          <div class="fridge-panel">
+            <h3>{{ copy().fridge }} <span>{{ foods().length + 2 }}</span></h3>
+            <ul class="food-list">
+              <li><span class="food-dot" aria-hidden="true"></span>{{ copy().eggs }}</li>
+              <li><span class="food-dot" aria-hidden="true"></span>{{ copy().apples }}</li>
+              @for (food of foods(); track food) { <li class="food-added"><span class="food-dot" aria-hidden="true"></span>{{ food }}</li> }
+            </ul>
+            <form (submit)="add($event)" novalidate>
+              <label for="demo-food">{{ copy().item }}</label>
+              <div class="food-form-row">
+                <input id="demo-food" type="text" [value]="draft()" (input)="draft.set($any($event.target).value); error.set(null)" [placeholder]="copy().placeholder" [attr.aria-invalid]="!!error()" aria-describedby="demo-food-error" maxlength="100" autocomplete="off" />
+                <button class="button button-primary" type="submit">{{ copy().add }}</button>
+              </div>
+              <p id="demo-food-error" class="demo-error" role="alert">@if (error(); as errorKey) { {{ copy()[errorKey] }} }</p>
+            </form>
+          </div>
+          <div class="task-panel">
+            <h3>{{ copy().task }}</h3>
+            <button type="button" class="demo-task" [class.task-done]="done()" [attr.aria-pressed]="done()" [attr.aria-label]="(done() ? copy().undo : copy().complete) + ': ' + copy().taskName" (click)="toggleTask()">
+              <span class="task-check" aria-hidden="true">{{ done() ? '✓' : '' }}</span><span>{{ copy().taskName }}</span>
+            </button>
+            <div class="demo-insight"><span class="insight-symbol" aria-hidden="true">↳</span><button type="button" class="text-link" (click)="explain()">{{ copy().explain }}</button></div>
+          </div>
+        </div>
+      } @else {
+        <div class="architecture-panel demo-enter">
+          <div class="trace-choice" role="group" [attr.aria-label]="copy().trace">
+            <button type="button" [attr.aria-pressed]="action() === 'food'" (click)="action.set('food'); step.set(0)">{{ copy().foodTrace }}</button>
+            <button type="button" [attr.aria-pressed]="action() === 'task'" (click)="action.set('task'); step.set(0)">{{ copy().taskTrace }}</button>
+          </div>
+          <ol class="flow-nodes">
+            @for (node of steps(); track $index) {
+              <li><button type="button" [attr.aria-pressed]="step() === $index" aria-controls="flow-detail" (click)="step.set($index)"><span class="flow-number">{{ $index + 1 }}</span><strong>{{ node.title }}</strong><small>{{ node.tech }}</small></button></li>
+            }
+          </ol>
+          <div id="flow-detail" class="flow-detail" aria-live="polite"><h3>{{ steps()[step()].title }}</h3><p>{{ steps()[step()].body }}</p></div>
+          <div class="source-row"><p>{{ copy().architectureNote }}</p><a class="text-link" [href]="source()" target="_blank" rel="noopener noreferrer">{{ copy().source }} <span aria-hidden="true">↗</span></a></div>
+        </div>
+      }
+    </div>
+    <p class="demo-status" role="status">
+      @switch (feedback()) {
+        @case ('added') { {{ copy().added }} {{ lastFood() }} }
+        @case ('completed') { {{ copy().completed }} }
+        @case ('restored') { {{ copy().restored }} }
+        @case ('reset') { {{ copy().resetMessage }} }
+      }
+    </p>
+    <div class="demo-bottom"><p>{{ copy().note }}</p><button type="button" class="text-link" (click)="reset()">{{ copy().reset }}</button></div>
+  </div>
+</section>

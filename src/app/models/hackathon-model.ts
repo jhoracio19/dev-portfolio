@@ -7,6 +7,7 @@ export interface Hackathon {
   technologies: string[];
   certificateUrl?: string;
   repoUrl?: string;
+  linkedinUrl?: string;
   achievement?: string;
   prize?: string;
   demoUrls?: { label: string; url: string; icon: string }[];
