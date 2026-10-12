@@ -5,7 +5,8 @@
 
 .hack-links {
   align-items: center;
-  row-gap: 12px;
+  gap: 12px 20px;
+  padding-top: 12px;
 }
 
 .linkedin-button {
