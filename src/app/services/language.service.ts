@@ -18,6 +18,9 @@ export class LanguageService {
     es: {
       design: {
         role: 'Desarrollador web y móvil',
+        experienceSummary: '+{years} {unit} de experiencia',
+        experienceYear: 'año',
+        experienceYears: 'años',
         headline: 'Desarrollo aplicaciones web y móviles, de la idea al producto.',
         intro:
           'Soy desarrollador fullstack y estudiante de Ingeniería en TI en la BUAP. Desarrollo productos web y aplicaciones móviles con React Native y Expo, y dirijo JH Dev Agency.',
@@ -51,13 +54,13 @@ export class LanguageService {
         stackIntro: 'Las herramientas con las que desarrollo mis proyectos.',
         workflow: 'Entrega y herramientas',
         aboutIntro:
-          'Soy José Horacio, desarrollador fullstack y estudiante de Ingeniería en TI en la BUAP.',
+          'Soy José Horacio, desarrollador fullstack enfocado en aplicaciones web y móviles, y estudiante de Ingeniería en TI en la BUAP.',
         aboutBody:
-          'Dirijo JH Dev Agency y desarrollo sitios y aplicaciones para negocios. Me interesa conectar una buena experiencia de uso con código que se pueda mantener.',
+          'Dirijo JH Dev Agency y desarrollo productos web y aplicaciones móviles con React Native y Expo. Mi experiencia incluye desarrollo frontend en Basil Soluciones y trabajo web y móvil en Socialler, con atención a la experiencia de uso y la calidad del código.',
         personalNotes: [
-          { title: 'De una necesidad a una interfaz', body: 'Mis proyectos conectan tareas concretas con experiencias web: organizar un hogar en RemindHome, agendar una consulta o cotizar un espacio para eventos.' },
-          { title: 'También trabajo detrás de la pantalla', body: 'Mi trabajo abarca componentes, formularios e integración con backend. En Socialler participé en mejoras de seguridad, refactorización y desarrollo móvil con Expo.' },
-          { title: 'Construir en equipo, contra reloj', body: 'Los hackathones también forman parte de mi recorrido. Con Verdana Loop, mi equipo obtuvo el tercer lugar entre 25 equipos en Industry Hack Tec.' },
+          { title: 'De una necesidad a una interfaz', body: 'Construyo soluciones para necesidades reales: organizar un hogar con RemindHome, agendar consultas, cotizar eventos o anticipar decisiones financieras con Stackly. Trabajo tanto en interfaces web como en funcionalidades móviles.' },
+          { title: 'También trabajo detrás de la pantalla', body: 'En Socialler desarrollé funcionalidades y resolví bugs de la aplicación móvil con Expo. También participé en mejoras de seguridad y refactorización, y migré la autenticación OIDC de NextAuth a Logto, integrando el backend anterior y el nuevo.' },
+          { title: 'Construir en equipo, contra reloj', body: 'Con Stackly obtuvimos el segundo lugar en el reto de Capital One en HackMTY 2026, construyendo un simulador de resiliencia financiera para pymes en 36 horas. Con Verdana Loop logramos el tercer lugar entre 25 equipos en Industry Hack Tec.' },
         ],
         programming: 'Principios de programación',
         architecture:
@@ -170,6 +173,9 @@ export class LanguageService {
     en: {
       design: {
         role: 'Web & mobile developer',
+        experienceSummary: '+{years} {unit} of experience',
+        experienceYear: 'year',
+        experienceYears: 'years',
         headline: 'I build web and mobile applications, from idea to product.',
         intro: 'I’m a fullstack developer and IT Engineering student at BUAP. I build web products and mobile apps with React Native and Expo, and run JH Dev Agency.',
         viewWork: 'View my work',
@@ -201,13 +207,13 @@ export class LanguageService {
         ],
         stackIntro: 'The tools I use to build my projects.',
         workflow: 'Delivery and tools',
-        aboutIntro: 'I’m José Horacio, a fullstack developer and IT Engineering student at BUAP.',
+        aboutIntro: 'I’m José Horacio, a fullstack developer focused on web and mobile applications, and an IT Engineering student at BUAP.',
         aboutBody:
-          'I run JH Dev Agency and build websites and applications for businesses. I care about connecting a good user experience with maintainable code.',
+          'I run JH Dev Agency and build web products and mobile apps with React Native and Expo. My experience includes frontend development at Basil Soluciones and web and mobile work at Socialler, with a focus on user experience and code quality.',
         personalNotes: [
-          { title: 'From a need to an interface', body: 'My projects connect everyday tasks with web experiences: organizing a household in RemindHome, booking an appointment or estimating an event venue package.' },
-          { title: 'Behind the screen, too', body: 'My work spans components, forms and backend integration. At Socialler, I contributed to security improvements, refactoring, and mobile development with Expo.' },
-          { title: 'Building together, against the clock', body: 'Hackathons are part of my journey, too. With Verdana Loop, my team placed third out of 25 teams at Industry Hack Tec.' },
+          { title: 'From a need to an interface', body: 'I build solutions for real needs: organizing a household with RemindHome, booking appointments, estimating event costs, or anticipating financial decisions with Stackly. My work spans web interfaces and mobile features.' },
+          { title: 'Behind the screen, too', body: 'At Socialler, I developed features and fixed bugs in the mobile application with Expo. I also contributed to security improvements and refactoring, and migrated OIDC authentication from NextAuth to Logto, integrating both the legacy and new backends.' },
+          { title: 'Building together, against the clock', body: 'With Stackly, we placed second in the Capital One track at HackMTY 2026, building a financial resilience simulator for SMEs in 36 hours. With Verdana Loop, we placed third out of 25 teams at Industry Hack Tec.' },
         ],
         programming: 'Programming principles',
         architecture:
