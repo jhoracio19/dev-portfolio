@@ -58,13 +58,14 @@ export class LanguageService {
         aboutBody:
           'Dirijo JH Dev Agency y desarrollo productos web y aplicaciones móviles con React Native y Expo. Mi experiencia incluye desarrollo frontend en Basil Soluciones y trabajo web y móvil en Socialler, con atención a la experiencia de uso y la calidad del código.',
         personalNotes: [
-          { title: 'De una necesidad a una interfaz', body: 'Construyo soluciones para necesidades reales: organizar un hogar con RemindHome, agendar consultas, cotizar eventos o anticipar decisiones financieras con Stackly. Trabajo tanto en interfaces web como en funcionalidades móviles.' },
-          { title: 'También trabajo detrás de la pantalla', body: 'En Socialler desarrollé funcionalidades y resolví bugs de la aplicación móvil con Expo. También participé en mejoras de seguridad y refactorización, y migré la autenticación OIDC de NextAuth a Logto, integrando el backend anterior y el nuevo.' },
-          { title: 'Construir en equipo, contra reloj', body: 'Con Stackly obtuvimos el segundo lugar en el reto de Capital One en HackMTY 2026, construyendo un simulador de resiliencia financiera para pymes en 36 horas. Con Verdana Loop logramos el tercer lugar entre 25 equipos en Industry Hack Tec.' },
+          { title: 'Escuchar y convertir ideas en productos', body: 'En JH Dev Agency, el trabajo con clientes parte de entender qué necesitan y traducirlo en una solución clara. Construyo interfaces web y funcionalidades móviles para tareas concretas, como organizar un hogar con RemindHome, agendar consultas o cotizar eventos.' },
+          { title: 'Resolver problemas y adaptarme', body: 'En Socialler combiné desarrollo de funcionalidades y resolución de bugs móviles con Expo, mejoras de seguridad y refactorización. La migración OIDC de NextAuth a Logto me exigió comprender e integrar el backend anterior y el nuevo para mantener funcionando el flujo completo.' },
+          { title: 'Pensar más allá de un solo usuario', body: 'Una aplicación debe responder a muchas personas al mismo tiempo. Mi enfoque en cómputo distribuido considera la concurrencia, la consistencia de los datos y la comunicación entre servicios: qué pasa cuando dos usuarios modifican la misma información, una petición se repite o un servicio falla. Me interesa diseñar sistemas que puedan crecer sin perder confiabilidad.' },
+          { title: 'Construir en equipo, contra reloj', body: 'Los hackathones me han permitido practicar la colaboración y priorizar bajo presión. Con Stackly construimos un simulador financiero para pymes en 36 horas y obtuvimos el segundo lugar en el reto de Capital One en HackMTY 2026. Con Verdana Loop logramos el tercer lugar entre 25 equipos en Industry Hack Tec.' },
         ],
         programming: 'Principios de programación',
         architecture:
-          'Mi enfoque actual: arquitectura hexagonal, Clean Code, SOLID e integración de APIs.',
+          'Mi enfoque combina arquitectura hexagonal, Clean Code, SOLID e integración de APIs con fundamentos de cómputo distribuido: concurrencia, mensajería asíncrona y consistencia de datos.',
         hackIntro: 'Trabajo en equipo, restricciones reales y soluciones construidas contra reloj.',
         contactTitle: 'Hablemos de tu próximo proyecto.',
         contactIntro:
@@ -211,13 +212,14 @@ export class LanguageService {
         aboutBody:
           'I run JH Dev Agency and build web products and mobile apps with React Native and Expo. My experience includes frontend development at Basil Soluciones and web and mobile work at Socialler, with a focus on user experience and code quality.',
         personalNotes: [
-          { title: 'From a need to an interface', body: 'I build solutions for real needs: organizing a household with RemindHome, booking appointments, estimating event costs, or anticipating financial decisions with Stackly. My work spans web interfaces and mobile features.' },
-          { title: 'Behind the screen, too', body: 'At Socialler, I developed features and fixed bugs in the mobile application with Expo. I also contributed to security improvements and refactoring, and migrated OIDC authentication from NextAuth to Logto, integrating both the legacy and new backends.' },
-          { title: 'Building together, against the clock', body: 'With Stackly, we placed second in the Capital One track at HackMTY 2026, building a financial resilience simulator for SMEs in 36 hours. With Verdana Loop, we placed third out of 25 teams at Industry Hack Tec.' },
+          { title: 'Listening and turning ideas into products', body: 'At JH Dev Agency, working with clients starts with understanding their needs and translating them into a clear solution. I build web interfaces and mobile features for everyday tasks, such as organizing a household with RemindHome, booking appointments, or estimating event costs.' },
+          { title: 'Solving problems and adapting', body: 'At Socialler, I combined mobile feature development and bug fixes with Expo, security improvements, and refactoring. Migrating OIDC authentication from NextAuth to Logto required understanding and integrating both the legacy and new backends to keep the complete flow working.' },
+          { title: 'Thinking beyond a single user', body: 'An application needs to serve many people at the same time. My approach to distributed computing considers concurrency, data consistency, and communication between services: what happens when two users change the same information, a request is repeated, or a service fails. I aim to design systems that can grow while remaining reliable.' },
+          { title: 'Building together, against the clock', body: 'Hackathons have given me opportunities to practice collaboration and prioritize under pressure. With Stackly, we built a financial simulator for SMEs in 36 hours and placed second in the Capital One track at HackMTY 2026. With Verdana Loop, we placed third out of 25 teams at Industry Hack Tec.' },
         ],
         programming: 'Programming principles',
         architecture:
-          'My current focus: hexagonal architecture, Clean Code, SOLID and API integration.',
+          'My approach combines hexagonal architecture, Clean Code, SOLID, and API integration with distributed computing fundamentals: concurrency, asynchronous messaging, and data consistency.',
         hackIntro: 'Teamwork, real constraints and solutions built against the clock.',
         contactTitle: 'Let’s talk about your next project.',
         contactIntro: 'Tell me what you need to build or about the opportunity you have in mind.',
