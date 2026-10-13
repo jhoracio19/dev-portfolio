@@ -1,4 +1,8 @@
 @if (visible()) {
+  @if (mobile() && expanded()) {
+    <button type="button" class="floating-backdrop" tabindex="-1"
+      [attr.aria-label]="labels().close" (click)="closeWithKeyboard()"></button>
+  }
   <nav class="floating-actions" [class.is-expanded]="expanded()" [attr.aria-label]="labels().navigation">
     <button #toggleButton type="button" class="floating-toggle" (click)="toggle()"
       [attr.aria-label]="expanded() ? labels().close : labels().open"

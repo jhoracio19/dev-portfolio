@@ -85,3 +85,30 @@
   .is-expanded .floating-link:nth-child(2) { transition-delay: 35ms; }
   .is-expanded .floating-link:nth-child(3) { transition-delay: 70ms; }
 }
+
+/* Frosted background keeps the radial actions distinct from the page. */
+.floating-backdrop { display: none; }
+@media (max-width: 640px) {
+  .floating-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 89;
+    border: 0;
+    background: linear-gradient(160deg, color-mix(in srgb, var(--page) 48%, transparent), color-mix(in srgb, var(--accent-fill) 24%, transparent));
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+  .is-expanded .floating-link {
+    box-shadow: 0 8px 28px rgb(0 0 0 / 18%);
+    border-color: color-mix(in srgb, var(--accent) 35%, var(--line));
+  }
+  .is-expanded .floating-link:nth-child(1) { background: #0a66c2; color: #fff; border-color: #0a66c2; }
+  .is-expanded .floating-link:nth-child(2) { background: var(--accent-soft); color: var(--accent); }
+  .is-expanded .floating-link:nth-child(3) { background: var(--surface); color: var(--accent); }
+  .is-expanded .floating-toggle { box-shadow: 0 0 0 7px color-mix(in srgb, var(--accent-fill) 16%, transparent), 0 8px 28px rgb(0 0 0 / 20%); }
+}
+@media (max-width: 640px) and (prefers-reduced-motion: no-preference) {
+  .floating-backdrop { animation: backdrop-enter 220ms ease-out both; }
+  @keyframes backdrop-enter { from { opacity: 0; } to { opacity: 1; } }
+}
