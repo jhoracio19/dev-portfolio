@@ -93,12 +93,13 @@
     display: block;
     position: fixed;
     inset: 0;
-    z-index: 89;
+    z-index: 110;
     border: 0;
     background: linear-gradient(160deg, color-mix(in srgb, var(--page) 48%, transparent), color-mix(in srgb, var(--accent-fill) 24%, transparent));
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
   }
+  .floating-actions.is-expanded { z-index: 111; }
   .is-expanded .floating-link {
     box-shadow: 0 8px 28px rgb(0 0 0 / 18%);
     border-color: color-mix(in srgb, var(--accent) 35%, var(--line));

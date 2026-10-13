@@ -8,13 +8,16 @@
       content="Portfolio de José Horacio, estudiante de Ingeniería en TI y desarrollador Fullstack. Construyo software que resuelve problemas reales, de MVPs a plataformas SaaS escalables."
     />
     <base href="/" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#090909" />
     <script>
       (() => {
         let theme;
         try { theme = localStorage.getItem('portfolio-theme'); } catch {}
         document.documentElement.dataset.theme = theme === 'light' || theme === 'dark'
           ? theme : (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.querySelector('meta[name="theme-color"]').content =
+          document.documentElement.dataset.theme === 'light' ? '#fafafa' : '#090909';
       })();
     </script>
     <link rel="icon" type="image/svg+xml" href="jh-mark.svg" />

@@ -17,6 +17,7 @@ export class ThemeService {
     const apply = () => {
       this.theme.set(next);
       this.document.documentElement.dataset['theme'] = next;
+      this.document.querySelector('meta[name="theme-color"]')?.setAttribute('content', next === 'light' ? '#fafafa' : '#090909');
       try { this.document.defaultView?.localStorage.setItem('portfolio-theme', next); } catch {}
     };
     const reduced = this.document.defaultView?.matchMedia('(prefers-reduced-motion: reduce)').matches;

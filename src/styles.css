@@ -1199,3 +1199,13 @@ input {
   .tech-item:hover { transform: translateY(-3px); border-color: var(--tech-color, var(--accent)); }
   .tech-item:hover i, .tech-item:hover .tech-monogram { transform: scale(1.15); }
 }
+
+@media (max-width: 640px) {
+  .site-header { padding-top: env(safe-area-inset-top); }
+  .nav-links {
+    top: calc(72px + env(safe-area-inset-top));
+    min-height: calc(100dvh - 72px - env(safe-area-inset-top));
+    max-height: calc(100dvh - 72px - env(safe-area-inset-top));
+  }
+  .footer-bottom { padding-bottom: env(safe-area-inset-bottom); }
+}
